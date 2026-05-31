@@ -3,6 +3,7 @@
 export const siteConfig = {
   name: "Abdulrahman Nahhas",
   title: "Software Developer",
+  url: "https://abdulrahman.dev",
   location: "Syria",
   email: "contact@abdulrahman.dev",
   tagline: "Building digital experiences with precision and purpose",

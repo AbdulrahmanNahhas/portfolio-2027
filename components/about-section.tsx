@@ -27,15 +27,17 @@ export function AboutSection() {
   const activeExperiences = experiences.filter((e) => e.current).length;
 
   return (
-    <section id="about" className="relative py-32 px-6 lg:px-12">
-      <div className="absolute inset-0 grid-overlay opacity-10" />
+    <section id="about" className="relative px-4 py-28 sm:px-6 lg:px-10">
+      <div className="section-field absolute inset-0 opacity-80" />
 
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="text-xs font-mono text-muted-foreground tracking-[0.3em]">02</span>
-          <div className="w-12 h-px bg-border" />
-          <span className="text-xs font-mono text-muted-foreground tracking-[0.3em] uppercase">
+        <div className="mb-14 flex items-center gap-4 border-b border-foreground/25 pb-5">
+          <span className="border border-foreground/35 px-3 py-1 font-mono text-xs text-foreground">
+            02
+          </span>
+          <div className="h-px w-12 bg-foreground/35" />
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
             About
           </span>
         </div>
@@ -44,10 +46,10 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
           {/* Left: Bio */}
           <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground leading-tight text-balance">
+            <h2 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground text-balance md:text-5xl">
               A developer passionate about creating meaningful digital experiences
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="max-w-2xl space-y-4 border-l border-foreground/30 pl-5 leading-8 text-muted-foreground">
               <p>
                 {"I'm"} {siteConfig.name}, a software developer from {siteConfig.location} with a
                 focus on building clean, efficient, and user-centered applications. My journey in
@@ -63,14 +65,14 @@ export function AboutSection() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase border border-border px-6 py-3 hover:border-foreground hover:bg-foreground hover:text-background transition-all duration-300"
+                className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3 text-sm uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-background hover:text-foreground"
               >
                 <span>About me</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/skills"
-                className="group inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                className="group inline-flex items-center gap-3 border border-foreground/35 px-6 py-3 text-sm uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground hover:bg-foreground/10"
               >
                 <span>All Skills</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -83,19 +85,19 @@ export function AboutSection() {
             {highlights.map((item, index) => (
               <div
                 key={item.title}
-                className="group flex gap-6 p-6 border border-border hover:border-foreground/30 transition-all duration-500"
+                className="group hud-panel corner-cut flex gap-5 p-5 transition-all duration-500 hover:-translate-y-1"
               >
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 border border-border flex items-center justify-center text-muted-foreground group-hover:border-foreground/50 group-hover:text-foreground transition-colors">
+                  <div className="flex h-12 w-12 items-center justify-center border border-foreground/35 text-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
                     <item.icon className="w-5 h-5" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-3">
-                    <h3 className="text-lg text-foreground">{item.title}</h3>
-                    <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
+                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
+                    <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                  <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>
                 </div>
               </div>
             ))}
@@ -103,7 +105,7 @@ export function AboutSection() {
         </div>
 
         {/* Stats Row */}
-        <div className="border-t border-b border-border py-12">
+        <div className="border-y border-foreground/30 bg-card/40 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: totalSkills, label: "Technical Skills" },
@@ -111,11 +113,11 @@ export function AboutSection() {
               { value: "3+", label: "Years Coding" },
               { value: "100%", label: "Remote Friendly" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center md:text-left">
-                <p className="text-3xl md:text-4xl font-normal text-foreground mb-2 font-mono">
+              <div key={stat.label} className="px-4 text-center md:text-left">
+                <p className="mb-2 font-mono text-3xl text-foreground md:text-4xl">
                   {stat.value}
                 </p>
-                <p className="text-[10px] text-muted-foreground tracking-[0.3em] uppercase font-mono">
+                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                   {stat.label}
                 </p>
               </div>
@@ -125,10 +127,10 @@ export function AboutSection() {
 
         {/* Featured Skills Preview */}
         <div className="pt-16">
-          <div className="flex items-center justify-between mb-8">
+          <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Sparkles className="w-4 h-4 text-muted-foreground" />
-              <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 Featured Skills
               </span>
             </div>
@@ -148,7 +150,7 @@ export function AboutSection() {
                 .map((skill) => (
                   <span
                     key={skill.name}
-                    className="text-sm font-mono text-foreground border border-border px-4 py-2 hover:border-foreground/50 transition-colors"
+                    className="border border-foreground/30 bg-background/45 px-4 py-2 font-mono text-sm text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
                   >
                     {skill.name}
                   </span>

@@ -1,91 +1,39 @@
-import { ArrowUpRight, Calendar, ExternalLink, MapPin } from "lucide-react";
-import Link from "next/link";
-import { Footer } from "@/components/footer";
-import { Navigation } from "@/components/navigation";
+import { Calendar, ExternalLink, MapPin } from "lucide-react";
+import { CtaSection } from "@/components/cta-section";
+import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Section, SectionHeader } from "@/components/section";
 import { experiences } from "@/lib/data";
+import { calculateDuration, formatMonthYear } from "@/lib/date";
+import type { Metadata } from "next";
 
-export const metadata = {
-  title: "Work Experience | Abdulrahman Nahhas",
+export const metadata: Metadata = {
+  title: "Work Experience",
   description:
     "Professional experience in software development, volunteer work, and humanitarian technology.",
 };
-
-function formatDate(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
-}
-
-function calculateDuration(start: string, end?: string) {
-  const startDate = new Date(start);
-  const endDate = end ? new Date(end) : new Date();
-  const months =
-    (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-    (endDate.getMonth() - startDate.getMonth());
-
-  if (months < 12) return `${months} mo`;
-  const years = Math.floor(months / 12);
-  const remainingMonths = months % 12;
-  if (remainingMonths === 0) return `${years} yr`;
-  return `${years} yr ${remainingMonths} mo`;
-}
 
 export default function WorkPage() {
   const currentRoles = experiences.filter((e) => e.current);
   const pastRoles = experiences.filter((e) => !e.current);
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
-      <div className="fixed inset-0 pointer-events-none opacity-[0.015] z-50">
-        <div className="absolute inset-0 noise" />
-      </div>
+    <PageLayout>
+      <PageHeader
+        number="04"
+        label="Experience"
+        title="Work"
+        description="A timeline of professional experience, volunteer contributions, and meaningful work in software development and humanitarian technology."
+      />
 
-      <Navigation />
+      <Section bordered>
+        <SectionHeader label="Currently Active" count={`${currentRoles.length} Roles`} active />
 
-      {/* Header */}
-      <section className="relative pt-32 pb-16 border-b border-border">
-        <div className="absolute inset-0 grid-overlay opacity-10" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs font-mono text-muted-foreground tracking-[0.3em]">04</span>
-            <div className="w-12 h-px bg-border" />
-            <span className="text-xs font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Experience
-            </span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-6">
-            Work
-          </h1>
-
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            A timeline of professional experience, volunteer contributions, and meaningful work in
-            software development and humanitarian technology.
-          </p>
-        </div>
-      </section>
-
-      {/* Current Roles */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-foreground animate-pulse" />
-              <span className="text-[10px] font-mono text-foreground tracking-[0.3em] uppercase">
-                Currently Active
-              </span>
-            </div>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {currentRoles.length} Roles
-            </span>
-          </div>
-
-          <div className="space-y-8">
-            {currentRoles.map((experience, index) => (
-              <article
-                key={experience.id}
-                className="group relative border border-foreground/30 bg-card/50 hover:border-foreground transition-all duration-500"
-              >
+        <div className="space-y-8">
+          {currentRoles.map((experience) => (
+            <article
+              key={experience.id}
+              className="group relative border border-foreground/30 bg-card/50 transition-all duration-500 hover:border-foreground"
+            >
                 <div className="absolute top-0 left-0 w-2 h-full bg-foreground" />
 
                 <div className="p-8 lg:p-12 pl-10 lg:pl-16">
@@ -125,7 +73,7 @@ export default function WorkPage() {
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="w-3 h-3" />
-                          <span>{formatDate(experience.startDate)} - Present</span>
+                          <span>{formatMonthYear(experience.startDate)} - Present</span>
                           <span className="text-xs font-mono text-foreground/50">
                             ({calculateDuration(experience.startDate)})
                           </span>
@@ -180,31 +128,19 @@ export default function WorkPage() {
                     </div>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Past Roles */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Past Experience
-            </span>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {pastRoles.length} Roles
-            </span>
-          </div>
+      <Section>
+        <SectionHeader label="Past Experience" count={`${pastRoles.length} Roles`} />
 
-          <div className="relative">
-            {/* Timeline line */}
+        <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-px bg-border hidden lg:block" />
 
             <div className="space-y-12">
-              {pastRoles.map((experience, index) => (
+              {pastRoles.map((experience) => (
                 <article key={experience.id} className="group relative lg:pl-12">
                   {/* Timeline dot */}
                   <div className="absolute left-0 top-0 w-px h-full bg-border/50 lg:hidden" />
@@ -221,8 +157,8 @@ export default function WorkPage() {
                         </div>
                         <div className="text-sm text-muted-foreground">
                           <p>
-                            {formatDate(experience.startDate)} -{" "}
-                            {experience.endDate ? formatDate(experience.endDate) : "Present"}
+                            {formatMonthYear(experience.startDate)} -{" "}
+                            {experience.endDate ? formatMonthYear(experience.endDate) : "Present"}
                           </p>
                           <p className="text-xs font-mono text-foreground/50">
                             {calculateDuration(experience.startDate, experience.endDate)}
@@ -259,37 +195,16 @@ export default function WorkPage() {
                 </article>
               ))}
             </div>
-          </div>
         </div>
-      </section>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            {
-              "Looking for a dedicated developer for your next project? Let's discuss how I can contribute."
-            }
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-3 text-sm tracking-widest uppercase border border-border px-8 py-4 hover:border-foreground hover:bg-foreground/5 transition-all duration-300"
-            >
-              <span>View Projects</span>
-            </Link>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-3 text-sm tracking-widest uppercase bg-foreground text-background px-8 py-4 hover:bg-foreground/90 transition-all duration-300"
-            >
-              <span>Get in Touch</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+      <CtaSection
+        text="Looking for a dedicated developer for your next project? Let's discuss how I can contribute."
+        links={[
+          { href: "/projects", label: "View Projects" },
+          { href: "/#contact", label: "Get in Touch", primary: true },
+        ]}
+      />
+    </PageLayout>
   );
 }

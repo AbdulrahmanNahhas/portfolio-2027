@@ -1,12 +1,59 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme-provider";
+import { siteConfig } from "@/lib/data";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Abdulrahman Nahhas | Software Developer",
+  metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
+  },
   description:
     "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
-  generator: "v0.app",
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  keywords: [
+    "Abdulrahman Nahhas",
+    "software developer",
+    "Next.js developer",
+    "TypeScript",
+    "embedded systems",
+    "full-stack development",
+    "Syria developer",
+  ],
+  category: "portfolio",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
+    description:
+      "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | ${siteConfig.title}`,
+    description:
+      "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
+    creator: "@abdulrahmandev",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       {
@@ -32,9 +79,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="font-sans antialiased bg-background text-foreground">
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

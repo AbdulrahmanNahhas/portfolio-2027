@@ -1,10 +1,12 @@
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Section, SectionHeader } from "@/components/section";
 import { blogPosts } from "@/lib/data";
+import { formatDisplayDate } from "@/lib/date";
 
 export const metadata = {
-  title: "Blog | Abdulrahman Nahhas",
+  title: "Blog",
   description:
     "Articles about web development, embedded systems, and building technology for impact.",
 };
@@ -22,18 +24,8 @@ export default function BlogPage() {
         description="Thoughts on software development, embedded systems, and building technology that matters."
       />
 
-      {/* Featured Posts */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Featured
-            </span>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {featuredPosts.length} Articles
-            </span>
-          </div>
+      <Section bordered>
+        <SectionHeader label="Featured" count={`${featuredPosts.length} Articles`} />
 
           <div className="space-y-8">
             {featuredPosts.map((post, index) => (
@@ -54,7 +46,7 @@ export default function BlogPage() {
                       <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
-                          {new Date(post.date).toLocaleDateString("en-US", {
+                          {formatDisplayDate(post.date, {
                             month: "short",
                             day: "numeric",
                             year: "numeric",
@@ -95,21 +87,10 @@ export default function BlogPage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* All Posts */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              All Posts
-            </span>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {otherPosts.length} Articles
-            </span>
-          </div>
+      <Section>
+        <SectionHeader label="All Posts" count={`${otherPosts.length} Articles`} />
 
           <div className="divide-y divide-border">
             {otherPosts.map((post) => (
@@ -127,7 +108,7 @@ export default function BlogPage() {
 
                 <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground shrink-0">
                   <span>
-                    {new Date(post.date).toLocaleDateString("en-US", {
+                    {formatDisplayDate(post.date, {
                       month: "short",
                       year: "numeric",
                     })}
@@ -138,12 +119,10 @@ export default function BlogPage() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Newsletter CTA */}
       <section className="py-24 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-2xl text-foreground mb-4">Stay Updated</h2>
             <p className="text-muted-foreground mb-8">

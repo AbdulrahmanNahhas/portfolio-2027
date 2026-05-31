@@ -1,7 +1,6 @@
 "use client"
 
-import { ArrowUpRight, Copy, Mail, Github, Linkedin, Twitter } from "lucide-react"
-import { useState } from "react"
+import { ArrowUpRight, Mail, Github, Linkedin, Twitter } from "lucide-react"
 import { siteConfig } from "@/lib/data"
 
 const socialLinks = [
@@ -11,25 +10,20 @@ const socialLinks = [
 ]
 
 export function ContactSection() {
-  const [copied, setCopied] = useState(false)
   const email = siteConfig.email
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(email)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
   return (
-    <section id="contact" className="relative py-32 px-6 lg:px-12">
-      <div className="absolute inset-0 grid-overlay opacity-10" />
+    <section id="contact" className="relative px-4 py-28 sm:px-6 lg:px-10">
+      <div className="section-field absolute inset-0 opacity-80" />
       
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-16">
-          <span className="text-xs font-mono text-muted-foreground tracking-[0.3em]">05</span>
-          <div className="w-12 h-px bg-border" />
-          <span className="text-xs font-mono text-muted-foreground tracking-[0.3em] uppercase">Connect</span>
+        <div className="mb-14 flex items-center gap-4 border-b border-foreground/25 pb-5">
+          <span className="border border-foreground/35 px-3 py-1 font-mono text-xs text-foreground">
+            05
+          </span>
+          <div className="h-px w-12 bg-foreground/35" />
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">Connect</span>
         </div>
 
         {/* Main Content */}
@@ -37,10 +31,10 @@ export function ContactSection() {
           {/* Left Column */}
           <div className="space-y-8">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-foreground leading-tight text-balance">
+              <h2 className="text-3xl font-semibold leading-tight text-foreground text-balance md:text-4xl lg:text-5xl">
                 {"Let's build something meaningful together."}
               </h2>
-              <p className="text-muted-foreground leading-relaxed max-w-md">
+              <p className="max-w-md border-l border-foreground/30 pl-5 leading-8 text-muted-foreground">
                 Whether you have a project in mind, need technical consultation, 
                 or just want to connect - {"I'm"} always open to discussing new opportunities.
               </p>
@@ -49,7 +43,7 @@ export function ContactSection() {
             <div className="flex flex-wrap gap-4">
               <a
                 href={`mailto:${email}`}
-                className="inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase bg-foreground text-background px-8 py-4 hover:bg-foreground/90 transition-all duration-300"
+                className="inline-flex items-center gap-3 border border-foreground bg-foreground px-8 py-4 text-sm uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-background hover:text-foreground"
               >
                 <Mail className="w-4 h-4" />
                 <span>Send Email</span>
@@ -58,7 +52,7 @@ export function ContactSection() {
                 href={siteConfig.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 text-sm tracking-[0.2em] uppercase border border-border px-8 py-4 hover:border-foreground hover:bg-foreground/5 transition-all duration-300"
+                className="inline-flex items-center gap-3 border border-foreground/40 px-8 py-4 text-sm uppercase tracking-[0.2em] transition-all duration-300 hover:border-foreground hover:bg-foreground/10"
               >
                 <span>LinkedIn</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -70,39 +64,34 @@ export function ContactSection() {
           <div className="space-y-12">
             {/* Email */}
             <div className="space-y-4">
-              <p className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 Email Address
               </p>
-              <button
-                onClick={copyEmail}
-                className="group flex items-center gap-4 text-foreground hover:text-muted-foreground transition-colors w-full border border-border p-4 hover:border-foreground/50"
+              <a
+                href={`mailto:${email}`}
+                className="group flex w-full min-w-0 items-center gap-4 border border-foreground/35 bg-card/45 p-4 text-foreground transition-colors hover:border-foreground hover:bg-background/50"
               >
                 <Mail className="w-5 h-5 text-muted-foreground" />
-                <span className="text-lg font-mono">{email}</span>
-                <Copy className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                {copied && (
-                  <span className="text-xs font-mono text-foreground bg-foreground/10 px-2 py-1">
-                    Copied!
-                  </span>
-                )}
-              </button>
+                <span className="min-w-0 break-all text-left font-mono text-base sm:text-lg">{email}</span>
+                <ArrowUpRight className="ml-auto size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+              </a>
             </div>
 
             {/* Location */}
             <div className="space-y-4">
-              <p className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 Location
               </p>
-              <div className="flex items-center gap-4 border border-border p-4">
-                <div className="w-2 h-2 bg-foreground animate-pulse" />
+              <div className="flex flex-col gap-3 border border-foreground/35 bg-card/45 p-4 sm:flex-row sm:items-center">
+                <div className="w-2 h-2 bg-warning soft-pulse" />
                 <span className="text-lg">{siteConfig.location}</span>
-                <span className="text-sm text-muted-foreground ml-auto font-mono">Available Remotely</span>
+                <span className="font-mono text-sm text-muted-foreground sm:ml-auto">Available Remotely</span>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="space-y-4">
-              <p className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 Social Profiles
               </p>
               <div className="grid gap-3">
@@ -112,16 +101,16 @@ export function ContactSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-4 border border-border hover:border-foreground/50 transition-all duration-300"
+                    className="group flex items-center justify-between gap-4 border border-foreground/30 bg-background/35 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground hover:bg-card/60"
                   >
                     <div className="flex items-center gap-4">
-                      <link.icon className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+                        <link.icon className="w-5 h-5 text-muted-foreground transition-colors group-hover:text-foreground" />
                       <span className="text-foreground group-hover:text-foreground/80 transition-colors">
                         {link.label}
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className="text-sm text-muted-foreground font-mono">
+                      <span className="hidden font-mono text-sm text-muted-foreground sm:inline">
                         {link.handle}
                       </span>
                       <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />

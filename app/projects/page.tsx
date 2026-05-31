@@ -1,11 +1,11 @@
 import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
-import { Footer } from "@/components/footer";
-import { Navigation } from "@/components/navigation";
+import { CtaSection } from "@/components/cta-section";
+import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Section, SectionHeader } from "@/components/section";
 import { projects } from "@/lib/data";
 
 export const metadata = {
-  title: "Projects | Abdulrahman Nahhas",
+  title: "Projects",
   description:
     "A collection of projects spanning web development, embedded systems, and humanitarian technology.",
 };
@@ -15,57 +15,24 @@ export default function ProjectsPage() {
   const otherProjects = projects.filter((p) => !p.featured);
 
   return (
-    <main className="relative min-h-screen bg-background text-foreground">
-      <div className="fixed inset-0 pointer-events-none opacity-[0.015] z-50">
-        <div className="absolute inset-0 noise" />
-      </div>
+    <PageLayout>
+      <PageHeader
+        number="03"
+        label="Archive"
+        title="Projects"
+        description="A curated collection of projects spanning full-stack web development, embedded systems, and humanitarian technology. Each project represents a unique challenge solved with precision."
+      />
 
-      <Navigation />
+      <Section bordered>
+        <SectionHeader label="Featured Work" count={`${featuredProjects.length} Projects`} />
 
-      {/* Header */}
-      <section className="relative pt-32 pb-16 border-b border-border">
-        <div className="absolute inset-0 grid-overlay opacity-10" />
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 relative">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs font-mono text-muted-foreground tracking-[0.3em]">03</span>
-            <div className="w-12 h-px bg-border" />
-            <span className="text-xs font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Archive
-            </span>
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-6">
-            Projects
-          </h1>
-
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-            A curated collection of projects spanning full-stack web development, embedded systems,
-            and humanitarian technology. Each project represents a unique challenge solved with
-            precision.
-          </p>
-        </div>
-      </section>
-
-      {/* Featured Projects */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Featured Work
-            </span>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {featuredProjects.length} Projects
-            </span>
-          </div>
-
-          <div className="space-y-8">
-            {featuredProjects.map((project, index) => (
-              <article
-                key={project.id}
-                className="group relative border border-border hover:border-foreground/50 transition-all duration-500"
-              >
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-foreground to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+        <div className="space-y-8">
+          {featuredProjects.map((project) => (
+            <article
+              key={project.id}
+              className="group relative border border-border transition-all duration-500 hover:border-foreground/50"
+            >
+              <div className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-gradient-to-r from-foreground to-transparent transition-transform duration-700 group-hover:scale-x-100" />
 
                 <div className="grid lg:grid-cols-2 gap-8 p-8 lg:p-12">
                   {/* Project Info */}
@@ -143,31 +110,20 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* Other Projects */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Other Projects
-            </span>
-            <div className="flex-1 h-px bg-border" />
-            <span className="text-[10px] font-mono text-muted-foreground">
-              {otherProjects.length} Projects
-            </span>
-          </div>
+      <Section>
+        <SectionHeader label="Other Projects" count={`${otherProjects.length} Projects`} />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {otherProjects.map((project) => (
-              <article
-                key={project.id}
-                className="group relative border border-border p-6 hover:border-foreground/50 transition-all duration-500 bg-card/30"
-              >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {otherProjects.map((project) => (
+            <article
+              key={project.id}
+              className="group relative border border-border bg-card/30 p-6 transition-all duration-500 hover:border-foreground/50"
+            >
                 <div className="flex items-start justify-between mb-6">
                   <span className="text-xs font-mono text-muted-foreground">/{project.id}</span>
                   <div className="flex items-center gap-3">
@@ -212,29 +168,15 @@ export default function ProjectsPage() {
                   </div>
                   <span className="text-xs font-mono text-muted-foreground">{project.year}</span>
                 </div>
-              </article>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24 border-t border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            {"Interested in collaborating on a project? Let's discuss how we can work together."}
-          </p>
-          <Link
-            href="/#contact"
-            className="inline-flex items-center gap-3 text-sm tracking-widest uppercase bg-foreground text-background px-8 py-4 hover:bg-foreground/90 transition-all duration-300"
-          >
-            <span>Start a Conversation</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
+      <CtaSection
+        text="Interested in collaborating on a project? Let's discuss how we can work together."
+        links={[{ href: "/#contact", label: "Start a Conversation", primary: true }]}
+      />
+    </PageLayout>
   );
 }

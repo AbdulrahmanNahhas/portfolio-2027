@@ -1,19 +1,11 @@
 import { PageLayout, PageHeader } from "@/components/page-layout"
+import { Section, SectionHeader } from "@/components/section"
 import { usesData } from "@/lib/data"
-import { Monitor, Code2, Wrench, Cpu, Terminal, Layers } from "lucide-react"
+import { Code2, Wrench, Cpu, Terminal, Layers } from "lucide-react"
 
 export const metadata = {
-  title: "Uses | Abdulrahman Nahhas",
+  title: "Uses",
   description: "The tools, software, and hardware I use for development and productivity.",
-}
-
-const icons: Record<string, React.ReactNode> = {
-  Monitor: <Monitor className="w-5 h-5" />,
-  Code2: <Code2 className="w-5 h-5" />,
-  Wrench: <Wrench className="w-5 h-5" />,
-  Cpu: <Cpu className="w-5 h-5" />,
-  Terminal: <Terminal className="w-5 h-5" />,
-  Layers: <Layers className="w-5 h-5" />,
 }
 
 export default function UsesPage() {
@@ -26,14 +18,8 @@ export default function UsesPage() {
         description="A comprehensive list of the tools, software, and hardware that power my daily workflow."
       />
 
-      {/* Hardware */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <Cpu className="w-4 h-4 text-muted-foreground" />
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">Hardware</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Hardware" icon={Cpu} />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {usesData.hardware.map((item, index) => (
@@ -50,17 +36,10 @@ export default function UsesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Software - Development */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <Code2 className="w-4 h-4 text-muted-foreground" />
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">Development Tools</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Development Tools" icon={Code2} />
 
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
             {usesData.software.development.map((item) => (
@@ -76,17 +55,10 @@ export default function UsesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Software - Productivity */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <Layers className="w-4 h-4 text-muted-foreground" />
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">Productivity</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Productivity" icon={Layers} />
 
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
             {usesData.software.productivity.map((item) => (
@@ -102,17 +74,10 @@ export default function UsesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Software - DevTools */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <Terminal className="w-4 h-4 text-muted-foreground" />
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">DevOps & Tools</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="DevOps & Tools" icon={Terminal} />
 
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
             {usesData.software.devTools.map((item) => (
@@ -128,17 +93,10 @@ export default function UsesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Tech Stack */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <Wrench className="w-4 h-4 text-muted-foreground" />
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">Primary Stack</span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section>
+        <SectionHeader label="Primary Stack" icon={Wrench} />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {usesData.stack.map((category, index) => (
@@ -160,8 +118,7 @@ export default function UsesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
     </PageLayout>
   )
 }

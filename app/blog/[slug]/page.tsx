@@ -1,5 +1,6 @@
 import { PageLayout } from "@/components/page-layout"
 import { blogPosts, siteConfig } from "@/lib/data"
+import { formatLongDate } from "@/lib/date"
 import { ArrowLeft, Calendar, Clock, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${post.title} | ${siteConfig.name}`,
+    title: post.title,
     description: post.excerpt,
   }
 }
@@ -59,11 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="flex flex-wrap items-center gap-4 mb-8 text-xs font-mono text-muted-foreground">
             <span className="flex items-center gap-1">
               <Calendar className="w-3 h-3" />
-              {new Date(post.date).toLocaleDateString("en-US", { 
-                month: "long", 
-                day: "numeric",
-                year: "numeric" 
-              })}
+              {formatLongDate(post.date)}
             </span>
             <span className="w-1 h-1 bg-muted-foreground/30" />
             <span className="flex items-center gap-1">

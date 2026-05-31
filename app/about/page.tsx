@@ -1,10 +1,11 @@
 import { ArrowRight, Calendar, MapPin, Quote } from "lucide-react";
 import Link from "next/link";
 import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Section, SectionHeader } from "@/components/section";
 import { aboutData, siteConfig, stats } from "@/lib/data";
 
 export const metadata = {
-  title: "About | Abdulrahman Nahhas",
+  title: "About",
   description:
     "Learn more about Abdulrahman Nahhas - a software developer from Syria passionate about building meaningful technology.",
 };
@@ -19,17 +20,10 @@ export default function AboutPage() {
         description="The story behind the code - who I am, what drives me, and why I build."
       />
 
-      {/* Introduction */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <Section bordered>
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="space-y-8">
-              <div className="flex items-center gap-4">
-                <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-                  Introduction
-                </span>
-                <div className="flex-1 h-px bg-border" />
-              </div>
+              <SectionHeader label="Introduction" className="mb-8" />
 
               <p className="text-xl lg:text-2xl text-foreground leading-relaxed">
                 {aboutData.intro}
@@ -65,18 +59,10 @@ export default function AboutPage() {
               <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-foreground/20" />
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Timeline */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Journey
-            </span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Journey" />
 
           <div className="relative">
             {/* Timeline line */}
@@ -103,18 +89,10 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Philosophy */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Philosophy
-            </span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Philosophy" />
 
           <div className="grid md:grid-cols-3 gap-8">
             {aboutData.philosophy.map((item, index) => (
@@ -131,18 +109,10 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Interests */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex items-center gap-4 mb-16">
-            <span className="text-[10px] font-mono text-muted-foreground tracking-[0.3em] uppercase">
-              Interests
-            </span>
-            <div className="flex-1 h-px bg-border" />
-          </div>
+      <Section bordered>
+        <SectionHeader label="Interests" />
 
           <div className="flex flex-wrap gap-4">
             {aboutData.interests.map((interest) => (
@@ -154,12 +124,9 @@ export default function AboutPage() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* Quote */}
-      <section className="py-24 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <Section bordered>
           <div className="max-w-3xl mx-auto text-center">
             <Quote className="w-8 h-8 text-muted-foreground mx-auto mb-8" />
             <blockquote className="text-2xl lg:text-3xl text-foreground leading-relaxed mb-8">
@@ -169,12 +136,9 @@ export default function AboutPage() {
               Personal Motto
             </p>
           </div>
-        </div>
-      </section>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <Section>
           <div className="grid md:grid-cols-2 gap-8">
             <Link
               href="/work"
@@ -208,8 +172,7 @@ export default function AboutPage() {
               </p>
             </Link>
           </div>
-        </div>
-      </section>
+      </Section>
     </PageLayout>
   );
 }
