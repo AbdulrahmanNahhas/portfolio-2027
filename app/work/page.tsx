@@ -199,7 +199,7 @@ export default function WorkPage() {
       </Section>
 
       <CtaSection
-        text="Looking for a dedicated developer for your next project? Let's discuss how I can contribute."
+        text="My work history is still growing. I am most interested in teams where I can learn, contribute, and build useful software."
         links={[
           { href: "/projects", label: "View Projects" },
           { href: "/#contact", label: "Get in Touch", primary: true },

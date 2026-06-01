@@ -7,7 +7,7 @@ import { Section } from "@/components/section";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Abdulrahman Nahhas for freelance software development, full-time opportunities, and collaborations.",
+    "Contact Abdulrahman Nahhas for collaboration, internships, feedback, and software conversations.",
 };
 
 export default function ContactPage() {
@@ -17,7 +17,7 @@ export default function ContactPage() {
         number="08"
         label="Connect"
         title="Contact"
-        description="Have a project in mind or want to collaborate? I'd love to hear from you."
+        description="Have feedback, an internship lead, a project idea, or just want to talk about building software? I'd love to hear from you."
       />
 
       <Section>

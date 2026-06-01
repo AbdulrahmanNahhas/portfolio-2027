@@ -31,11 +31,7 @@ function ThemeToggle({ compact = false }: { compact?: boolean }) {
       }`}
       aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} mode` : "Toggle color mode"}
     >
-      {mounted && isDark ? (
-        <Sun className="size-4" />
-      ) : (
-        <Moon className="size-4" />
-      )}
+      {mounted && isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
       {compact && (
         <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
           {mounted && isDark ? "Light Mode" : "Dark Mode"}

@@ -2,16 +2,17 @@
 
 export const siteConfig = {
   name: "Abdulrahman Nahhas",
-  title: "Software Developer",
+  title: "Student Software Developer",
   url: "https://abdulrahman.dev",
   location: "Syria",
   email: "contact@abdulrahman.dev",
-  tagline: "Building digital experiences with precision and purpose",
-  bio: "I'm a software developer from Syria specializing in full-stack web development, embedded systems, and creating intuitive digital experiences. Passionate about clean code, modern interfaces, and meaningful technology.",
+  tagline: "Learning in public through thoughtful software projects",
+  bio: "I'm a student software developer from Syria exploring full-stack web development, embedded systems, and practical tools. This portfolio is where I share my projects, progress, and the ideas I am growing into.",
   social: {
-    github: "https://github.com/abdulrahmannahhas",
-    linkedin: "https://linkedin.com/in/abdulrahmannahhas",
-    twitter: "https://twitter.com/abdulrahmandev",
+    gitlab: "https://gitlab.com/AbdulrahmanNahhas",
+    // github: "https://github.com/abdulrahmannahhas",
+    mastodon: "https://mastodon.social/@nahhas",
+    // twitter: "https://twitter.com/abdulrahmandev",
   },
 };
 
@@ -34,8 +35,10 @@ export const projects: Project[] = [
   {
     id: "01",
     title: "Neural Interface Dashboard",
-    description: "Real-time monitoring system for IoT sensor networks with advanced data visualization",
-    longDescription: "A comprehensive dashboard for monitoring and analyzing data from distributed IoT sensor networks. Features real-time WebSocket connections, time-series data visualization, and predictive analytics powered by machine learning models.",
+    description:
+      "Real-time monitoring system for IoT sensor networks with advanced data visualization",
+    longDescription:
+      "A comprehensive dashboard for monitoring and analyzing data from distributed IoT sensor networks. Features real-time WebSocket connections, time-series data visualization, and predictive analytics powered by machine learning models.",
     category: "Full-Stack Development",
     tags: ["Next.js", "TypeScript", "WebSocket", "PostgreSQL", "TailwindCSS"],
     year: "2026",
@@ -48,7 +51,8 @@ export const projects: Project[] = [
     id: "02",
     title: "Embedded Climate Controller",
     description: "ESP32-based environmental monitoring and control system with mobile app",
-    longDescription: "An embedded systems project featuring custom firmware for ESP32 microcontrollers, implementing MQTT communication protocols, real-time sensor data processing, and a React Native mobile application for remote monitoring and control.",
+    longDescription:
+      "An embedded systems project featuring custom firmware for ESP32 microcontrollers, implementing MQTT communication protocols, real-time sensor data processing, and a React Native mobile application for remote monitoring and control.",
     category: "Embedded Systems",
     tags: ["C++", "ESP-IDF", "MQTT", "React Native", "FreeRTOS"],
     year: "2025",
@@ -60,7 +64,8 @@ export const projects: Project[] = [
     id: "03",
     title: "Thabat NGO Platform",
     description: "Volunteer management and coordination platform for humanitarian organization",
-    longDescription: "A full-featured platform built for Thabat NGO to manage volunteer coordination, project tracking, and resource allocation. Implements role-based access control, real-time notifications, and comprehensive reporting dashboards.",
+    longDescription:
+      "A full-featured platform built for Thabat NGO to manage volunteer coordination, project tracking, and resource allocation. Implements role-based access control, real-time notifications, and comprehensive reporting dashboards.",
     category: "Web Application",
     tags: ["Next.js", "Supabase", "TypeScript", "shadcn/ui", "Vercel"],
     year: "2025",
@@ -72,7 +77,8 @@ export const projects: Project[] = [
     id: "04",
     title: "Syrian Relief Tracker",
     description: "Donation tracking and transparency platform for earthquake relief efforts",
-    longDescription: "Built during the 2023 earthquake crisis to provide transparent tracking of donations and relief distribution. Features real-time updates, geographic visualization of aid distribution, and multi-language support for Arabic and English.",
+    longDescription:
+      "Built during the 2023 earthquake crisis to provide transparent tracking of donations and relief distribution. Features real-time updates, geographic visualization of aid distribution, and multi-language support for Arabic and English.",
     category: "Humanitarian Tech",
     tags: ["React", "Node.js", "MongoDB", "Mapbox", "i18n"],
     year: "2023",
@@ -84,7 +90,8 @@ export const projects: Project[] = [
     id: "05",
     title: "DevOps Pipeline Generator",
     description: "Automated CI/CD configuration tool for GitLab projects",
-    longDescription: "A CLI tool and web interface for generating optimized GitLab CI/CD pipelines. Supports multiple programming languages, Docker containerization, and integrates with various deployment targets including Vercel, AWS, and self-hosted servers.",
+    longDescription:
+      "A CLI tool and web interface for generating optimized GitLab CI/CD pipelines. Supports multiple programming languages, Docker containerization, and integrates with various deployment targets including Vercel, AWS, and self-hosted servers.",
     category: "Developer Tools",
     tags: ["TypeScript", "GitLab CI", "Docker", "Node.js", "CLI"],
     year: "2024",
@@ -96,7 +103,8 @@ export const projects: Project[] = [
     id: "06",
     title: "Arabic NLP Toolkit",
     description: "Natural language processing utilities for Arabic text analysis",
-    longDescription: "A collection of NLP tools specifically designed for Arabic language processing, including tokenization, stemming, sentiment analysis, and named entity recognition. Built to handle the complexities of Arabic script and dialects.",
+    longDescription:
+      "A collection of NLP tools specifically designed for Arabic language processing, including tokenization, stemming, sentiment analysis, and named entity recognition. Built to handle the complexities of Arabic script and dialects.",
     category: "Machine Learning",
     tags: ["Python", "TensorFlow", "FastAPI", "Arabic NLP", "Docker"],
     year: "2024",
@@ -129,7 +137,8 @@ export const experiences: Experience[] = [
     position: "Full-Stack Developer",
     location: "Remote, Syria",
     startDate: "2024-01",
-    description: "Independent software development focusing on web applications and embedded systems projects for international clients.",
+    description:
+      "Independent software development focusing on web applications and embedded systems projects for international clients.",
     responsibilities: [
       "Designing and developing full-stack web applications using Next.js and TypeScript",
       "Building custom firmware solutions for IoT devices using ESP32 and Arduino platforms",
@@ -150,7 +159,8 @@ export const experiences: Experience[] = [
     position: "Tech Lead & Developer",
     location: "Syria",
     startDate: "2025-09",
-    description: "Leading technology initiatives for political movement, building digital infrastructure for civic engagement.",
+    description:
+      "Leading technology initiatives for political movement, building digital infrastructure for civic engagement.",
     responsibilities: [
       "Architecting and developing the movement's digital platform",
       "Managing volunteer developer team and coordinating sprints",
@@ -176,10 +186,7 @@ export const experiences: Experience[] = [
       "Creating data visualization dashboards for case tracking",
       "Ensuring GDPR compliance and data protection",
     ],
-    highlights: [
-      "Processed 500+ case documents securely",
-      "Reduced case processing time by 40%",
-    ],
+    highlights: ["Processed 500+ case documents securely", "Reduced case processing time by 40%"],
     type: "part-time",
     current: false,
     category: "Non-profit Organization",
@@ -190,7 +197,8 @@ export const experiences: Experience[] = [
     position: "Lead Developer",
     location: "Syria",
     startDate: "2024-08",
-    description: "Building technology solutions for humanitarian aid coordination and volunteer management.",
+    description:
+      "Building technology solutions for humanitarian aid coordination and volunteer management.",
     responsibilities: [
       "Developing volunteer coordination platform",
       "Creating real-time resource allocation systems",
@@ -209,7 +217,8 @@ export const experiences: Experience[] = [
     location: "Syria",
     startDate: "2023-02",
     endDate: "2023-03",
-    description: "Emergency response development during earthquake crisis, building rapid deployment solutions.",
+    description:
+      "Emergency response development during earthquake crisis, building rapid deployment solutions.",
     responsibilities: [
       "Rapidly deploying donation tracking systems",
       "Creating volunteer registration portals",
@@ -321,67 +330,83 @@ export const stats = {
 
 // About page data
 export const aboutData = {
-  intro: `I'm Abdulrahman, a software developer from Syria with a deep passion for building 
-    meaningful technology. My journey started with curiosity about how things work, 
+  intro: `I'm Abdulrahman, a student software developer from Syria with a deep passion for building
+    meaningful technology. My journey started with curiosity about how things work,
     which led me to programming, embedded systems, and eventually full-stack web development.`,
-  
+
   story: [
     {
       year: "2021",
       title: "First Lines of Code",
-      description: "Started learning programming through online resources, building simple projects and discovering the joy of creating software.",
+      description:
+        "Started learning programming through online resources, building simple projects and discovering the joy of creating software.",
     },
     {
-      year: "2022", 
+      year: "2022",
       title: "Web Development",
-      description: "Dove deep into web technologies, learning React, Node.js, and modern frontend frameworks. Built my first production applications.",
+      description:
+        "Dove deep into web technologies, learning React, Node.js, and modern frontend frameworks. Built my first production applications.",
     },
     {
       year: "2023",
       title: "Humanitarian Tech",
-      description: "Applied my skills to help during the earthquake crisis, building emergency response tools and donation tracking systems.",
+      description:
+        "Applied my skills to help during the earthquake crisis, building emergency response tools and donation tracking systems.",
     },
     {
       year: "2024",
       title: "Embedded Systems",
-      description: "Expanded into firmware development with ESP32 and Arduino, combining software with hardware for IoT solutions.",
+      description:
+        "Expanded into firmware development with ESP32 and Arduino, combining software with hardware for IoT solutions.",
     },
     {
       year: "2025",
       title: "Full-Stack & Beyond",
-      description: "Now working as a freelance developer, building complex web applications and leading tech initiatives for organizations.",
+      description:
+        "Now working as a freelance developer, building complex web applications and leading tech initiatives for organizations.",
     },
   ],
-  
+
   philosophy: [
     {
       title: "Clean Code",
-      description: "Code should be readable, maintainable, and elegant. I believe in writing code that future developers (including myself) will thank me for.",
+      description:
+        "Code should be readable, maintainable, and elegant. I believe in writing code that future developers (including myself) will thank me for.",
     },
     {
       title: "Purpose-Driven",
-      description: "Technology should solve real problems and improve lives. I'm drawn to projects that have meaningful impact, especially in humanitarian contexts.",
+      description:
+        "Technology should solve real problems and improve lives. I'm drawn to projects that have meaningful impact, especially in humanitarian contexts.",
     },
     {
       title: "Continuous Learning",
-      description: "The tech landscape evolves rapidly. I embrace learning new technologies and paradigms to stay relevant and deliver the best solutions.",
+      description:
+        "The tech landscape evolves rapidly. I embrace learning new technologies and paradigms to stay relevant and deliver the best solutions.",
     },
   ],
-  
+
   interests: ["Open Source", "Embedded Systems", "UI/UX Design", "Arabic NLP", "Humanitarian Tech"],
 };
 
 // Uses/Setup page data
 export const usesData = {
   hardware: [
-    { name: "Laptop", description: "Primary development machine", details: "Linux-based workstation" },
-    { name: "Monitor", description: "External display for coding", details: "24\" 1080p IPS" },
-    { name: "Mechanical Keyboard", description: "Daily driver", details: "Keychron with brown switches" },
+    {
+      name: "Laptop",
+      description: "Primary development machine",
+      details: "Linux-based workstation",
+    },
+    { name: "Monitor", description: "External display for coding", details: '24" 1080p IPS' },
+    {
+      name: "Mechanical Keyboard",
+      description: "Daily driver",
+      details: "Keychron with brown switches",
+    },
     { name: "ESP32 DevKits", description: "For embedded projects", details: "Multiple variants" },
     { name: "Arduino Boards", description: "Prototyping", details: "Uno, Nano, Mega" },
     { name: "Logic Analyzer", description: "Debugging hardware", details: "8-channel USB" },
   ],
-  
+
   software: {
     development: [
       { name: "VS Code", description: "Primary editor with Vim keybindings" },
@@ -403,7 +428,7 @@ export const usesData = {
       { name: "TablePlus", description: "Database management" },
     ],
   },
-  
+
   stack: [
     { category: "Frontend", tools: ["Next.js", "React", "TypeScript", "TailwindCSS", "shadcn/ui"] },
     { category: "Backend", tools: ["Node.js", "PostgreSQL", "Supabase", "REST APIs"] },
@@ -428,7 +453,8 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "building-iot-dashboard-nextjs",
     title: "Building a Real-Time IoT Dashboard with Next.js and WebSockets",
-    excerpt: "A deep dive into creating a responsive dashboard for monitoring sensor data in real-time, featuring WebSocket connections and dynamic charts.",
+    excerpt:
+      "A deep dive into creating a responsive dashboard for monitoring sensor data in real-time, featuring WebSocket connections and dynamic charts.",
     content: `
 ## Introduction
 
@@ -463,7 +489,8 @@ Real-time dashboards require thoughtful architecture, but modern tools like Next
   {
     slug: "esp32-mqtt-integration",
     title: "ESP32 MQTT Integration: From Sensor to Cloud",
-    excerpt: "A practical guide to connecting ESP32 microcontrollers to cloud services using MQTT protocol, with code examples and best practices.",
+    excerpt:
+      "A practical guide to connecting ESP32 microcontrollers to cloud services using MQTT protocol, with code examples and best practices.",
     content: `
 ## Why MQTT?
 
@@ -495,7 +522,8 @@ For production deployments, consider using a dedicated MQTT broker like Mosquitt
   {
     slug: "tailwindcss-design-system",
     title: "Creating a Consistent Design System with TailwindCSS v4",
-    excerpt: "How I structure my TailwindCSS projects for maintainability, including custom themes, component patterns, and utility organization.",
+    excerpt:
+      "How I structure my TailwindCSS projects for maintainability, including custom themes, component patterns, and utility organization.",
     content: `
 ## The Problem with Ad-hoc Styling
 
@@ -528,7 +556,8 @@ With this system, I can build consistent UIs faster and onboard new team members
   {
     slug: "syrian-tech-community",
     title: "Building Tech Communities in Challenging Environments",
-    excerpt: "Reflections on growing as a developer in Syria, the challenges faced, and the resilient tech community that continues to thrive.",
+    excerpt:
+      "Reflections on growing as a developer in Syria, the challenges faced, and the resilient tech community that continues to thrive.",
     content: `
 ## Context
 

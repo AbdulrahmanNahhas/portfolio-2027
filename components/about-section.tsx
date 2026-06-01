@@ -1,88 +1,52 @@
 "use client";
 
-import { ArrowRight, Code2, Cpu, Globe, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { experiences, siteConfig, skillCategories } from "@/lib/data";
-
-const highlights = [
-  {
-    icon: Globe,
-    title: "Web Development",
-    description: "Building modern, responsive web applications with Next.js, React, and TypeScript",
-  },
-  {
-    icon: Cpu,
-    title: "Embedded Systems",
-    description: "Creating firmware solutions for IoT devices using ESP32 and Arduino platforms",
-  },
-  {
-    icon: Code2,
-    title: "Full-Stack",
-    description: "End-to-end development from database design to polished user interfaces",
-  },
-];
+import { LinkButton } from "@/components/link-button";
+import { skillCategories } from "@/lib/data";
+import { homeContent } from "@/lib/home-content";
 
 export function AboutSection() {
-  const totalSkills = skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
-  const activeExperiences = experiences.filter((e) => e.current).length;
+  const { about } = homeContent;
 
   return (
     <section id="about" className="relative px-4 py-28 sm:px-6 lg:px-10">
       <div className="section-field absolute inset-0 opacity-80" />
 
-      <div className="max-w-7xl mx-auto relative">
-        {/* Section Header */}
+        <div className="relative mx-auto max-w-7xl">
         <div className="mb-14 flex items-center gap-4 border-b border-foreground/25 pb-5">
           <span className="border border-foreground/35 px-3 py-1 font-mono text-xs text-foreground">
             02
           </span>
           <div className="h-px w-12 bg-foreground/35" />
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            About
+            {about.label}
           </span>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 mb-24">
-          {/* Left: Bio */}
+        <div className="mb-24 grid gap-16 lg:grid-cols-2 lg:gap-24">
           <div className="space-y-8">
             <h2 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground text-balance md:text-5xl">
-              A developer passionate about creating meaningful digital experiences
+              {about.title}
             </h2>
             <div className="max-w-2xl space-y-4 border-l border-foreground/30 pl-5 leading-8 text-muted-foreground">
-              <p>
-                {"I'm"} {siteConfig.name}, a software developer from {siteConfig.location} with a
-                focus on building clean, efficient, and user-centered applications. My journey in
-                tech spans from crafting responsive web interfaces to programming embedded systems.
-              </p>
-              <p>
-                Currently, {"I'm"} working on humanitarian technology projects, contributing to
-                organizations that make a difference. I believe technology should serve people, and
-                I strive to build solutions that are both technically sound and genuinely useful.
-              </p>
+              {about.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/about"
-                className="group inline-flex items-center gap-3 border border-foreground bg-foreground px-6 py-3 text-sm uppercase tracking-[0.2em] text-background transition-all duration-300 hover:bg-background hover:text-foreground"
-              >
-                <span>About me</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/skills"
-                className="group inline-flex items-center gap-3 border border-foreground/35 px-6 py-3 text-sm uppercase tracking-[0.2em] text-foreground transition-colors hover:border-foreground hover:bg-foreground/10"
-              >
-                <span>All Skills</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <LinkButton href="/about" variant="primary" className="px-6 py-3">
+                {about.primaryAction}
+              </LinkButton>
+              <LinkButton href="/skills" variant="secondary" className="px-6 py-3">
+                {about.secondaryAction}
+              </LinkButton>
             </div>
           </div>
 
-          {/* Right: Highlights */}
           <div className="space-y-6">
-            {highlights.map((item, index) => (
+            {about.highlights.map((item, index) => (
               <div
                 key={item.title}
                 className="group hud-panel corner-cut flex gap-5 p-5 transition-all duration-500 hover:-translate-y-1"
@@ -106,13 +70,8 @@ export function AboutSection() {
 
         {/* Stats Row */}
         <div className="border-y border-foreground/30 bg-card/40 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: totalSkills, label: "Technical Skills" },
-              { value: `${activeExperiences}`, label: "Active Roles" },
-              { value: "3+", label: "Years Coding" },
-              { value: "100%", label: "Remote Friendly" },
-            ].map((stat) => (
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            {about.stats.map((stat) => (
               <div key={stat.label} className="px-4 text-center md:text-left">
                 <p className="mb-2 font-mono text-3xl text-foreground md:text-4xl">
                   {stat.value}

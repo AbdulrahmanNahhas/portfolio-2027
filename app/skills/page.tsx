@@ -196,7 +196,7 @@ export default function SkillsPage() {
       </Section>
 
       <CtaSection
-        text="Interested in how these skills can benefit your project? Let's talk about your requirements."
+        text="These are the tools I am practicing with now. Projects show how they fit together in real work."
         links={[
           { href: "/projects", label: "See Projects" },
           { href: "/#contact", label: "Contact Me", primary: true },

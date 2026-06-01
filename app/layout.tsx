@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
+import { defaultLocale, textDirectionByLocale } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
+    "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
@@ -36,13 +37,13 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description:
-      "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
+      "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} | ${siteConfig.title}`,
     description:
-      "Software developer from Syria specializing in full-stack web development, embedded systems, and creating meaningful digital experiences.",
+      "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
     creator: "@abdulrahmandev",
   },
   robots: {
@@ -79,7 +80,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html
+      lang={defaultLocale}
+      dir={textDirectionByLocale[defaultLocale]}
+      className="scroll-smooth"
+      suppressHydrationWarning
+    >
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
