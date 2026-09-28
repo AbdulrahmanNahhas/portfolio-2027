@@ -389,45 +389,380 @@ export const aboutData = {
 };
 
 // Uses/Setup page data
-export const usesData = {
-  hardware: [
-    {
-      name: "Laptop",
-      description: "Primary development machine",
-      details: "Linux-based workstation",
-    },
-    { name: "Monitor", description: "External display for coding", details: '24" 1080p IPS' },
-    {
-      name: "Mechanical Keyboard",
-      description: "Daily driver",
-      details: "Keychron with brown switches",
-    },
-    { name: "ESP32 DevKits", description: "For embedded projects", details: "Multiple variants" },
-    { name: "Arduino Boards", description: "Prototyping", details: "Uno, Nano, Mega" },
-    { name: "Logic Analyzer", description: "Debugging hardware", details: "8-channel USB" },
-  ],
+//
+// Add items to `main` or `watching` by appending an object:
+//   { name: "Ladybird", tag: "Browser", description: "…", url: "https://…", image: "/uses/ladybird.png" }
+// `url` and `image` are optional. Without an `image`, a letter monogram is shown.
+// Drop image files into /public/uses/ and reference them as "/uses/<file>".
+export type UseItem = {
+  name: string;
+  tag: string;
+  description: string;
+  logo?: string;
+  color?: string;
+  image?: string;
+  links?: {
+    website: string;
+    code: string;
+    external: string;
+  }
+};
 
-  software: {
-    development: [
-      { name: "VS Code", description: "Primary editor with Vim keybindings" },
-      { name: "Neovim", description: "Terminal-based editing" },
-      { name: "Warp", description: "Modern terminal with AI features" },
-      { name: "Figma", description: "Design handoff and prototyping" },
-      { name: "PlatformIO", description: "Embedded development IDE" },
-    ],
-    productivity: [
-      { name: "Linear", description: "Project management" },
-      { name: "Notion", description: "Notes and documentation" },
-      { name: "Raycast", description: "Launcher and automation" },
-      { name: "Arc Browser", description: "Primary browser" },
-    ],
-    devTools: [
-      { name: "Docker", description: "Containerization" },
-      { name: "GitLab", description: "CI/CD and version control" },
-      { name: "Postman", description: "API testing" },
-      { name: "TablePlus", description: "Database management" },
-    ],
-  },
+export const usesData = {
+  main: [
+    {
+      name: "NixOS",
+      tag: "Operating System",
+      logo: "simple-icons:nixos",
+      color:"#5277C3",
+      description:
+        "Declarative, reproducible Linux. My whole system is a config file.",
+      links: {
+        website: "https://nixos.org",
+        code: "https://github.com/NixOS/nixpkgs",
+        external: "https://wiki.nixos.org",
+      },
+    },
+    {
+      name: "Niri + Noctalia",
+      tag: "Desktop",
+      logo: "simple-icons:niri",
+      color: "#D55C44",
+      description:
+        "My current Wayland desktop stack. Modern, minimal, and keyboard-driven.",
+      links: {
+        website: "https://the-nnn-stack.github.io/",
+        code: "https://github.com/niri-wm/niri",
+        external: "https://noctalia.dev/",
+      },
+    },
+    {
+      name: "Firefox",
+      tag: "Browser",
+      description:
+        "Privacy-focused and open. My non-Chromium default.",
+      logo: "simple-icons:firefoxbrowser",
+      color: "#FF7139",
+      links: {
+        website: "https://www.mozilla.org/firefox/",
+        code: "https://hg.mozilla.org/mozilla-central/",
+        external: "",
+      },
+    },
+    {
+      name: "Brave",
+      tag: "Browser",
+      description:
+        "Chromium-based privacy browser with strong built-in protection.",
+      logo: "simple-icons:brave",
+      color: "#FB542B",
+      links: {
+        website: "https://brave.com",
+        code: "https://github.com/brave/brave-browser",
+        external: "",
+      },
+    },
+    {
+      name: "Ghostty",
+      tag: "Terminal",
+      description:
+        "GPU-accelerated terminal that stays out of the way.",
+      logo: "simple-icons:ghostty",
+      color: "#3551F3",
+      links: {
+        website: "https://ghostty.org",
+        code: "https://github.com/ghostty-org/ghostty",
+        external: "",
+      },
+    },
+    {
+      name: "Zed IDE",
+      tag: "Editor",
+      description:
+        "Fast, collaborative code editor built in Rust.",
+      logo: "simple-icons:zedindustries",
+      color: "#084CCF",
+      links: {
+        website: "https://zed.dev",
+        code: "https://github.com/zed-industries/zed",
+        external: "",
+      },
+    },
+    {
+      name: "GitLab",
+      tag: "Platform",
+      logo: "simple-icons:gitlab",
+      color: "#FC6D26",
+      description:
+        "Git hosting, CI/CD, and project management in one place.",
+      links: {
+        website: "https://about.gitlab.com",
+        code: "https://gitlab.com/gitlab-org/gitlab",
+        external: "",
+      },
+    },
+    // {
+    //   name: "Podman",
+    //   tag: "Containers",
+    //   description:
+    //     "Daemonless OCI containers — Linux-native and clean.",
+    //   links: {
+    //     website: "https://podman.io",
+    //     code: "https://github.com/containers/podman",
+    //     external: "",
+    //   },
+    // },
+    {
+      name: "Flatpak",
+      tag: "Packages",
+      logo: "simple-icons:flatpak",
+      color: "#4A90D9",
+      description:
+        "Sandboxed apps for Linux desktops.",
+      links: {
+        website: "https://flatpak.org",
+        code: "https://github.com/flatpak/flatpak",
+        external: "",
+      },
+    },
+    {
+      name: "Obsidian",
+      tag: "Notes",
+      logo: "simple-icons:obsidian",
+      color: "#7C3AED",
+      description:
+        "Local-first Markdown knowledge base.",
+      links: {
+        website: "https://obsidian.md",
+        code: "",
+        external: "",
+      },
+    },
+    {
+      name: "OnlyOffice",
+      tag: "Office",
+      logo: "simple-icons:onlyoffice",
+      color: "#444444",
+      description:
+        "Office suite for documents, spreadsheets, and slides.",
+      links: {
+        website: "https://www.onlyoffice.com",
+        code: "https://github.com/ONLYOFFICE",
+        external: "",
+      },
+    },
+    {
+      name: "Kavita",
+      tag: "Library",
+      image: "/kavita.png",
+      color: "#3a9d72",
+      description:
+        "My digital library platform for manga, comics, and ebooks.",
+      links: {
+        website: "https://www.kavitareader.com",
+        code: "https://github.com/Kareadita/Kavita",
+        external: "",
+      },
+    },
+    {
+      name: "Jellyfin",
+      tag: "Media",
+      logo: "simple-icons:jellyfin",
+      color: "#00A4DC",
+      description:
+        "Open media server for personal streaming.",
+      links: {
+        website: "https://jellyfin.org",
+        code: "https://github.com/jellyfin/jellyfin",
+        external: "",
+      },
+    },
+    {
+      name: "KeePassXC",
+      tag: "Security",
+      logo: "simple-icons:keepassxc",
+      color: "#6CAC4D",
+      description:
+        "Offline password manager I trust.",
+      links: {
+        website: "https://keepassxc.org",
+        code: "https://github.com/keepassxreboot/keepassxc",
+        external: "",
+      },
+    },
+    {
+      name: "SimpleX Chat",
+      tag: "Chat",
+      logo: "simple-icons:simplex",
+      color: "#3361CC",
+      description:
+        "Private messaging without permanent identifiers.",
+      links: {
+        website: "https://simplex.chat",
+        code: "https://github.com/simplex-chat/simplex-chat",
+        external: "",
+      },
+    },
+    {
+      name: "Hermes Agent",
+      tag: "AI",
+      image: "/hermes.png",
+      color: "#0091CD",
+      description:
+        "Open-source AI agent project I follow and use.",
+      links: {
+        website: "",
+        code: "",
+        external: "",
+      },
+    },
+  ] as UseItem[],
+
+  watching: [
+    {
+      name: "GNOME",
+      tag: "Desktop",
+      description:
+        "Modern Linux desktop focused on simplicity and polish.",
+      links: {
+        website: "https://www.gnome.org",
+        code: "https://gitlab.gnome.org/GNOME",
+        external: "",
+      },
+    },
+    {
+      name: "COSMIC",
+      tag: "Desktop",
+      description:
+        "Rust-based desktop environment from System76.",
+      links: {
+        website: "https://system76.com/cosmic",
+        code: "https://github.com/pop-os/cosmic-epoch",
+        external: "",
+      },
+    },
+    {
+      name: "Ladybird",
+      tag: "Browser",
+      description:
+        "Independent browser built from scratch with its own engine.",
+      links: {
+        website: "https://ladybird.org",
+        code: "https://github.com/LadybirdBrowser/ladybird",
+        external: "",
+      },
+    },
+    {
+      name: "p2panda",
+      tag: "Protocol",
+      description:
+        "Peer-to-peer protocol for offline-first distributed apps.",
+      links: {
+        website: "https://p2panda.org",
+        code: "https://github.com/p2panda",
+        external: "",
+      },
+    },
+    {
+      name: "Dash Chat",
+      tag: "App",
+      description:
+        "Distributed chat client built on p2panda.",
+      links: {
+        website: "",
+        code: "",
+        external: "",
+      },
+    },
+    {
+      name: "Secureblue",
+      tag: "Security",
+      description:
+        "Hardened Fedora Atomic-based operating system.",
+      links: {
+        website: "https://secureblue.dev",
+        code: "https://github.com/secureblue/secureblue",
+        external: "",
+      },
+    },
+    {
+      name: "GrapheneOS",
+      tag: "Mobile OS",
+      description:
+        "Privacy and security-focused Android operating system.",
+      links: {
+        website: "https://grapheneos.org",
+        code: "https://github.com/GrapheneOS",
+        external: "",
+      },
+    },
+    {
+      name: "LibreOffice",
+      tag: "Office",
+      description:
+        "Excellent open-source office suite, waiting for UI redesign and mobile apps.",
+      links: {
+        website: "https://www.libreoffice.org",
+        code: "https://github.com/LibreOffice/core",
+        external: "",
+      },
+    },
+    {
+      name: "Fedora Atomic",
+      tag: "Distro",
+      description:
+        "Immutable Fedora variants with rollback-friendly image-based updates.",
+      links: {
+        website: "https://fedoraproject.org/atomic-desktops/",
+        code: "https://github.com/fedora-silverblue/issue-tracker",
+        external: "",
+      },
+    },
+    {
+      name: "Fediverse",
+      tag: "Protocol",
+      description:
+        "Decentralized social network ecosystem built around open protocols.",
+      links: {
+        website: "https://fediverse.info",
+        code: "",
+        external: "",
+      },
+    },
+    {
+      name: "Lix",
+      tag: "Nix",
+      description:
+        "Community-driven fork of the Nix package manager.",
+      links: {
+        website: "https://lix.systems",
+        code: "https://github.com/lix-project/lix",
+        external: "",
+      },
+    },
+    {
+      name: "FUTO",
+      tag: "Tech",
+      description:
+        "Independent software company focused on user control and privacy.",
+      links: {
+        website: "https://futo.org",
+        code: "",
+        external: "",
+      },
+    },
+    {
+      name: "Redox OS",
+      tag: "OS",
+      description:
+        "Experimental Unix-like operating system written in Rust.",
+      links: {
+        website: "https://redox-os.org",
+        code: "https://gitlab.redox-os.org/redox-os/redox",
+        external: "",
+      },
+    }
+] as UseItem[],
 
   stack: [
     { category: "Frontend", tools: ["Next.js", "React", "TypeScript", "TailwindCSS", "shadcn/ui"] },
@@ -455,8 +790,7 @@ export const blogPosts: BlogPost[] = [
     title: "Building a Real-Time IoT Dashboard with Next.js and WebSockets",
     excerpt:
       "A deep dive into creating a responsive dashboard for monitoring sensor data in real-time, featuring WebSocket connections and dynamic charts.",
-    content: `
-## Introduction
+    content: `## Introduction
 
 Building real-time applications requires careful consideration of data flow, state management, and user experience. In this post, I'll walk through my approach to building an IoT monitoring dashboard.
 

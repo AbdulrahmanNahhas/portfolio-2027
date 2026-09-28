@@ -1,88 +1,78 @@
 "use client";
 
-import { ArrowUpRight, Github, Linkedin, Mail, MapPin, Twitter } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
 import { contactConfig, siteConfig } from "@/lib/data";
+import { GitLab, Mastodon } from "@/lib/icons";
 
 const socialLinks = [
-  { name: "GitHub", url: siteConfig.social.github, icon: Github },
-  { name: "LinkedIn", url: siteConfig.social.linkedin, icon: Linkedin },
-  { name: "Twitter", url: siteConfig.social.twitter, icon: Twitter },
+  { name: "GitLab", url: siteConfig.social.gitlab, icon: GitLab },
+  { name: "Mastodon", url: siteConfig.social.mastodon, icon: Mastodon },
 ];
 
 export function ContactMethods() {
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       <div>
-        <div className="mb-8 flex items-center gap-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            Direct Contact
-          </span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
-
-        <div className="group mb-6 border border-border p-6 transition-all hover:border-foreground/50">
-          <div className="mb-4 flex items-center gap-3">
-            <div className="flex items-center gap-3">
-              <Mail className="size-4 text-muted-foreground" />
-              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                Email
-              </span>
-            </div>
-          </div>
-          <a href={`mailto:${siteConfig.email}`} className="text-lg text-foreground hover:underline">
-            {siteConfig.email}
-          </a>
-        </div>
-
-        <div className="border border-border p-6">
-          <div className="mb-4 flex items-center gap-3">
-            <MapPin className="size-4 text-muted-foreground" />
-            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              Location
+        <p className="kicker">Direct</p>
+        <div className="mt-5 space-y-4">
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="group flex items-center gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
+          >
+            <span className="grid size-11 place-items-center rounded-xl bg-secondary text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+              <Mail className="size-5" />
             </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm text-muted-foreground">Email</span>
+              <span className="block break-all font-mono text-sm text-foreground">
+                {siteConfig.email}
+              </span>
+            </span>
+            <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+          </a>
+
+          <div className="flex items-center gap-4 rounded-2xl border border-border bg-card/40 p-5">
+            <span className="grid size-11 place-items-center rounded-xl bg-secondary text-foreground">
+              <MapPin className="size-5" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-sm text-muted-foreground">Location</p>
+              <p className="text-sm text-foreground">{siteConfig.location}</p>
+            </div>
+            <span className="text-xs text-muted-foreground">{contactConfig.availability}</span>
           </div>
-          <p className="text-lg text-foreground">{siteConfig.location}</p>
-          <p className="mt-2 text-sm text-muted-foreground">{contactConfig.availability}</p>
         </div>
       </div>
 
       <div>
-        <div className="mb-8 flex items-center gap-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            Social
-          </span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
-
-        <div className="space-y-4">
+        <p className="kicker">Social</p>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
           {socialLinks.map((social) => (
             <a
               key={social.name}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between border-b border-border py-4 transition-colors hover:border-foreground/50"
+              className="group flex items-center justify-between rounded-2xl border border-border bg-card/40 p-4 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
             >
-              <div className="flex items-center gap-4">
-                <social.icon className="size-4 text-muted-foreground" />
-                <span className="text-foreground">{social.name}</span>
-              </div>
+              <span className="flex items-center gap-3">
+                <social.icon className="size-5 text-muted-foreground transition-colors group-hover:text-foreground" />
+                <span className="text-sm text-foreground">{social.name}</span>
+              </span>
               <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
             </a>
           ))}
         </div>
       </div>
 
-      <div className="border border-border bg-card/30 p-6">
-        <div className="mb-4 flex items-center gap-3">
-          <span className="size-2 animate-pulse bg-foreground" />
-          <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            Status
-          </span>
+      <div className="rounded-2xl border border-border bg-secondary/40 p-5">
+        <div className="flex items-center gap-2.5">
+          <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+          <p className="kicker text-foreground/80">Currently available</p>
         </div>
-        <p className="text-foreground">Currently available for freelance work</p>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Open to full-time opportunities and interesting collaborations.
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Open to collaboration, internships, volunteer work, and conversations with people building
+          useful things.
         </p>
       </div>
     </div>

@@ -65,6 +65,6 @@ export const homeContent = {
     description:
       "I am open to collaboration, feedback, internships, volunteer work, and conversations with people building useful things.",
     primaryAction: "Send Email",
-    secondaryAction: "LinkedIn",
+    secondaryAction: "Mastodon",
   },
 } as const;

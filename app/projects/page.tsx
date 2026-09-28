@@ -1,10 +1,12 @@
+import type { Metadata } from "next";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
 import { ProjectCard } from "@/components/project-card";
+import { Reveal } from "@/components/reveal";
 import { Section, SectionHeader } from "@/components/section";
 import { projects } from "@/lib/data";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Projects",
   description:
     "A collection of projects spanning web development, embedded systems, and humanitarian technology.",
@@ -17,35 +19,36 @@ export default function ProjectsPage() {
   return (
     <PageLayout>
       <PageHeader
-        number="03"
-        label="Archive"
-        title="Projects"
-        description="A curated collection of projects spanning full-stack web development, embedded systems, and humanitarian technology. Each project represents a unique challenge solved with precision."
+        kicker="Projects"
+        title="Things I've built, and what I learned making them."
+        description="A curated collection across full-stack web, embedded systems, and humanitarian tech — each one a specific problem solved with care."
       />
 
-      <Section bordered>
-        <SectionHeader label="Featured Work" count={`${featuredProjects.length} Projects`} />
-
-        <div className="space-y-8">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+      <Section bordered size="wide">
+        <SectionHeader label="Featured work" count={`${featuredProjects.length} projects`} />
+        <div className="space-y-6">
+          {featuredProjects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 60}>
+              <ProjectCard project={project} />
+            </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section>
-        <SectionHeader label="Other Projects" count={`${otherProjects.length} Projects`} />
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {otherProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} compact />
+      <Section size="wide">
+        <SectionHeader label="More projects" count={`${otherProjects.length} projects`} />
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {otherProjects.map((project, index) => (
+            <Reveal key={project.id} delay={index * 60}>
+              <ProjectCard project={project} compact />
+            </Reveal>
           ))}
         </div>
       </Section>
 
       <CtaSection
-        text="Want to share feedback, collaborate, or compare notes on a project? I would be glad to talk."
-        links={[{ href: "/#contact", label: "Start a Conversation", primary: true }]}
+        text="Want to share feedback, collaborate, or compare notes on a project? I'd be glad to talk."
+        links={[{ href: "/contact", label: "Start a conversation", primary: true }]}
       />
     </PageLayout>
   );

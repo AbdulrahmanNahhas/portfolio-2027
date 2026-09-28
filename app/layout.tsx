@@ -1,19 +1,40 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
 import { defaultLocale, textDirectionByLocale } from "@/lib/i18n";
 import "./globals.css";
 
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
+  display: "swap",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   title: {
-    default: `${siteConfig.name} | ${siteConfig.title}`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.name} — ${siteConfig.title}`,
+    template: `%s — ${siteConfig.name}`,
   },
   description:
-    "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
+    "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools. Learning in public.",
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
@@ -23,8 +44,10 @@ export const metadata: Metadata = {
     "Next.js developer",
     "TypeScript",
     "embedded systems",
+    "ESP32",
     "full-stack development",
     "Syria developer",
+    "humanitarian tech",
   ],
   category: "portfolio",
   alternates: {
@@ -35,15 +58,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    title: `${siteConfig.name} — ${siteConfig.title}`,
     description:
-      "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
+      "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | ${siteConfig.title}`,
+    title: `${siteConfig.name} — ${siteConfig.title}`,
     description:
-      "Student software developer from Syria sharing web, embedded systems, and full-stack projects.",
+      "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools.",
     creator: "@abdulrahmandev",
   },
   robots: {
@@ -83,7 +106,7 @@ export default function RootLayout({
     <html
       lang={defaultLocale}
       dir={textDirectionByLocale[defaultLocale]}
-      className="scroll-smooth"
+      className={`scroll-smooth ${instrumentSerif.variable} ${geist.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-background text-foreground">

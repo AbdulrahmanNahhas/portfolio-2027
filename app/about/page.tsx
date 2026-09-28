@@ -1,177 +1,193 @@
-import { ArrowRight, Calendar, MapPin, Quote } from "lucide-react";
+import { ArrowRight, Calendar, MapPin } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Reveal } from "@/components/reveal";
 import { Section, SectionHeader } from "@/components/section";
 import { aboutData, siteConfig, stats } from "@/lib/data";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn more about Abdulrahman Nahhas - a software developer from Syria passionate about building meaningful technology.",
+    "The story behind the code — who Abdulrahman Nahhas is, what drives him, and why he builds.",
 };
 
 export default function AboutPage() {
   return (
     <PageLayout>
       <PageHeader
-        number="02"
-        label="Personal"
-        title="About"
-        description="The story behind the code - who I am, what drives me, and why I build."
+        kicker="About"
+        title="A student learning by building useful things."
+        description="Who I am, what drives me, and why I build — from first lines of code to embedded systems and humanitarian tech."
       />
 
       <Section bordered>
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="space-y-8">
-              <SectionHeader label="Introduction" className="mb-8" />
-
-              <p className="text-xl lg:text-2xl text-foreground leading-relaxed">
-                {aboutData.intro}
-              </p>
-
-              <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>{siteConfig.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{stats.yearsExperience} Years Experience</span>
-                </div>
-              </div>
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-16">
+          <Reveal className="space-y-6">
+            <SectionHeader label="Introduction" className="mb-6" />
+            <p className="font-display text-2xl leading-snug tracking-tight text-foreground sm:text-3xl">
+              {aboutData.intro}
+            </p>
+            <div className="flex flex-wrap gap-6 pt-2 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="size-4 text-primary" />
+                {siteConfig.location}
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Calendar className="size-4 text-primary" />
+                {stats.yearsExperience} years coding
+              </span>
             </div>
+          </Reveal>
 
-            {/* Image placeholder */}
-            <div className="relative aspect-square bg-card border border-border">
-              <div className="absolute inset-0 grid-overlay opacity-20" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="w-32 h-32 mx-auto border border-border flex items-center justify-center">
-                    <span className="text-6xl font-mono text-muted-foreground/30">A</span>
+          <Reveal delay={120}>
+            <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "radial-gradient(70% 70% at 70% 20%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 65%)",
+                }}
+              />
+              <div className="relative flex flex-col items-start gap-6">
+                <span className="font-display text-7xl leading-none text-primary">AN</span>
+                <div>
+                  <p className="text-lg font-medium text-foreground">{siteConfig.name}</p>
+                  <p className="text-sm text-muted-foreground">{siteConfig.title}</p>
+                </div>
+                <div className="grid w-full grid-cols-3 gap-4 border-t border-border pt-6">
+                  <div>
+                    <p className="font-display text-2xl tracking-tight text-foreground">
+                      {stats.yearsExperience}
+                    </p>
+                    <p className="kicker mt-1.5">Years</p>
                   </div>
-                  <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-                    Profile Image
-                  </p>
+                  <div>
+                    <p className="font-display text-2xl tracking-tight text-foreground">
+                      {stats.projectsCompleted}
+                    </p>
+                    <p className="kicker mt-1.5">Projects</p>
+                  </div>
+                  <div>
+                    <p className="font-display text-2xl tracking-tight text-foreground">
+                      {stats.technologiesUsed}
+                    </p>
+                    <p className="kicker mt-1.5">Tools</p>
+                  </div>
                 </div>
               </div>
-              {/* Corner decorations */}
-              <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-foreground/20" />
-              <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-foreground/20" />
             </div>
-          </div>
+          </Reveal>
+        </div>
       </Section>
 
       <Section bordered>
         <SectionHeader label="Journey" />
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-[39px] top-0 bottom-0 w-px bg-border hidden md:block" />
-
-            <div className="space-y-12">
-              {aboutData.story.map((item, index) => (
-                <div key={item.year} className="group relative grid md:grid-cols-[80px_1fr] gap-8">
-                  {/* Year */}
-                  <div className="relative">
-                    <div className="absolute left-0 top-0 w-[80px] h-[80px] border border-border flex items-center justify-center bg-background z-10 group-hover:border-foreground/50 transition-colors">
-                      <span className="text-2xl font-mono text-foreground">{item.year}</span>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="pt-4 md:pt-6 pl-0 md:pl-8">
-                    <h3 className="text-xl text-foreground mb-3">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed max-w-2xl">
-                      {item.description}
-                    </p>
-                  </div>
+        <div className="relative">
+          <div className="absolute left-4.75 top-2 bottom-2 hidden w-px bg-border md:block" />
+          <div className="space-y-10">
+            {aboutData.story.map((item, index) => (
+              <Reveal key={item.year} delay={index * 60} className="group relative grid gap-6 md:grid-cols-[40px_1fr]">
+                <div className="relative">
+                  <span className="relative z-10 grid size-10 place-items-center rounded-full border border-border bg-card font-mono text-xs tabular-nums text-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary">
+                    {item.year}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <div className="pt-1.5 md:pl-6">
+                  <h3 className="text-lg font-medium tracking-tight text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
+        </div>
       </Section>
 
       <Section bordered>
         <SectionHeader label="Philosophy" />
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {aboutData.philosophy.map((item, index) => (
-              <div
-                key={item.title}
-                className="group border border-border p-8 hover:border-foreground/50 transition-all duration-500"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
-                  <div className="w-8 h-px bg-border group-hover:bg-foreground/50 transition-colors" />
-                </div>
-                <h3 className="text-lg text-foreground mb-4">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
+        <div className="grid gap-5 md:grid-cols-3">
+          {aboutData.philosophy.map((item, index) => (
+            <Reveal
+              key={item.title}
+              delay={index * 80}
+              className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+            >
+              <span className="font-mono text-xs tabular-nums text-primary">
+                0{index + 1}
+              </span>
+              <h3 className="font-display mt-5 text-xl tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
       <Section bordered>
         <SectionHeader label="Interests" />
-
-          <div className="flex flex-wrap gap-4">
-            {aboutData.interests.map((interest) => (
-              <span
-                key={interest}
-                className="px-6 py-3 border border-border text-sm text-foreground hover:bg-foreground hover:text-background transition-colors cursor-default"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
+        <Reveal className="flex flex-wrap gap-2.5">
+          {aboutData.interests.map((interest) => (
+            <span
+              key={interest}
+              className="inline-flex items-center rounded-full border border-border bg-card/50 px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
+            >
+              {interest}
+            </span>
+          ))}
+        </Reveal>
       </Section>
 
       <Section bordered>
-          <div className="max-w-3xl mx-auto text-center">
-            <Quote className="w-8 h-8 text-muted-foreground mx-auto mb-8" />
-            <blockquote className="text-2xl lg:text-3xl text-foreground leading-relaxed mb-8">
-              {"Technology is most powerful when it empowers people to solve problems that matter."}
-            </blockquote>
-            <p className="text-sm text-muted-foreground font-mono tracking-widest uppercase">
-              Personal Motto
-            </p>
-          </div>
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="font-display text-2xl leading-snug tracking-tight text-foreground sm:text-3xl md:text-4xl">
+            “Technology is most powerful when it empowers people to solve problems that matter.”
+          </p>
+          <p className="kicker mt-6">Personal motto</p>
+        </Reveal>
       </Section>
 
       <Section>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Link
-              href="/work"
-              className="group border border-border p-8 hover:border-foreground/50 transition-all duration-500"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-                  Next
-                </span>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-              </div>
-              <h3 className="text-xl text-foreground">Work Experience</h3>
-              <p className="text-sm text-muted-foreground mt-2">
-                See where I&apos;ve worked and what I&apos;ve built
-              </p>
-            </Link>
+        <div className="grid gap-5 md:grid-cols-2">
+          <Link
+            href="/work"
+            className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+          >
+            <div className="flex items-center justify-between">
+              <span className="kicker text-primary/80">Next</span>
+              <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+            </div>
+            <h3 className="font-display mt-4 text-2xl tracking-tight text-foreground">
+              Work experience
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Where I&apos;ve worked and what I&apos;ve built.
+            </p>
+          </Link>
 
-            <Link
-              href="/contact"
-              className="group border border-border p-8 hover:border-foreground/50 bg-foreground/5 transition-all duration-500"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-                  Connect
-                </span>
-                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-              </div>
-              <h3 className="text-xl text-foreground">Get in Touch</h3>
-              <p className="text-sm text-muted-foreground mt-2">
-                Let&apos;s discuss your project or idea
-              </p>
-            </Link>
-          </div>
+          <Link
+            href="/contact"
+            className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+          >
+            <div className="flex items-center justify-between">
+              <span className="kicker text-primary/80">Connect</span>
+              <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+            </div>
+            <h3 className="font-display mt-4 text-2xl tracking-tight text-foreground">
+              Get in touch
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Let&apos;s discuss a project or idea.
+            </p>
+          </Link>
+        </div>
       </Section>
     </PageLayout>
   );

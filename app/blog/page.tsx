@@ -1,147 +1,136 @@
 import { ArrowRight, Calendar, Clock } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Reveal } from "@/components/reveal";
 import { Section, SectionHeader } from "@/components/section";
-import { blogPosts } from "@/lib/data";
 import { formatDisplayDate } from "@/lib/date";
+import { blogPosts } from "@/lib/data";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Articles about web development, embedded systems, and building technology for impact.",
+    "Writing on full-stack web development, embedded systems, IoT, design systems, and building tech in challenging places.",
 };
 
 export default function BlogPage() {
-  const featuredPosts = blogPosts.filter((post) => post.featured);
-  const otherPosts = blogPosts.filter((post) => !post.featured);
+  const featured = blogPosts.filter((p) => p.featured);
+  const rest = blogPosts.filter((p) => !p.featured);
 
   return (
     <PageLayout>
       <PageHeader
-        number="06"
-        label="Writing"
-        title="Blog"
-        description="Thoughts on software development, embedded systems, and building technology that matters."
+        kicker="Blog"
+        title="Notes on building — web, firmware, and the in-between."
+        description="Long-form posts on real-time IoT dashboards, ESP32 MQTT, design systems, and what it's like growing as a developer in Syria."
       />
 
-      <Section bordered>
-        <SectionHeader label="Featured" count={`${featuredPosts.length} Articles`} />
-
-          <div className="space-y-8">
-            {featuredPosts.map((post, index) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group block border border-border hover:border-foreground/50 transition-all duration-500"
-              >
-                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-foreground to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
-
-                <div className="grid lg:grid-cols-3 gap-8 p-8 lg:p-12">
-                  <div className="lg:col-span-2 space-y-6">
-                    <div className="flex items-center gap-4">
-                      <span className="text-xs font-mono text-muted-foreground">
-                        /{String(index + 1).padStart(2, "0")}
-                      </span>
-                      <div className="w-8 h-px bg-border" />
-                      <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {formatDisplayDate(post.date, {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                    </div>
-
-                    <h2 className="text-2xl lg:text-3xl text-foreground group-hover:text-foreground/80 transition-colors leading-tight">
-                      {post.title}
-                    </h2>
-
-                    <p className="text-muted-foreground leading-relaxed">{post.excerpt}</p>
+      {/* Featured */}
+      {featured.length > 0 && (
+        <Section bordered>
+          <SectionHeader label="Featured" count={`${featured.length} posts`} />
+          <div className="grid gap-6 md:grid-cols-2">
+            {featured.map((post, index) => (
+              <Reveal key={post.slug} delay={index * 60}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5 sm:p-7"
+                >
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="size-3.5 text-primary" />
+                      {formatDisplayDate(post.date, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock className="size-3.5 text-primary" />
+                      {post.readTime} read
+                    </span>
                   </div>
 
-                  <div className="flex flex-col justify-between lg:items-end">
-                    <div className="flex flex-wrap gap-2 lg:justify-end mb-8">
-                      {post.tags.slice(0, 3).map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-[10px] font-mono text-muted-foreground border border-border px-3 py-1.5"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex items-center gap-2 text-sm font-mono text-foreground group-hover:gap-4 transition-all">
-                      <span className="tracking-widest uppercase">Read Article</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-      </Section>
-
-      <Section>
-        <SectionHeader label="All Posts" count={`${otherPosts.length} Articles`} />
-
-          <div className="divide-y divide-border">
-            {otherPosts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group flex flex-col md:flex-row md:items-center justify-between py-8 gap-4 hover:px-4 transition-all duration-300"
-              >
-                <div className="space-y-2">
-                  <h3 className="text-lg text-foreground group-hover:text-foreground/80 transition-colors">
+                  <h3 className="font-display mt-4 text-2xl tracking-tight text-foreground sm:text-3xl">
                     {post.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-1">{post.excerpt}</p>
-                </div>
+                  <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
+                    {post.excerpt}
+                  </p>
 
-                <div className="flex items-center gap-6 text-xs font-mono text-muted-foreground shrink-0">
-                  <span>
-                    {formatDisplayDate(post.date, {
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  </span>
-                  <span>{post.readTime}</span>
-                  <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-              </Link>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-6">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                      Read article
+                      <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
+        </Section>
+      )}
+
+      {/* All posts */}
+      <Section bordered>
+        <SectionHeader label="All posts" count={`${rest.length} posts`} />
+        <Reveal>
+          <ul className="divide-y divide-border">
+            {rest.map((post) => (
+              <li key={post.slug}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="group flex flex-col gap-3 py-5 transition-all duration-300 hover:ps-4 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg tracking-tight text-foreground">
+                      {post.title}
+                    </h3>
+                    <p className="mt-1 line-clamp-1 text-sm text-muted-foreground">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 items-center gap-4 text-xs text-muted-foreground sm:gap-6">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="size-3.5 text-primary" />
+                      {formatDisplayDate(post.date, {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock className="size-3.5 text-primary" />
+                      {post.readTime}
+                    </span>
+                    <ArrowRight className="size-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-primary" />
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </Section>
 
-      <section className="py-24 border-t border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl text-foreground mb-4">Stay Updated</h2>
-            <p className="text-muted-foreground mb-8">
-              Get notified when I publish new articles about development, embedded systems, and
-              tech.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <input
-                type="email"
-                placeholder="your@email.com"
-                className="px-6 py-3 bg-transparent border border-border text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none text-sm font-mono"
-              />
-              <button className="px-8 py-3 bg-foreground text-background text-sm tracking-widest uppercase hover:bg-foreground/90 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        text="Have a question about a post, or want to suggest a topic? I'd love to hear what you'd like to read next."
+        links={[
+          { href: "/contact", label: "Suggest a topic", primary: true },
+          { href: "/projects", label: "See the work" },
+        ]}
+      />
     </PageLayout>
   );
 }

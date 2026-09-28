@@ -1,124 +1,241 @@
-import { PageLayout, PageHeader } from "@/components/page-layout"
-import { Section, SectionHeader } from "@/components/section"
-import { usesData } from "@/lib/data"
-import { Code2, Wrench, Cpu, Terminal, Layers } from "lucide-react"
+import {
+  Code2,
+  ExternalLink,
+  Globe,
+} from "lucide-react";
+import type { Metadata } from "next";
+import { CtaSection } from "@/components/cta-section";
+import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Reveal } from "@/components/reveal";
+import { Section, SectionHeader } from "@/components/section";
+import { type UseItem, usesData } from "@/lib/data";
+import Image from "next/image";
+import { Icon } from "@iconify/react";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Uses",
-  description: "The tools, software, and hardware I use for development and productivity.",
+  description:
+    "The software, tools, and projects Abdulrahman Nahhas relies on and recommends — plus the independent work he's watching and supporting.",
+};
+
+const softwareCardClass =
+  "group rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5";
+
+/** First-two-letters monogram on a cobalt field — the no-image placeholder. */
+function Monogram({ name }: { name: string }) {
+  const letters = name.trim().slice(0, 2).toUpperCase();
+  return (
+    <div className="relative grid aspect-square place-items-center overflow-hidden size-18 pt-8 p-2 bottom-6">
+      <div aria-hidden className="signal-grid absolute inset-0 opacity-50" />
+      <div
+        aria-hidden
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(70% 90% at 50% 28%, color-mix(in oklch, var(--primary) 18%, transparent), transparent 70%)",
+        }}
+      />
+      <span className="font-display relative text-4xl italic tracking-tight text-primary group-hover:scale-110 duration-200">
+        {letters}
+      </span>
+    </div>
+  );
+}
+
+function ItemCard({ item }: { item: UseItem }) {
+  const links = [
+    {
+      label: "Website",
+      icon: Globe,
+      href: item.links?.website,
+    },
+    {
+      label: "Code",
+      icon: Code2,
+      href: item.links?.code,
+    },
+    {
+      label: "More",
+      icon: ExternalLink,
+      href: item.links?.external,
+    },
+  ].filter((link) => link.href);
+
+  return (
+    <div
+      className="
+        group flex h-full flex-col overflow-hidden rounded-2xl
+        border border-border bg-card/40
+        transition-all duration-300
+        hover:-translate-y-1
+        hover:border-foreground/20
+        hover:bg-card
+        hover:shadow-lg
+        hover:shadow-foreground/5
+      "
+    >
+      <div className="flex flex-col p-3 h-full">
+        {/* Header */}
+        <div className="flex items-center gap-3">
+          {item.image ? (
+            <div className="relative size-20 shrink-0 overflow-hidden rounded-xl
+              group-hover:scale-95 duration-300 transition-all mb-2">
+              <Image
+                src={item.image}
+                alt={`${item.name} logo`}
+                className="size-full object-cover"
+                loading="lazy"
+                width={200}
+                height={200}
+              />
+            </div>
+          ) : item.logo ? (
+            <div className="flex border border-border/40 size-18 mb-2 shrink-0 items-center justify-center rounded-xl bg-muted/40">
+              <Icon
+                icon={item.logo}
+                className="size-12 transition-transform duration-250 group-hover:-rotate-5 group-hover:scale-110"
+                style={{
+                  color: item.color,
+                }}
+              />
+            </div>
+          ) :  (
+            <Monogram name={item.name} />
+          )}
+
+          <div className="flex flex-col min-w-0 gap-1">
+            <span className="kicker text-primary/80 text-[8px]!">
+              {item.tag}
+            </span>
+
+            <h3
+              className="
+                font-display text-2xl text-[26px]
+                tracking-tight text-foreground
+                truncate
+              "
+            >
+              {item.name}
+            </h3>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p
+          className="
+            text-sm leading-relaxed
+            text-muted-foreground
+            flex-1
+          "
+        >
+          {item.description}
+        </p>
+
+        {/* Links */}
+        {links.length > 0 && (
+          <div className="mt-3 flex items-center gap-2">
+            {links.map(({ label, icon: Icon, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={label}
+                className="
+                  inline-flex items-center gap-1.5
+                  rounded-lg border border-border
+                  bg-background/50
+                  px-2.5 py-1.5
+                  text-xs text-muted-foreground
+                  transition-colors
+                  hover:bg-accent
+                  hover:text-foreground
+                "
+              >
+                <Icon className="size-3.5" />
+                {label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default function UsesPage() {
+  const {  main, watching, stack } = usesData;
+
   return (
     <PageLayout>
-      <PageHeader 
-        number="06"
-        label="Setup"
-        title="Uses"
-        description="A comprehensive list of the tools, software, and hardware that power my daily workflow."
+      <PageHeader
+        kicker="Uses"
+        title="The software I use, recommend, and keep an eye on."
+        description="What's on my machine, what I'd point you to, and the independent projects I'm watching and supporting. Mostly open source, deliberately chosen."
       />
 
+      {/* Software — the daily setup */}
       <Section bordered>
-        <SectionHeader label="Hardware" icon={Cpu} />
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {usesData.hardware.map((item, index) => (
-              <div 
-                key={item.name}
-                className="group border border-border p-6 hover:border-foreground/50 transition-all duration-500"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xs font-mono text-muted-foreground">/{String(index + 1).padStart(2, "0")}</span>
-                </div>
-                <h3 className="text-lg text-foreground mb-2">{item.name}</h3>
-                <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
-                <p className="text-xs font-mono text-muted-foreground/70">{item.details}</p>
-              </div>
-            ))}
-          </div>
+        <SectionHeader label="Use & recommend" count={main.length} />
+        <p className="-mt-8 mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          A curated shortlist I&apos;d point others to — distros, apps, tools, and services worth
+          your time.
+        </p>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {main.map((item, index) => (
+            <Reveal key={item.name} delay={index * 50}>
+              <ItemCard item={item} />
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
+      {/* Watching & supporting — projects I admire */}
       <Section bordered>
-        <SectionHeader label="Development Tools" icon={Code2} />
-
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            {usesData.software.development.map((item) => (
-              <div 
-                key={item.name}
-                className="group flex items-center gap-6 py-4 border-b border-border/50 hover:border-foreground/30 transition-colors"
-              >
-                <div className="w-2 h-2 bg-foreground/30 group-hover:bg-foreground transition-colors" />
-                <div className="flex-1">
-                  <h3 className="text-foreground">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <SectionHeader label="Watching & supporting" count={watching.length} />
+        <p className="-mt-8 mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          Independent, decentralized, and well-crafted work I&apos;m following and rooting for.
+        </p>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {watching.map((item, index) => (
+            <Reveal key={item.name} delay={index * 50}>
+              <ItemCard item={item} />
+            </Reveal>
+          ))}
+        </div>
       </Section>
 
-      <Section bordered>
-        <SectionHeader label="Productivity" icon={Layers} />
-
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            {usesData.software.productivity.map((item) => (
-              <div 
-                key={item.name}
-                className="group flex items-center gap-6 py-4 border-b border-border/50 hover:border-foreground/30 transition-colors"
-              >
-                <div className="w-2 h-2 bg-foreground/30 group-hover:bg-foreground transition-colors" />
-                <div className="flex-1">
-                  <h3 className="text-foreground">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-      </Section>
-
-      <Section bordered>
-        <SectionHeader label="DevOps & Tools" icon={Terminal} />
-
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-6">
-            {usesData.software.devTools.map((item) => (
-              <div 
-                key={item.name}
-                className="group flex items-center gap-6 py-4 border-b border-border/50 hover:border-foreground/30 transition-colors"
-              >
-                <div className="w-2 h-2 bg-foreground/30 group-hover:bg-foreground transition-colors" />
-                <div className="flex-1">
-                  <h3 className="text-foreground">{item.name}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-      </Section>
-
+      {/* Primary stack — at a glance */}
       <Section>
-        <SectionHeader label="Primary Stack" icon={Wrench} />
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {usesData.stack.map((category, index) => (
-              <div key={category.category} className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-muted-foreground">0{index + 1}</span>
-                  <h3 className="text-sm font-mono text-foreground tracking-widest uppercase">{category.category}</h3>
-                </div>
-                <div className="space-y-3">
-                  {category.tools.map((tool) => (
-                    <div 
+        <SectionHeader label="Primary stack" count={stack.length} />
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {stack.map((column, index) => (
+            <Reveal key={column.category} delay={index * 60}>
+              <div>
+                <p className="kicker text-primary/80">{column.category}</p>
+                <ul className="mt-4 space-y-2.5">
+                  {column.tools.map((tool) => (
+                    <li
                       key={tool}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {tool}
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
-            ))}
-          </div>
+            </Reveal>
+          ))}
+        </div>
       </Section>
+
+      <CtaSection
+        text="Want to compare setups, ask about a tool, or talk about the trade-offs behind these choices?"
+        links={[
+          { href: "/projects", label: "See the work" },
+          { href: "/contact", label: "Get in touch", primary: true },
+        ]}
+      />
     </PageLayout>
-  )
+  );
 }

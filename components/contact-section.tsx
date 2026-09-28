@@ -1,19 +1,13 @@
-"use client";
-
-import { ArrowUpRight, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
 import { LinkButton } from "@/components/link-button";
+import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/lib/data";
 import { homeContent } from "@/lib/home-content";
+import { GitLab, Mastodon } from "@/lib/icons";
 
 const socialLinks = [
-  { label: "GitHub", href: siteConfig.social.github, handle: "@abdulrahmannahhas", icon: Github },
-  {
-    label: "LinkedIn",
-    href: siteConfig.social.linkedin,
-    handle: "/in/abdulrahmannahhas",
-    icon: Linkedin,
-  },
-  { label: "Twitter", href: siteConfig.social.twitter, handle: "@abdulrahmandev", icon: Twitter },
+  { label: "GitLab", href: siteConfig.social.gitlab, icon: GitLab },
+  { label: "Mastodon", href: siteConfig.social.mastodon, icon: Mastodon },
 ];
 
 export function ContactSection() {
@@ -21,107 +15,82 @@ export function ContactSection() {
   const { contact } = homeContent;
 
   return (
-    <section id="contact" className="relative px-4 py-28 sm:px-6 lg:px-10">
-      <div className="section-field absolute inset-0 opacity-80" />
-
-      <div className="relative mx-auto max-w-7xl">
-        <div className="mb-14 flex items-center gap-4 border-b border-foreground/25 pb-5">
-          <span className="border border-foreground/35 px-3 py-1 font-mono text-xs text-foreground">
-            05
-          </span>
-          <div className="h-px w-12 bg-foreground/35" />
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            {contact.label}
-          </span>
-        </div>
-
-        <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <h2 className="text-3xl font-semibold leading-tight text-foreground text-balance md:text-4xl lg:text-5xl">
-                {contact.title}
-              </h2>
-              <p className="max-w-md border-l border-foreground/30 pl-5 leading-8 text-muted-foreground">
-                {contact.description}
-              </p>
+    <section id="contact" className="relative border-t border-border py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-20">
+          {/* Left: pitch */}
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+              <p className="kicker text-primary/80">{contact.label}</p>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <LinkButton href={`mailto:${email}`} variant="primary" icon="none">
+            <h2 className="font-display mt-6 max-w-xl text-balance text-3xl leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              {contact.title}
+            </h2>
+            <p className="mt-6 max-w-md text-pretty leading-relaxed text-muted-foreground">
+              {contact.description}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <LinkButton href={`mailto:${email}`} variant="primary" size="lg" icon="none">
                 <Mail className="size-4" />
                 {contact.primaryAction}
               </LinkButton>
               <LinkButton
-                href={siteConfig.social.linkedin}
+                href={siteConfig.social.mastodon}
                 external
+                variant="outline"
+                size="lg"
                 icon="arrow-up-right"
-                variant="secondary"
               >
                 {contact.secondaryAction}
               </LinkButton>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="space-y-12">
-            <div className="space-y-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Email Address
-              </p>
+          {/* Right: email + socials */}
+          <Reveal delay={120} className="space-y-6">
+            <div>
+              <p className="kicker">Email</p>
               <a
                 href={`mailto:${email}`}
-                className="group flex w-full min-w-0 items-center gap-4 border border-foreground/35 bg-card/45 p-4 text-foreground transition-colors hover:border-foreground hover:bg-background/50"
+                className="group mt-4 flex items-center gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
               >
-                <Mail className="size-5 text-muted-foreground" />
-                <span className="min-w-0 break-all text-left font-mono text-base sm:text-lg">
+                <Mail className="size-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                <span className="min-w-0 flex-1 break-all font-mono text-sm text-foreground sm:text-base">
                   {email}
                 </span>
-                <ArrowUpRight className="ml-auto size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
               </a>
             </div>
 
-            <div className="space-y-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Location
-              </p>
-              <div className="flex flex-col gap-3 border border-foreground/35 bg-card/45 p-4 sm:flex-row sm:items-center">
-                <div className="size-2 bg-warning soft-pulse" />
-                <span className="text-lg">{siteConfig.location}</span>
-                <span className="font-mono text-sm text-muted-foreground sm:ml-auto">
-                  Available Remotely
-                </span>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Social Profiles
-              </p>
-              <div className="grid gap-3">
+            <div>
+              <p className="kicker">Social</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {socialLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-4 border border-foreground/30 bg-background/35 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground hover:bg-card/60"
+                    className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
                   >
-                    <div className="flex items-center gap-4">
+                    <span className="flex items-center gap-3">
                       <link.icon className="size-5 text-muted-foreground transition-colors group-hover:text-foreground" />
-                      <span className="text-foreground transition-colors group-hover:text-foreground/80">
-                        {link.label}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="hidden font-mono text-sm text-muted-foreground sm:inline">
-                        {link.handle}
-                      </span>
-                      <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-                    </div>
+                      <span className="text-sm text-foreground">{link.label}</span>
+                    </span>
+                    <ArrowUpRight className="size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
                   </a>
                 ))}
               </div>
             </div>
-          </div>
+
+            <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-secondary/40 p-5">
+              <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+              <p className="text-sm text-foreground">Available remotely · {siteConfig.location}</p>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -1,208 +1,198 @@
 import { Calendar, ExternalLink, MapPin } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
+import { Reveal } from "@/components/reveal";
 import { Section, SectionHeader } from "@/components/section";
-import { experiences } from "@/lib/data";
 import { calculateDuration, formatMonthYear } from "@/lib/date";
-import type { Metadata } from "next";
+import { experiences } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Work Experience",
   description:
-    "Professional experience in software development, volunteer work, and humanitarian technology.",
+    "Where Abdulrahman Nahhas has worked — full-stack web, embedded systems, and humanitarian tech roles, current and past.",
 };
 
 export default function WorkPage() {
-  const currentRoles = experiences.filter((e) => e.current);
-  const pastRoles = experiences.filter((e) => !e.current);
+  const current = experiences.filter((e) => e.current);
+  const past = experiences.filter((e) => !e.current);
 
   return (
     <PageLayout>
       <PageHeader
-        number="04"
-        label="Experience"
-        title="Work"
-        description="A timeline of professional experience, volunteer contributions, and meaningful work in software development and humanitarian technology."
+        kicker="Work"
+        title="Roles, projects, and the teams behind them."
+        description="A running log of where I've worked — full-stack web development, embedded systems, and humanitarian tech built with people who care."
       />
 
+      {/* Currently active */}
       <Section bordered>
-        <SectionHeader label="Currently Active" count={`${currentRoles.length} Roles`} active />
+        <SectionHeader label="Currently active" count={`${current.length} roles`} />
+        <div className="space-y-6">
+          {current.map((exp, index) => (
+            <Reveal key={exp.id} delay={index * 60}>
+              <article className="relative overflow-hidden rounded-2xl border border-border bg-primary/5 p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/5">
+                <span
+                  aria-hidden
+                  className="absolute inset-y-0 left-0 w-1 bg-primary"
+                />
+                <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-12">
+                  {/* Left: identity */}
+                  <div className="space-y-5">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+                      <p className="kicker text-primary/80">{exp.category}</p>
+                      <span className="kicker text-muted-foreground/70">
+                        {exp.type}
+                      </span>
+                    </div>
 
-        <div className="space-y-8">
-          {currentRoles.map((experience) => (
-            <article
-              key={experience.id}
-              className="group relative border border-foreground/30 bg-card/50 transition-all duration-500 hover:border-foreground"
-            >
-                <div className="absolute top-0 left-0 w-2 h-full bg-foreground" />
-
-                <div className="p-8 lg:p-12 pl-10 lg:pl-16">
-                  <div className="grid lg:grid-cols-3 gap-8">
-                    {/* Left: Company & Meta */}
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <span className="text-xs font-mono text-muted-foreground">
-                          #{experience.id}
-                        </span>
-                        <span className="text-[10px] font-mono text-foreground tracking-widest uppercase px-2 py-0.5 border border-foreground">
-                          {experience.type}
-                        </span>
-                      </div>
-
-                      <div>
-                        <h2 className="text-2xl font-normal text-foreground mb-1">
-                          {experience.company}
-                        </h2>
-                        {experience.companyUrl && (
-                          <a
-                            href={experience.companyUrl}
+                    <div>
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <h3 className="font-display text-2xl tracking-tight text-foreground sm:text-3xl">
+                          {exp.company}
+                        </h3>
+                        {exp.companyUrl && (
+                          <Link
+                            href={exp.companyUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                            className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-primary"
                           >
-                            <ExternalLink className="w-3 h-3" />
-                            <span>Visit Website</span>
-                          </a>
+                            Visit website
+                            <ExternalLink className="size-3" />
+                          </Link>
                         )}
                       </div>
-
-                      <div className="space-y-2 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <MapPin className="w-3 h-3" />
-                          <span>{experience.location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-3 h-3" />
-                          <span>{formatMonthYear(experience.startDate)} - Present</span>
-                          <span className="text-xs font-mono text-foreground/50">
-                            ({calculateDuration(experience.startDate)})
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Right: Role & Details */}
-                    <div className="lg:col-span-2 space-y-6">
-                      <div>
-                        <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-2">
-                          {experience.category}
-                        </p>
-                        <h3 className="text-xl text-foreground">{experience.position}</h3>
-                      </div>
-
-                      <p className="text-muted-foreground leading-relaxed">
-                        {experience.description}
+                      <p className="mt-1 text-base text-foreground/90">
+                        {exp.position}
                       </p>
-
-                      <div className="space-y-3">
-                        <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-                          Responsibilities
-                        </p>
-                        <ul className="space-y-2">
-                          {experience.responsibilities.map((resp, i) => (
-                            <li
-                              key={i}
-                              className="flex items-start gap-3 text-sm text-muted-foreground"
-                            >
-                              <span className="w-1 h-1 bg-foreground mt-2 flex-shrink-0" />
-                              <span>{resp}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {experience.highlights && (
-                        <div className="pt-4 border-t border-border">
-                          <div className="flex flex-wrap gap-4">
-                            {experience.highlights.map((highlight, i) => (
-                              <span
-                                key={i}
-                                className="text-xs font-mono text-foreground bg-foreground/5 px-3 py-1.5 border border-border"
-                              >
-                                {highlight}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
                     </div>
+
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                      <span className="inline-flex items-center gap-1.5">
+                        <MapPin className="size-3.5 text-primary" />
+                        {exp.location}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="size-3.5 text-primary" />
+                        {formatMonthYear(exp.startDate)} — Present
+                      </span>
+                      <span className="kicker tabular-nums text-muted-foreground/70">
+                        {calculateDuration(exp.startDate)}
+                      </span>
+                    </div>
+
+                    <p className="max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+                      {exp.description}
+                    </p>
+                  </div>
+
+                  {/* Right: responsibilities + highlights */}
+                  <div className="space-y-6">
+                    <div>
+                      <p className="kicker mb-3">Responsibilities</p>
+                      <ul className="space-y-2.5">
+                        {exp.responsibilities.map((r) => (
+                          <li
+                            key={r}
+                            className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
+                          >
+                            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary/60" />
+                            <span>{r}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {exp.highlights && exp.highlights.length > 0 && (
+                      <div>
+                        <p className="kicker mb-3">Highlights</p>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.highlights.map((h) => (
+                            <span
+                              key={h}
+                              className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs text-primary"
+                            >
+                              {h}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-            </article>
+              </article>
+            </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section>
-        <SectionHeader label="Past Experience" count={`${pastRoles.length} Roles`} />
-
+      {/* Past experience */}
+      <Section bordered>
+        <SectionHeader label="Past experience" count={`${past.length} roles`} />
         <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-border hidden lg:block" />
-
-            <div className="space-y-12">
-              {pastRoles.map((experience) => (
-                <article key={experience.id} className="group relative lg:pl-12">
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-0 w-px h-full bg-border/50 lg:hidden" />
-                  <div className="absolute -left-[3px] lg:-left-[3px] top-2 w-1.5 h-1.5 bg-muted-foreground hidden lg:block" />
-
-                  <div className="border border-border p-8 hover:border-foreground/30 transition-all duration-500 bg-card/20">
-                    <div className="grid lg:grid-cols-4 gap-6">
-                      {/* Meta */}
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono text-muted-foreground tracking-widest uppercase px-2 py-0.5 border border-border">
-                            {experience.type}
-                          </span>
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          <p>
-                            {formatMonthYear(experience.startDate)} -{" "}
-                            {experience.endDate ? formatMonthYear(experience.endDate) : "Present"}
-                          </p>
-                          <p className="text-xs font-mono text-foreground/50">
-                            {calculateDuration(experience.startDate, experience.endDate)}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="lg:col-span-3 space-y-4">
-                        <div>
-                          <h3 className="text-xl text-foreground mb-1">{experience.position}</h3>
-                          <p className="text-muted-foreground">
-                            {experience.company} - {experience.location}
-                          </p>
-                        </div>
-
-                        <p className="text-sm text-muted-foreground leading-relaxed">
-                          {experience.description}
-                        </p>
-
-                        <ul className="flex flex-wrap gap-2">
-                          {experience.responsibilities.slice(0, 3).map((resp, i) => (
-                            <li
-                              key={i}
-                              className="text-[10px] font-mono text-muted-foreground border border-border/50 px-2 py-1"
-                            >
-                              {resp.split(" ").slice(0, 4).join(" ")}...
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+          <div className="absolute left-1.75 top-2 bottom-2 hidden w-px bg-border md:block" />
+          <div className="space-y-10">
+            {past.map((exp, index) => (
+              <Reveal
+                key={exp.id}
+                delay={index * 60}
+                className="group relative grid gap-6 md:grid-cols-[16px_1fr]"
+              >
+                <div className="relative">
+                  <span className="relative z-10 mt-2 size-4 rounded-full border border-border bg-card transition-colors group-hover:border-primary/40" />
+                </div>
+                <div className="md:pl-4">
+                  <div className="rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                      <h3 className="font-display text-xl tracking-tight text-foreground sm:text-2xl">
+                        {exp.position}
+                      </h3>
+                      <span className="kicker text-muted-foreground/70">
+                        {exp.type}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm text-foreground/90">
+                      {exp.company} · {exp.location}
+                    </p>
+                    <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="size-3.5 text-primary" />
+                        {formatMonthYear(exp.startDate)} —{" "}
+                        {exp.endDate ? formatMonthYear(exp.endDate) : "Present"}
+                      </span>
+                      <span className="kicker tabular-nums text-muted-foreground/70">
+                        {calculateDuration(exp.startDate, exp.endDate)}
+                      </span>
+                    </div>
+                    <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
+                      {exp.description}
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {exp.responsibilities.slice(0, 3).map((r) => (
+                        <span
+                          key={r}
+                          className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
+                        >
+                          {r}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                </article>
-              ))}
-            </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
 
       <CtaSection
-        text="My work history is still growing. I am most interested in teams where I can learn, contribute, and build useful software."
+        text="Want the full case studies behind these roles, or to discuss working together?"
         links={[
-          { href: "/projects", label: "View Projects" },
-          { href: "/#contact", label: "Get in Touch", primary: true },
+          { href: "/projects", label: "View projects" },
+          { href: "/contact", label: "Get in touch", primary: true },
         ]}
       />
     </PageLayout>

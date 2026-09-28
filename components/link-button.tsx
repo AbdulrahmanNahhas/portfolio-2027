@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type LinkButtonVariant = "primary" | "secondary" | "ghost";
+type LinkButtonVariant = "primary" | "outline" | "ghost";
 
 type LinkButtonProps = {
   href: string;
@@ -12,24 +12,30 @@ type LinkButtonProps = {
   external?: boolean;
   icon?: "arrow-right" | "arrow-up-right" | "none";
   variant?: LinkButtonVariant;
+  size?: "default" | "lg";
 };
 
 const variantClassName: Record<LinkButtonVariant, string> = {
   primary:
-    "border-foreground bg-foreground text-background hover:bg-background hover:text-foreground",
-  secondary:
-    "border-foreground/40 bg-background/20 text-foreground hover:border-foreground hover:bg-foreground/10",
-  ghost:
-    "border-border bg-transparent text-foreground hover:border-foreground hover:bg-foreground/5",
+    "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md hover:shadow-primary/20",
+  outline:
+    "border border-border bg-card/40 text-foreground hover:border-foreground/30 hover:bg-card",
+  ghost: "text-foreground hover:bg-secondary",
+};
+
+const sizeClassName = {
+  default: "h-10 px-5 text-sm",
+  lg: "h-12 px-6 text-sm",
 };
 
 function Icon({ name }: { name: NonNullable<LinkButtonProps["icon"]> }) {
   if (name === "none") return null;
   if (name === "arrow-up-right") {
-    return <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />;
+    return (
+      <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+    );
   }
-
-  return <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />;
+  return <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5" />;
 }
 
 export function LinkButton({
@@ -38,18 +44,20 @@ export function LinkButton({
   className,
   external = false,
   icon = "arrow-right",
-  variant = "secondary",
+  variant = "outline",
+  size = "default",
 }: LinkButtonProps) {
   const classNames = cn(
-    "group inline-flex items-center justify-center gap-3 border px-7 py-4 text-sm uppercase tracking-[0.18em] transition-all duration-300",
+    "group inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50",
     variantClassName[variant],
+    sizeClassName[size],
     className,
   );
 
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={classNames}>
-        <span className="inline-flex items-center gap-3">{children}</span>
+        <span className="inline-flex items-center gap-2">{children}</span>
         <Icon name={icon} />
       </a>
     );
@@ -57,7 +65,7 @@ export function LinkButton({
 
   return (
     <Link href={href} className={classNames}>
-      <span className="inline-flex items-center gap-3">{children}</span>
+      <span className="inline-flex items-center gap-2">{children}</span>
       <Icon name={icon} />
     </Link>
   );

@@ -1,123 +1,110 @@
-"use client";
-
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { LinkButton } from "@/components/link-button";
-import { skillCategories } from "@/lib/data";
+import { Reveal } from "@/components/reveal";
+import { skillCategories, stats } from "@/lib/data";
 import { homeContent } from "@/lib/home-content";
 
 export function AboutSection() {
   const { about } = homeContent;
+  const featuredSkills = skillCategories.flatMap((cat) =>
+    cat.skills.filter((s) => s.featured).map((s) => s.name),
+  );
 
   return (
-    <section id="about" className="relative px-4 py-28 sm:px-6 lg:px-10">
-      <div className="section-field absolute inset-0 opacity-80" />
+    <section id="about" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <Reveal className="flex items-center gap-3">
+          <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+          <p className="kicker text-primary/80">{about.label}</p>
+        </Reveal>
 
-        <div className="relative mx-auto max-w-7xl">
-        <div className="mb-14 flex items-center gap-4 border-b border-foreground/25 pb-5">
-          <span className="border border-foreground/35 px-3 py-1 font-mono text-xs text-foreground">
-            02
-          </span>
-          <div className="h-px w-12 bg-foreground/35" />
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-            {about.label}
-          </span>
-        </div>
-
-        <div className="mb-24 grid gap-16 lg:grid-cols-2 lg:gap-24">
-          <div className="space-y-8">
-            <h2 className="max-w-2xl text-3xl font-semibold leading-tight text-foreground text-balance md:text-5xl">
+        <div className="mt-10 grid gap-14 lg:grid-cols-2 lg:gap-20">
+          <Reveal delay={80}>
+            <h2 className="font-display max-w-xl text-balance text-3xl leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
               {about.title}
             </h2>
-            <div className="max-w-2xl space-y-4 border-l border-foreground/30 pl-5 leading-8 text-muted-foreground">
+            <div className="mt-6 max-w-xl space-y-4 text-pretty leading-relaxed text-muted-foreground">
               {about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
-
-            <div className="flex flex-wrap gap-4">
-              <LinkButton href="/about" variant="primary" className="px-6 py-3">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <LinkButton href="/about" variant="primary">
                 {about.primaryAction}
               </LinkButton>
-              <LinkButton href="/skills" variant="secondary" className="px-6 py-3">
+              <LinkButton href="/skills" variant="outline">
                 {about.secondaryAction}
               </LinkButton>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="space-y-6">
-            {about.highlights.map((item, index) => (
+          <Reveal delay={160} className="grid gap-4">
+            {about.highlights.map((item) => (
               <div
                 key={item.title}
-                className="group hud-panel corner-cut flex gap-5 p-5 transition-all duration-500 hover:-translate-y-1"
+                className="group flex gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
               >
-                <div className="flex-shrink-0">
-                  <div className="flex h-12 w-12 items-center justify-center border border-foreground/35 text-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
-                    <item.icon className="w-5 h-5" />
-                  </div>
+                <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  <item.icon className="size-5" />
                 </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                    <span className="font-mono text-xs text-muted-foreground">0{index + 1}</span>
-                  </div>
-                  <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>
+                <div>
+                  <h3 className="text-base font-medium tracking-tight text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
 
-        {/* Stats Row */}
-        <div className="border-y border-foreground/30 bg-card/40 py-10">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        {/* Stats */}
+        <Reveal delay={120} className="mt-20">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
             {about.stats.map((stat) => (
-              <div key={stat.label} className="px-4 text-center md:text-left">
-                <p className="mb-2 font-mono text-3xl text-foreground md:text-4xl">
+              <div key={stat.label} className="border-t border-border pt-4">
+                <p className="font-display text-4xl tracking-tight text-foreground sm:text-5xl">
                   {stat.value}
                 </p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                  {stat.label}
-                </p>
+                <p className="kicker mt-2.5">{stat.label}</p>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        {/* Featured Skills Preview */}
-        <div className="pt-16">
-          <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <Sparkles className="w-4 h-4 text-muted-foreground" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                Featured Skills
-              </span>
+        {/* Featured skills */}
+        <div className="mt-20">
+          <Reveal className="mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+              <h3 className="kicker">Featured skills</h3>
             </div>
             <Link
               href="/skills"
-              className="group flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors tracking-widest uppercase"
+              className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span>View All</span>
-              <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              <span>All skills</span>
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="flex flex-wrap gap-3">
-            {skillCategories.flatMap((cat) =>
-              cat.skills
-                .filter((s) => s.featured)
-                .map((skill) => (
-                  <span
-                    key={skill.name}
-                    className="border border-foreground/30 bg-background/45 px-4 py-2 font-mono text-sm text-foreground transition-colors hover:border-foreground hover:bg-foreground hover:text-background"
-                  >
-                    {skill.name}
-                  </span>
-                )),
-            )}
-          </div>
+          <Reveal delay={80} className="flex flex-wrap gap-2.5">
+            {featuredSkills.map((skill) => (
+              <span
+                key={skill}
+                className="inline-flex items-center rounded-full border border-border bg-card/50 px-3.5 py-1.5 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
+              >
+                {skill}
+              </span>
+            ))}
+          </Reveal>
         </div>
       </div>
+
+      <span className="sr-only">{stats.yearsExperience} years, {stats.projectsCompleted} projects</span>
     </section>
   );
 }

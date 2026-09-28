@@ -1,58 +1,98 @@
-import { ExternalLink, Github } from "lucide-react";
-import type { Project } from "@/lib/data";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
+import type { Project } from "@/lib/data";
 
 type ProjectCardProps = {
   project: Project;
   compact?: boolean;
 };
 
+const statusStyles: Record<Project["status"], string> = {
+  completed: "bg-primary/10 text-primary border-primary/20",
+  "in-progress": "bg-warning/15 text-warning border-warning/30",
+  archived: "bg-secondary text-muted-foreground border-border",
+};
+
 export function ProjectCard({ project, compact = false }: ProjectCardProps) {
   if (compact) {
     return (
-      <article className="group relative border border-border bg-card/30 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-foreground/50">
-        <div className="mb-6 flex items-start justify-between">
-          <span className="font-mono text-xs text-muted-foreground">/{project.id}</span>
-          <ProjectLinks project={project} compact />
+      <Link
+        href="/projects"
+        className="group flex h-full flex-col rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+      >
+        <div className="mb-5 flex items-center justify-between">
+          <span className="inline-flex h-6 items-center rounded-full border border-border bg-secondary px-2.5 text-[11px] font-medium text-muted-foreground">
+            {project.category.split(" ")[0]}
+          </span>
+          <span className="font-mono text-xs tabular-nums text-muted-foreground">
+            {project.year}
+          </span>
         </div>
 
-        <h3 className="mb-3 text-xl text-foreground transition-colors group-hover:text-foreground/80">
+        <h3 className="text-lg font-medium leading-snug tracking-tight text-foreground">
           {project.title}
         </h3>
 
-        <p className="mb-6 line-clamp-3 text-sm leading-6 text-muted-foreground">
+        <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
 
-        <div className="flex items-center justify-between gap-4">
-          <TagList tags={project.tags.slice(0, 2)} subtle />
-          <span className="font-mono text-xs text-muted-foreground">{project.year}</span>
+        <div className="mt-5 flex flex-wrap gap-1.5">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="inline-flex items-center rounded-full bg-secondary px-2.5 py-1 text-[11px] text-muted-foreground"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
-      </article>
+      </Link>
     );
   }
 
   return (
-    <article className="group relative border border-border transition-all duration-500 hover:border-foreground/50">
-      <div className="absolute left-0 top-0 h-px w-full origin-left scale-x-0 bg-linear-to-r from-foreground to-transparent transition-transform duration-700 group-hover:scale-x-100" />
+    <article className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 transition-all duration-300 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
+      <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:gap-12 lg:p-10">
+        <div className="space-y-5">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="kicker text-primary/80">{project.category}</span>
+            <span
+              className={cn(
+                "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-medium capitalize",
+                statusStyles[project.status],
+              )}
+            >
+              {project.status.replace("-", " ")}
+            </span>
+          </div>
 
-      <div className="grid gap-8 p-8 lg:grid-cols-2 lg:p-12">
-        <div className="space-y-6">
-          <ProjectMeta project={project} />
-
-          <h2 className="text-3xl font-normal text-foreground transition-colors group-hover:text-foreground/80 lg:text-4xl">
+          <h2 className="font-display text-3xl leading-tight tracking-tight text-foreground sm:text-4xl">
             {project.title}
           </h2>
 
-          <p className="leading-relaxed text-muted-foreground">{project.longDescription}</p>
+          <p className="max-w-xl text-pretty leading-relaxed text-muted-foreground">
+            {project.longDescription}
+          </p>
 
-          <TagList tags={project.tags} />
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center rounded-full border border-border bg-background/40 px-3 py-1 text-xs text-muted-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-col justify-between gap-8 lg:items-end">
-          <div className="flex items-center gap-4 lg:justify-end">
-            <StatusBadge status={project.status} />
-            <span className="font-mono text-sm text-muted-foreground">{project.year}</span>
+        <div className="flex flex-col justify-between gap-6 lg:items-end lg:border-l lg:border-border lg:pl-10">
+          <div className="flex items-center gap-3 lg:self-end">
+            <span className="font-mono text-sm tabular-nums text-muted-foreground">
+              {project.year}
+            </span>
           </div>
 
           <ProjectLinks project={project} />
@@ -62,48 +102,19 @@ export function ProjectCard({ project, compact = false }: ProjectCardProps) {
   );
 }
 
-function ProjectMeta({ project }: { project: Project }) {
+function ProjectLinks({ project }: { project: Project }) {
   return (
-    <div className="flex items-center gap-4">
-      <span className="font-mono text-xs text-muted-foreground">/{project.id}</span>
-      <div className="h-px w-8 bg-border" />
-      <span className="font-mono text-xs text-foreground/60">{project.category}</span>
-    </div>
-  );
-}
-
-function StatusBadge({ status }: { status: Project["status"] }) {
-  return (
-    <span
-      className={cn(
-        "border px-3 py-1 font-mono text-[10px] uppercase tracking-widest",
-        status === "completed" && "border-foreground/30 text-foreground",
-        status === "in-progress" && "border-foreground/50 bg-foreground/5 text-foreground",
-        status === "archived" && "border-border text-muted-foreground",
-      )}
-    >
-      {status.replace("-", " ")}
-    </span>
-  );
-}
-
-function ProjectLinks({ project, compact = false }: { project: Project; compact?: boolean }) {
-  const linkClassName = compact
-    ? "text-muted-foreground transition-colors hover:text-foreground"
-    : "group/link inline-flex items-center gap-3 border border-border px-6 py-3 text-sm uppercase tracking-widest transition-all duration-300 hover:border-foreground hover:bg-foreground hover:text-background";
-
-  return (
-    <div className={compact ? "flex items-center gap-3" : "flex flex-wrap gap-4"}>
+    <div className="flex flex-wrap gap-3 lg:justify-end">
       {project.github && (
         <a
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className={linkClassName}
+          className="group/link inline-flex h-10 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-all hover:border-foreground/30 hover:bg-secondary"
           aria-label={`${project.title} source code`}
         >
           <Github className="size-4" />
-          {!compact && <span>Source</span>}
+          <span>Source</span>
         </a>
       )}
       {project.link && (
@@ -111,36 +122,22 @@ function ProjectLinks({ project, compact = false }: { project: Project; compact?
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            linkClassName,
-            !compact && "bg-foreground text-background hover:bg-foreground/90",
-          )}
+          className="group/link inline-flex h-10 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20"
           aria-label={`${project.title} live project`}
         >
-          {!compact && <span>Visit</span>}
+          <span>Visit live</span>
           <ExternalLink className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
         </a>
       )}
-    </div>
-  );
-}
-
-function TagList({ tags, subtle = false }: { tags: string[]; subtle?: boolean }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <span
-          key={tag}
-          className={cn(
-            "font-mono text-[10px]",
-            subtle
-              ? "text-muted-foreground"
-              : "border border-border px-3 py-1.5 text-muted-foreground transition-colors hover:border-foreground/50",
-          )}
+      {!project.github && !project.link && (
+        <Link
+          href="/projects"
+          className="group/link inline-flex h-10 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-medium text-foreground transition-all hover:border-foreground/30 hover:bg-secondary"
         >
-          {tag}
-        </span>
-      ))}
+          <span>Case study</span>
+          <ArrowUpRight className="size-4 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+        </Link>
+      )}
     </div>
   );
 }

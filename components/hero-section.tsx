@@ -1,37 +1,27 @@
 "use client";
 
-import {
-  ArrowRight,
-  BookOpen,
-  Braces,
-  ExternalLink,
-  GraduationCap,
-  MapPin,
-  Sparkles,
-  TerminalSquare,
-} from "lucide-react";
+import { ArrowRight, Cpu, Globe, Sparkles, Terminal } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LinkButton } from "@/components/link-button";
+import { Reveal } from "@/components/reveal";
 import { projects, siteConfig } from "@/lib/data";
-import { homeContent } from "@/lib/home-content";
 
 const focusItems = [
-  { icon: Braces, label: "Web", value: "Interfaces and APIs" },
-  { icon: TerminalSquare, label: "Systems", value: "Linux, tooling, clean code" },
-  { icon: GraduationCap, label: "Learning", value: "Computer science foundations" },
+  { icon: Globe, label: "Web", value: "Interfaces & APIs" },
+  { icon: Cpu, label: "Embedded", value: "ESP32, firmware, IoT" },
+  { icon: Terminal, label: "Tooling", value: "Linux, CI, clean code" },
 ];
 
-export function HeroSection() {
-  const [mounted, setMounted] = useState(false);
-  const [time, setTime] = useState("00:00");
-  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
-  const { hero } = homeContent;
+const SIGNAL_PATH =
+  "M0,96 L70,96 C98,96 108,38 140,38 C172,38 176,96 210,96 L240,96 C268,96 274,58 304,58 C334,58 330,96 370,96 L400,96 C418,96 423,16 442,16 C461,16 459,96 490,96 L560,96";
+
+function useLocalTime() {
+  const [time, setTime] = useState<string>("--:--");
+  const [location, setLocation] = useState<string>("Syria");
 
   useEffect(() => {
-    setMounted(true);
-
-    const updateTime = () => {
+    const update = () => {
       setTime(
         new Date().toLocaleTimeString("en-US", {
           hour: "2-digit",
@@ -39,193 +29,229 @@ export function HeroSection() {
           hour12: false,
         }),
       );
+      try {
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        setLocation(tz.split("/").pop()?.replace("_", " ") ?? siteConfig.location);
+      } catch {
+        setLocation(siteConfig.location);
+      }
     };
-
-    updateTime();
-    const interval = window.setInterval(updateTime, 30_000);
+    update();
+    const interval = window.setInterval(update, 30_000);
     return () => window.clearInterval(interval);
   }, []);
 
+  return { time, location };
+}
+
+export function HeroSection() {
+  const { time, location } = useLocalTime();
+  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+  const firstName = siteConfig.name.split(" ")[0];
+
   return (
-    <section id="home" className="relative overflow-hidden border-b border-foreground/25 pt-6">
-      <div aria-hidden="true" className="hero-field absolute inset-0" />
-      <div aria-hidden="true" className="paper-grain absolute inset-0 opacity-[0.08]" />
+    <section className="relative overflow-hidden border-b border-border pb-20 pt-32 sm:pt-40">
+      {/* Ambient cobalt glow */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(70% 60% at 78% 8%, color-mix(in oklch, var(--primary) 14%, transparent), transparent 60%)",
+        }}
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-14 sm:px-6 sm:pb-18 sm:pt-10 lg:px-10 lg:pb-20">
-        <div className="mb-10 grid gap-3 border-b border-foreground/20 pb-3 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground md:grid-cols-[1fr_auto_1fr] md:items-center">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="border border-foreground/35 bg-background/45 px-3 py-1 text-foreground">
-              {hero.eyebrow}
-            </span>
-            <span>{hero.note}</span>
-          </div>
-          <div className="hidden h-px w-24 bg-foreground/25 md:block" />
-          <div className="flex flex-wrap items-center gap-4 md:justify-end">
-            <span className="inline-flex items-center gap-2">
-              <MapPin className="size-3" />
-              {siteConfig.location}
-            </span>
-            <span className="inline-flex items-center gap-2 text-foreground">
-              <span className="size-1.5 bg-warning soft-pulse" />
-              {hero.status}
-            </span>
-            <span>{mounted ? time : "00:00"}</span>
-          </div>
-        </div>
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        {/* Top meta row */}
+        <Reveal className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-2">
+            <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+            <span className="text-foreground">Currently building &amp; learning</span>
+          </span>
+          <span className="hidden h-3 w-px bg-border sm:block" />
+          <span className="font-mono tabular-nums">{location} · {time}</span>
+        </Reveal>
 
-        <div className="grid min-h-[calc(100svh-10rem)] items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.72fr)] lg:gap-14">
+        <div className="mt-10 grid items-start gap-12 lg:mt-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(360px,0.85fr)] lg:gap-16">
+          {/* Headline column */}
           <div>
-            <div className="mb-7 inline-flex items-center gap-3 border border-foreground/25 bg-card/35 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-              <Sparkles className="size-3.5 text-foreground" />
-              <span>{siteConfig.title}</span>
-            </div>
+            <Reveal delay={60}>
+              <p className="kicker text-primary/80">{siteConfig.title}</p>
+            </Reveal>
 
-            <h1 className="max-w-5xl text-5xl  font-semibold leading-[0.92] tracking-normal text-foreground sm:text-7xl md:text-8xl lg:text-8xl">
-              {siteConfig.name}
-            </h1>
+            <Reveal as="h1" delay={120} className="font-display mt-5 text-balance text-5xl leading-[0.95] tracking-tight text-foreground sm:text-7xl md:text-8xl">
+              {firstName}
+              <span className="block italic text-primary">Nahhas</span>
+            </Reveal>
 
-            <div className="mt-8 grid gap-6 md:flex md:flex-col">
-              <div className="space-y-5 border-l border-foreground/30 pl-5">
-                <p className="text-2xl leading-snug text-foreground text-balance md:text-3xl">
-                  {siteConfig.tagline}
-                </p>
-                <p className="max-w-2xl text-base leading-8 text-muted-foreground">
-                  {siteConfig.bio}
-                </p>
-              </div>
+            <Reveal delay={200} className="mt-8 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              {siteConfig.tagline}. A student software developer from {siteConfig.location} working
+              across <span className="text-foreground">web interfaces</span>,{" "}
+              <span className="text-foreground">embedded systems</span>, and{" "}
+              <span className="text-foreground">humanitarian tech</span>.
+            </Reveal>
 
-              {/*<div className="grid grid-cols-2 gap-2 sm:grid-cols-4 md:grid-cols-4">
-                {hero.stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="border border-foreground/20 bg-background/35 p-3"
-                  >
-                    <p className="font-mono text-2xl text-foreground">{stat.value}</p>
-                    <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                      {stat.label}
-                    </p>
+            <Reveal delay={280} className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <LinkButton href="/projects" variant="primary" size="lg" icon="arrow-right">
+                View Projects
+              </LinkButton>
+              <LinkButton href="/contact" variant="outline" size="lg" icon="arrow-up-right">
+                Get in touch
+              </LinkButton>
+            </Reveal>
+
+            <Reveal delay={360} className="mt-10 grid gap-3 sm:grid-cols-3">
+              {focusItems.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-xl border border-border bg-card/40 p-3.5 transition-colors hover:border-foreground/20 hover:bg-card"
+                >
+                  <div className="flex items-center gap-2 text-foreground">
+                    <item.icon className="size-4 text-primary" />
+                    <span className="text-sm font-medium">{item.label}</span>
                   </div>
-                ))}
-              </div>*/}
-            </div>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href="/projects" variant="primary">
-                {hero.primaryAction}
-              </LinkButton>
-              <LinkButton href="#contact" variant="secondary">
-                {hero.secondaryAction}
-              </LinkButton>
-            </div>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </Reveal>
           </div>
 
-          <aside className="hero-identity-panel relative overflow-hidden border border-foreground/30 bg-card/45 p-5">
-            <div aria-hidden="true" className="panel-topography absolute inset-0 opacity-50" />
-            <div className="relative">
-              <div className="mb-5 flex items-center justify-between border-b border-foreground/20 pb-4">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                    Current Snapshot
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold text-foreground">Learning Log</h2>
-                </div>
-                <span className="border border-foreground/30 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                  {hero.code}
-                </span>
-              </div>
-
-              <div className="relative mb-5 grid min-h-65 place-items-center overflow-hidden border border-foreground/25 bg-background/35">
-                {/*<div aria-hidden="true" className="hero-orbit absolute inset-6" />*/}
-                {/*<div className="relative grid w-full h-full place-items-center border bg-background/60 ">
-                  <img src="/icon.svg" alt="" className="size-24 opacity-95" draggable={false} />
-                </div>*/}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 109.92 108.89"
-                  className="size-36"
-                >
-                  <g>
-                    <path
-                      fill="currentColor"
-                      d="M56.54.25s.02.01.03.02c0,0,0,0,0,0,0,0-.02-.01-.03-.02Z"
-                    />
-                    <path
-                      fill="currentColor"
-                      d="M109.8,41.11c-.03-.05-.07-.09-.1-.14h0s-12.37-15.39-12.37-15.39c-.27-.34-.73-.44-1.11-.26l-10.66,4.82L56.57.27h0s-.02-.02-.03-.02c-.05-.06-.11-.1-.17-.13-.03-.02-.06-.03-.08-.04-.05-.03-.1-.05-.15-.06-.03,0-.07-.02-.09-.02-.06,0-.1,0-.16,0h-.09s-.03,0-.05,0c0,0-.01,0-.02,0-.01,0-.02,0-.03,0-.02,0-.05.01-.07.02-.02,0-.04,0-.06.02l-18.33,7.1c-.39.15-.63.55-.59.97l1.28,11.48L.52,37.97c-.28.14-.47.41-.51.73,0,.05,0,.09,0,.14v-.04s0,.1,0,.1c0,0,0,0,0,.01l1.13,19.72c.03.42.33.77.74.86l11.34,2.34,5.89,41.16c.05.32.24.58.53.72l19.28,5.17c.08.02.16.03.24.03.33,0,.64-.18.81-.48l5.74-10.07,40.77,7.09c.06,0,.1,0,.16,0,.26,0,.5-.1.68-.3l11.06-16.7c.22-.35.19-.82-.09-1.13l-7.88-8.63h0s0,0,0,0l19.39-36.68c.15-.28.15-.61,0-.89ZM56.24,2.6l29.65,30.56-31.53.69c-.51,0-.92.43-.91.94l.22,21.56h0s-1.26-.4-1.26-.4l-6.89-2.5-8.46-3.08L56.24,2.6ZM53.68,56.34h0s-.01,0-.01,0h.01ZM52.39,55.94h-.02s-5.27-1.92-5.27-1.92l5.29,1.92ZM2.62,39.01l36.7-18.02,1.52-.74-9.09,30.2c-.15.49.13,1.01.61,1.15l13.48,4.24-13.48-4.23,15.9,4.99,3.44,1.08h-.02s.09.02.09.02l1.18.43h0s-10.85,13.89-10.85,13.89L2.62,39.01ZM20.75,101.3l-6.03-42.14,25.92,17.97c.42.29,1,.19,1.28-.22l12.43-17.48,2.15,2.9,7.84,11.61-43.59,27.37ZM54.36,59.42l2.13,2.86.02.03-2.15-2.89ZM43.44,96.06l25.11-19.09c.4-.32.48-.89.18-1.3l-10.67-14.38-.03-.05s0,0,0,0l-1.95-2.89,2.23-.75.28-.09,14.25-4.07,12.56,49.91-41.96-7.28ZM87.6,80.04l-10.4-29.78c-.13-.38-.49-.62-.88-.62-.1,0-.2.02-.3.05l-18.24,6.13h-.04s0,.01,0,.01h0s-2.19.63-2.19.63h-.02s0,0,0,0h0l.6-17.55,51.37,3.48-19.91,37.65Z"
-                    />
-                  </g>
-                </svg>
-                <div className="absolute left-2 top-2 font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground bg-background/60 py-1 px-2.5 rounded-full">
-                  Build / Learn / Repeat
-                </div>
-                <div className="absolute bottom-2 right-2 border border-foreground/25 bg-background/65 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground">
-                  ERROR: No Image Found
-                </div>
-              </div>
-
-              <div className="grid gap-3">
-                {focusItems.map((item) => (
-                  <div
-                    key={item.label}
-                    className="grid grid-cols-[40px_minmax(0,1fr)] gap-3 border border-foreground/20 bg-background/30 p-3"
-                  >
-                    <div className="grid size-10 place-items-center border border-foreground/25 text-foreground">
-                      <item.icon className="size-4" />
-                    </div>
-                    <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-sm text-foreground">{item.value}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </aside>
+          {/* Signal panel — the signature */}
+          <Reveal delay={240} className="lg:sticky lg:top-24">
+            <SignalPanel time={time} location={location} />
+          </Reveal>
         </div>
 
-        <div className="mt-10 border-t border-foreground/25 pt-8">
-          <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <BookOpen className="size-4 text-muted-foreground" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
-                Selected Projects
-              </span>
-              <div className="hidden h-px w-16 bg-foreground/25 sm:block" />
+        {/* Featured projects */}
+        <div className="mt-20 border-t border-border pt-12">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <Sparkles className="size-4 text-primary" />
+              <h2 className="kicker">Selected work</h2>
             </div>
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <span>View All</span>
-              <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
+              <span>View all</span>
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
-          <div className="grid gap-3 md:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.id}
-                href="/projects"
-                className="group relative min-h-47 border border-foreground/25 bg-background/35 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-foreground hover:bg-card/55"
-              >
-                <div className="mb-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                  <span>/{project.id}</span>
-                  <span>{project.year}</span>
-                </div>
-                <h3 className="mb-3 text-xl font-semibold leading-tight text-foreground">
-                  {project.title}
-                </h3>
-                <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                  {project.description}
-                </p>
-                <ExternalLink className="absolute bottom-5 right-5 size-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
-              </Link>
+          <div className="grid gap-4 md:grid-cols-3">
+            {featuredProjects.map((project, index) => (
+              <Reveal key={project.id} delay={index * 80}>
+                <Link
+                  href="/projects"
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+                >
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="kicker tabular-nums">{project.year}</span>
+                    <span className="inline-flex h-6 items-center rounded-full bg-secondary px-2.5 text-[11px] font-medium text-muted-foreground">
+                      {project.category.split(" ")[0]}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-medium leading-snug tracking-tight text-foreground">
+                    {project.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                    Read more
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function SignalPanel({ time, location }: { time: string; location: string }) {
+  return (
+    <aside className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-border px-5 py-4">
+        <div className="flex items-center gap-2.5">
+          <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+          <span className="kicker text-foreground/80">Signal · live</span>
+        </div>
+        <span className="font-mono text-xs tabular-nums text-muted-foreground">{time}</span>
+      </div>
+
+      {/* Waveform */}
+      <div className="relative h-44 overflow-hidden border-b border-border bg-background/40">
+        <div aria-hidden className="signal-grid absolute inset-0 opacity-60" />
+        <svg
+          viewBox="0 0 600 160"
+          preserveAspectRatio="none"
+          className="absolute inset-0 h-full w-full"
+          role="img"
+          aria-label="Live signal waveform"
+        >
+          {/* Persistence echo */}
+          <path
+            d={SIGNAL_PATH}
+            fill="none"
+            stroke="var(--primary)"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            opacity="0.3"
+            className="signal-live"
+          />
+          {/* Main trace */}
+          <path
+            d={SIGNAL_PATH}
+            fill="none"
+            stroke="var(--primary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            vectorEffect="non-scaling-stroke"
+            className="signal-path"
+          />
+          {/* Baseline */}
+          <line
+            x1="0"
+            y1="96"
+            x2="600"
+            y2="96"
+            stroke="color-mix(in oklch, var(--foreground) 14%, transparent)"
+            strokeWidth="1"
+            vectorEffect="non-scaling-stroke"
+            strokeDasharray="3 5"
+          />
+          {/* End dot */}
+          <circle cx="560" cy="96" r="4" fill="var(--primary)" className="signal-live" />
+        </svg>
+        <span className="absolute left-3 top-2.5 kicker text-muted-foreground/70">amplitude</span>
+        <span className="absolute bottom-2.5 right-3 kicker text-muted-foreground/70">t →</span>
+      </div>
+
+      {/* Now rows */}
+      <dl className="divide-y divide-border">
+        <SignalRow label="Currently" value="Building NGO + embedded tools" />
+        <SignalRow label="Learning" value="ESP-IDF, FreeRTOS, Rust" />
+        <SignalRow label="Based in" value={location} />
+        <SignalRow label="Open to" value="Collab · internships · feedback" />
+      </dl>
+    </aside>
+  );
+}
+
+function SignalRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between gap-4 px-5 py-3.5">
+      <dt className="kicker shrink-0">{label}</dt>
+      <dd className="text-right text-sm text-foreground">{value}</dd>
+    </div>
   );
 }
