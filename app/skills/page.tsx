@@ -1,12 +1,12 @@
 import {
-  Binary,
-  Cpu,
-  Globe,
-  Sparkles,
-  Terminal,
-  Wrench,
-  type LucideIcon,
-} from "lucide-react";
+  BinaryIcon as Binary,
+  CpuIcon as Cpu,
+  GlobeIcon as Globe,
+  SparkleIcon as Sparkles,
+  TerminalIcon as Terminal,
+  WrenchIcon as Wrench,
+  type Icon,
+} from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "An honest map of what Abdulrahman Nahhas knows — web, firmware, DevOps, and hardware skills, with proficiency levels and current learning.",
 };
 
-const iconMap: Record<string, LucideIcon> = {
+const iconMap: Record<string, Icon> = {
   globe: Globe,
   cpu: Cpu,
   terminal: Terminal,

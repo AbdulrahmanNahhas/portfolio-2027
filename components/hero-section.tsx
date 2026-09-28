@@ -1,6 +1,12 @@
 "use client";
 
-import { ArrowRight, Cpu, Globe, Sparkles, Terminal } from "lucide-react";
+import {
+  ArrowRightIcon as ArrowRight,
+  CpuIcon as Cpu,
+  GlobeIcon as Globe,
+  SparkleIcon as Sparkles,
+  TerminalIcon as Terminal,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { LinkButton } from "@/components/link-button";

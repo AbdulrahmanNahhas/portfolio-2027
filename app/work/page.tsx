@@ -1,4 +1,8 @@
-import { Calendar, ExternalLink, MapPin } from "lucide-react";
+import {
+  CalendarBlankIcon as Calendar,
+  ArrowSquareOutIcon as ExternalLink,
+  MapPinIcon as MapPin,
+} from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";

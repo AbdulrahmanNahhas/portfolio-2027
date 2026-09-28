@@ -1,10 +1,16 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif, Oxanium } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
 import { defaultLocale, textDirectionByLocale } from "@/lib/i18n";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toast";
+
+const geistMonoHeading = Geist_Mono({subsets:['latin'],variable:'--font-heading'});
+
+const oxanium = Oxanium({subsets:['latin'],variable:'--font-sans'});
 
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
@@ -106,12 +112,13 @@ export default function RootLayout({
     <html
       lang={defaultLocale}
       dir={textDirectionByLocale[defaultLocale]}
-      className={`scroll-smooth ${instrumentSerif.variable} ${geist.variable} ${geistMono.variable}`}
+      className={cn("scroll-smooth", instrumentSerif.variable, geist.variable, geistMono.variable, "font-sans", oxanium.variable, geistMonoHeading.variable)}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <Toaster />
         </ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

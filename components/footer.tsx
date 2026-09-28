@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp } from "lucide-react";
+import { ArrowUpIcon as ArrowUp } from "@phosphor-icons/react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/data";
 import { footerNavItems } from "@/lib/navigation";

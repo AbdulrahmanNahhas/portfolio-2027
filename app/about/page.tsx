@@ -1,4 +1,8 @@
-import { ArrowRight, Calendar, MapPin } from "lucide-react";
+import {
+  ArrowRightIcon as ArrowRight,
+  CalendarBlankIcon as Calendar,
+  MapPinIcon as MapPin,
+} from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader, PageLayout } from "@/components/page-layout";

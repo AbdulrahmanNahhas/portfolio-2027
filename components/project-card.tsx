@@ -1,4 +1,8 @@
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  ArrowSquareOutIcon as ExternalLink,
+  GithubLogoIcon as Github,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/data";

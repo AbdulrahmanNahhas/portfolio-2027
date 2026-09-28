@@ -1,6 +1,11 @@
 "use client";
 
-import { Menu, Moon, Sun, X } from "lucide-react";
+import {
+  ListIcon as Menu,
+  MoonIcon as Moon,
+  SunIcon as Sun,
+  XIcon as X,
+} from "@phosphor-icons/react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

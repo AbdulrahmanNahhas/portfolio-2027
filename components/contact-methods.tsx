@@ -1,6 +1,10 @@
 "use client";
 
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  EnvelopeIcon as Mail,
+  MapPinIcon as MapPin,
+} from "@phosphor-icons/react";
 import { contactConfig, siteConfig } from "@/lib/data";
 import { GitLab, Mastodon } from "@/lib/icons";
 

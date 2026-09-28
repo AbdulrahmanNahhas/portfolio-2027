@@ -1,4 +1,9 @@
-import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
+import {
+  ArrowLeftIcon as ArrowLeft,
+  ArrowRightIcon as ArrowRight,
+  CalendarBlankIcon as Calendar,
+  ClockIcon as Clock,
+} from "@phosphor-icons/react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageLayout } from "@/components/page-layout";

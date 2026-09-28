@@ -1,4 +1,8 @@
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import {
+  ArrowRightIcon as ArrowRight,
+  CalendarBlankIcon as Calendar,
+  ClockIcon as Clock,
+} from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";

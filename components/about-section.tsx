@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRightIcon as ArrowRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { LinkButton } from "@/components/link-button";
 import { Reveal } from "@/components/reveal";

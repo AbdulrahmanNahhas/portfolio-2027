@@ -1,8 +1,8 @@
 import {
-  Code2,
-  ExternalLink,
-  Globe,
-} from "lucide-react";
+  CodeIcon as Code2,
+  ArrowSquareOutIcon as ExternalLink,
+  GlobeIcon as Globe,
+} from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRightIcon as ArrowUpRight, EnvelopeIcon as Mail } from "@phosphor-icons/react";
 import { LinkButton } from "@/components/link-button";
 import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/lib/data";
