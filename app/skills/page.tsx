@@ -5,8 +5,8 @@ import {
   SparkleIcon as Sparkles,
   TerminalIcon as Terminal,
   WrenchIcon as Wrench,
-  type Icon,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
+import type { Icon } from "@phosphor-icons/react";
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
@@ -42,7 +42,7 @@ function LevelPill({ level }: { level: Level }) {
   };
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs ${classes[level]}`}
+      className={`inline-flex items-center  border px-2.5 py-0.5 text-xs ${classes[level]}`}
     >
       {level}
     </span>
@@ -91,10 +91,10 @@ export default function SkillsPage() {
             const Icon = iconMap[category.icon] ?? Globe;
             return (
               <Reveal key={category.id} delay={index * 60}>
-                <div className="rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
+                <div className=" border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <span className="grid size-9 place-items-center rounded-full border border-border bg-secondary text-primary">
+                      <span className="grid size-9 place-items-center  border border-border bg-secondary text-primary">
                         <Icon className="size-4" />
                       </span>
                       <h3 className="font-display text-xl tracking-tight text-foreground">
@@ -120,7 +120,7 @@ export default function SkillsPage() {
                           {skill.featured ? (
                             <Sparkles className="size-3.5 text-primary" />
                           ) : (
-                            <span className="size-1.5 rounded-full bg-primary/40" />
+                            <span className="size-1.5  bg-primary/40" />
                           )}
                           {skill.name}
                         </span>
@@ -154,9 +154,9 @@ export default function SkillsPage() {
                 >
                   <span className="inline-flex items-center gap-2.5">
                     {lang.active ? (
-                      <span className="size-1.5 rounded-full bg-primary" />
+                      <span className="size-1.5  bg-primary" />
                     ) : (
-                      <span className="size-1.5 rounded-full bg-border" />
+                      <span className="size-1.5  bg-border" />
                     )}
                     {lang.name}
                   </span>

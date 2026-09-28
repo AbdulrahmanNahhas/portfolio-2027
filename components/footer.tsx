@@ -38,7 +38,7 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex h-10 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm text-foreground transition-all hover:border-foreground/30 hover:bg-card hover:shadow-sm"
+                  className="group inline-flex h-10 items-center gap-2  border border-border bg-card px-4 text-sm text-foreground transition-all hover:border-foreground/30 hover:bg-card hover:shadow-sm"
                 >
                   <link.icon className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
                   <span>{link.label}</span>
@@ -46,7 +46,7 @@ export function Footer() {
               ))}
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20"
+                className="inline-flex h-10 items-center gap-2  bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20"
               >
                 {siteConfig.email}
               </a>
@@ -75,7 +75,7 @@ export function Footer() {
               <p className="kicker">Status</p>
               <div className="mt-5 space-y-4">
                 <div className="flex items-center gap-2.5 text-sm text-foreground">
-                  <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+                  <span className="relative inline-flex size-2  bg-primary pulse-dot" />
                   <span>Open to collaboration &amp; internships</span>
                 </div>
                 <p className="text-sm leading-relaxed text-muted-foreground">
@@ -84,7 +84,7 @@ export function Footer() {
                 <button
                   type="button"
                   onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                  className="group inline-flex h-9 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm text-foreground transition-all hover:border-foreground/30 hover:bg-card"
+                  className="group inline-flex h-9 items-center gap-2  border border-border bg-card px-4 text-sm text-foreground transition-all hover:border-foreground/30 hover:bg-card"
                 >
                   <span>Back to top</span>
                   <ArrowUp className="size-3.5 transition-transform group-hover:-translate-y-0.5" />

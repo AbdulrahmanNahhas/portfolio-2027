@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon as ArrowUpRight, EnvelopeIcon as Mail } from "@phosphor-icons/react";
+import { ArrowUpRightIcon as ArrowUpRight, EnvelopeIcon as Mail } from "@phosphor-icons/react/ssr";
 import { LinkButton } from "@/components/link-button";
 import { Reveal } from "@/components/reveal";
 import { siteConfig } from "@/lib/data";
@@ -21,7 +21,7 @@ export function ContactSection() {
           {/* Left: pitch */}
           <Reveal>
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="inline-flex h-1.5 w-1.5  bg-primary" />
               <p className="kicker text-primary/80">{contact.label}</p>
             </div>
 
@@ -55,7 +55,7 @@ export function ContactSection() {
               <p className="kicker">Email</p>
               <a
                 href={`mailto:${email}`}
-                className="group mt-4 flex items-center gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
+                className="group mt-4 flex items-center gap-4  border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
               >
                 <Mail className="size-5 text-muted-foreground transition-colors group-hover:text-primary" />
                 <span className="min-w-0 flex-1 break-all font-mono text-sm text-foreground sm:text-base">
@@ -74,7 +74,7 @@ export function ContactSection() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
+                    className="group flex items-center justify-between gap-4  border border-border bg-card/40 p-5 transition-all hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
                   >
                     <span className="flex items-center gap-3">
                       <link.icon className="size-5 text-muted-foreground transition-colors group-hover:text-foreground" />
@@ -86,8 +86,8 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2.5 rounded-2xl border border-border bg-secondary/40 p-5">
-              <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+            <div className="flex items-center gap-2.5  border border-border bg-secondary/40 p-5">
+              <span className="relative inline-flex size-2  bg-primary pulse-dot" />
               <p className="text-sm text-foreground">Available remotely · {siteConfig.location}</p>
             </div>
           </Reveal>

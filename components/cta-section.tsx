@@ -16,7 +16,7 @@ export function CtaSection({ text, links }: CtaSectionProps) {
   return (
     <section className="relative border-t border-border py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 text-center sm:p-14">
+        <Reveal className="relative overflow-hidden  border border-border bg-card p-8 text-center sm:p-14">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"

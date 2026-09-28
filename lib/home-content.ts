@@ -1,4 +1,4 @@
-import { CodeIcon as Code2, CpuIcon as Cpu, GlobeIcon as Globe } from "@phosphor-icons/react";
+import { CodeIcon as Code2, CpuIcon as Cpu, GlobeIcon as Globe } from "@phosphor-icons/react/ssr";
 import { siteConfig, stats } from "@/lib/data";
 
 export const homeContent = {

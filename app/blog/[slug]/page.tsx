@@ -3,7 +3,7 @@ import {
   ArrowRightIcon as ArrowRight,
   CalendarBlankIcon as Calendar,
   ClockIcon as Clock,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageLayout } from "@/components/page-layout";
@@ -80,7 +80,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
+                className="inline-flex items-center  border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
               >
                 {tag}
               </span>
@@ -113,7 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
                         key={i}
                         className="flex items-start gap-3 text-pretty leading-relaxed text-muted-foreground"
                       >
-                        <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-primary/60" />
+                        <span className="mt-2.5 size-1.5 shrink-0  bg-primary/60" />
                         <span>{item.replace(/^[-\d.]\s*/, "")}</span>
                       </li>
                     ))}
@@ -140,8 +140,8 @@ export default async function BlogPostPage({ params }: Props) {
       <section className="border-b border-border py-14">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <Reveal>
-            <div className="flex items-center gap-5 rounded-2xl border border-border bg-card/40 p-6 sm:p-7">
-              <span className="grid size-14 shrink-0 place-items-center rounded-full border border-border bg-card">
+            <div className="flex items-center gap-5  border border-border bg-card/40 p-6 sm:p-7">
+              <span className="grid size-14 shrink-0 place-items-center  border border-border bg-card">
                 <span className="font-display text-3xl leading-none text-primary">
                   AN
                 </span>
@@ -166,7 +166,7 @@ export default async function BlogPostPage({ params }: Props) {
             {prevPost ? (
               <Link
                 href={`/blog/${prevPost.slug}`}
-                className="group rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+                className="group  border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
               >
                 <div className="flex items-center gap-2">
                   <ArrowLeft className="size-3.5 text-muted-foreground transition-transform duration-300 group-hover:-translate-x-0.5" />
@@ -183,7 +183,7 @@ export default async function BlogPostPage({ params }: Props) {
             {nextPost && (
               <Link
                 href={`/blog/${nextPost.slug}`}
-                className="group rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5 md:text-right"
+                className="group  border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5 md:text-right"
               >
                 <div className="flex items-center gap-2 md:justify-end">
                   <span className="kicker">Next</span>

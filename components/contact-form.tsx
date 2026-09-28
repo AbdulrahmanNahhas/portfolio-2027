@@ -41,8 +41,8 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-border bg-card/40 p-10 text-center">
-        <span className="grid size-14 place-items-center rounded-full bg-primary/10 text-primary">
+      <div className="flex flex-col items-center  border border-border bg-card/40 p-10 text-center">
+        <span className="grid size-14 place-items-center  bg-primary/10 text-primary">
           <Check className="size-7" />
         </span>
         <h3 className="font-display mt-6 text-2xl tracking-tight text-foreground">
@@ -76,7 +76,7 @@ export function ContactForm() {
             value={formState.name}
             onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
             placeholder="Your name"
-            className="h-11 rounded-xl"
+            className="h-11 "
           />
         </label>
 
@@ -88,7 +88,7 @@ export function ContactForm() {
             value={formState.email}
             onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
             placeholder="you@email.com"
-            className="h-11 rounded-xl"
+            className="h-11 "
           />
         </label>
       </div>
@@ -99,7 +99,7 @@ export function ContactForm() {
           value={formState.subject}
           onValueChange={(value) => setFormState((s) => ({ ...s, subject: value }))}
         >
-          <SelectTrigger className="h-11 w-full rounded-xl">
+          <SelectTrigger className="h-11 w-full ">
             <SelectValue placeholder="Choose a subject" />
           </SelectTrigger>
           <SelectContent>
@@ -120,7 +120,7 @@ export function ContactForm() {
           value={formState.message}
           onChange={(e) => setFormState((s) => ({ ...s, message: e.target.value }))}
           placeholder="Tell me about your project, idea, or question…"
-          className="min-h-32 rounded-xl"
+          className="min-h-32 "
         />
       </label>
 
@@ -128,7 +128,7 @@ export function ContactForm() {
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="h-12 w-full rounded-full text-sm font-medium"
+        className="h-12 w-full  text-sm font-medium"
       >
         {isSubmitting ? (
           <span>Sending…</span>

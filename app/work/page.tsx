@@ -2,7 +2,7 @@ import {
   CalendarBlankIcon as Calendar,
   ArrowSquareOutIcon as ExternalLink,
   MapPinIcon as MapPin,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";
@@ -36,7 +36,7 @@ export default function WorkPage() {
         <div className="space-y-6">
           {current.map((exp, index) => (
             <Reveal key={exp.id} delay={index * 60}>
-              <article className="relative overflow-hidden rounded-2xl border border-border bg-primary/5 p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/5">
+              <article className="relative overflow-hidden  border border-border bg-primary/5 p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-lg hover:shadow-foreground/5">
                 <span
                   aria-hidden
                   className="absolute inset-y-0 left-0 w-1 bg-primary"
@@ -45,7 +45,7 @@ export default function WorkPage() {
                   {/* Left: identity */}
                   <div className="space-y-5">
                     <div className="flex flex-wrap items-center gap-3">
-                      <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+                      <span className="relative inline-flex size-2  bg-primary pulse-dot" />
                       <p className="kicker text-primary/80">{exp.category}</p>
                       <span className="kicker text-muted-foreground/70">
                         {exp.type}
@@ -103,7 +103,7 @@ export default function WorkPage() {
                             key={r}
                             className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
                           >
-                            <span className="mt-2 size-1.5 shrink-0 rounded-full bg-primary/60" />
+                            <span className="mt-2 size-1.5 shrink-0  bg-primary/60" />
                             <span>{r}</span>
                           </li>
                         ))}
@@ -117,7 +117,7 @@ export default function WorkPage() {
                           {exp.highlights.map((h) => (
                             <span
                               key={h}
-                              className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs text-primary"
+                              className="inline-flex items-center  border border-primary/20 bg-primary/10 px-3 py-1 text-xs text-primary"
                             >
                               {h}
                             </span>
@@ -146,10 +146,10 @@ export default function WorkPage() {
                 className="group relative grid gap-6 md:grid-cols-[16px_1fr]"
               >
                 <div className="relative">
-                  <span className="relative z-10 mt-2 size-4 rounded-full border border-border bg-card transition-colors group-hover:border-primary/40" />
+                  <span className="relative z-10 mt-2 size-4  border border-border bg-card transition-colors group-hover:border-primary/40" />
                 </div>
                 <div className="md:pl-4">
-                  <div className="rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
+                  <div className=" border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                       <h3 className="font-display text-xl tracking-tight text-foreground sm:text-2xl">
                         {exp.position}
@@ -178,7 +178,7 @@ export default function WorkPage() {
                       {exp.responsibilities.slice(0, 3).map((r) => (
                         <span
                           key={r}
-                          className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
+                          className="inline-flex items-center  border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
                         >
                           {r}
                         </span>

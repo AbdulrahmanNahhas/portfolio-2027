@@ -2,7 +2,7 @@ import {
   ArrowRightIcon as ArrowRight,
   CalendarBlankIcon as Calendar,
   MapPinIcon as MapPin,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader, PageLayout } from "@/components/page-layout";
@@ -45,7 +45,7 @@ export default function AboutPage() {
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-10">
+            <div className="relative overflow-hidden  border border-border bg-card p-10">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
@@ -94,7 +94,7 @@ export default function AboutPage() {
             {aboutData.story.map((item, index) => (
               <Reveal key={item.year} delay={index * 60} className="group relative grid gap-6 md:grid-cols-[40px_1fr]">
                 <div className="relative">
-                  <span className="relative z-10 grid size-10 place-items-center rounded-full border border-border bg-card font-mono text-xs tabular-nums text-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary">
+                  <span className="relative z-10 grid size-10 place-items-center  border border-border bg-card font-mono text-xs tabular-nums text-foreground transition-colors group-hover:border-primary/40 group-hover:text-primary">
                     {item.year}
                   </span>
                 </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
             <Reveal
               key={item.title}
               delay={index * 80}
-              className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+              className="group  border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
             >
               <span className="font-mono text-xs tabular-nums text-primary">
                 0{index + 1}
@@ -141,7 +141,7 @@ export default function AboutPage() {
           {aboutData.interests.map((interest) => (
             <span
               key={interest}
-              className="inline-flex items-center rounded-full border border-border bg-card/50 px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
+              className="inline-flex items-center  border border-border bg-card/50 px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
             >
               {interest}
             </span>
@@ -162,7 +162,7 @@ export default function AboutPage() {
         <div className="grid gap-5 md:grid-cols-2">
           <Link
             href="/work"
-            className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+            className="group  border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
           >
             <div className="flex items-center justify-between">
               <span className="kicker text-primary/80">Next</span>
@@ -178,7 +178,7 @@ export default function AboutPage() {
 
           <Link
             href="/contact"
-            className="group rounded-2xl border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+            className="group  border border-border bg-card/40 p-7 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
           >
             <div className="flex items-center justify-between">
               <span className="kicker text-primary/80">Connect</span>

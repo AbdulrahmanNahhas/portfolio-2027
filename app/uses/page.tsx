@@ -2,7 +2,7 @@ import {
   CodeIcon as Code2,
   ArrowSquareOutIcon as ExternalLink,
   GlobeIcon as Globe,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import { CtaSection } from "@/components/cta-section";
 import { PageHeader, PageLayout } from "@/components/page-layout";
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 const softwareCardClass =
-  "group rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5";
+  "group  border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5";
 
 /** First-two-letters monogram on a cobalt field — the no-image placeholder. */
 function Monogram({ name }: { name: string }) {
@@ -64,7 +64,7 @@ function ItemCard({ item }: { item: UseItem }) {
   return (
     <div
       className="
-        group flex h-full flex-col overflow-hidden rounded-2xl
+        group flex h-full flex-col overflow-hidden
         border border-border bg-card/40
         transition-all duration-300
         hover:-translate-y-1
@@ -78,7 +78,7 @@ function ItemCard({ item }: { item: UseItem }) {
         {/* Header */}
         <div className="flex items-center gap-3">
           {item.image ? (
-            <div className="relative size-20 shrink-0 overflow-hidden rounded-xl
+            <div className="relative size-20 shrink-0 overflow-hidden
               group-hover:scale-95 duration-300 transition-all mb-2">
               <Image
                 src={item.image}
@@ -90,7 +90,7 @@ function ItemCard({ item }: { item: UseItem }) {
               />
             </div>
           ) : item.logo ? (
-            <div className="flex border border-border/40 size-18 mb-2 shrink-0 items-center justify-center rounded-xl bg-muted/40">
+            <div className="flex border border-border/40 size-18 mb-2 shrink-0 items-center justify-center  bg-muted/40">
               <Icon
                 icon={item.logo}
                 className="size-12 transition-transform duration-250 group-hover:-rotate-5 group-hover:scale-110"

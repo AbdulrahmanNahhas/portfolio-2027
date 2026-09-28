@@ -1,4 +1,4 @@
-import { ArrowRightIcon as ArrowRight } from "@phosphor-icons/react";
+import { ArrowRightIcon as ArrowRight } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import { LinkButton } from "@/components/link-button";
 import { Reveal } from "@/components/reveal";
@@ -15,7 +15,7 @@ export function AboutSection() {
     <section id="about" className="relative py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal className="flex items-center gap-3">
-          <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="inline-flex h-1.5 w-1.5  bg-primary" />
           <p className="kicker text-primary/80">{about.label}</p>
         </Reveal>
 
@@ -43,9 +43,9 @@ export function AboutSection() {
             {about.highlights.map((item) => (
               <div
                 key={item.title}
-                className="group flex gap-4 rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
+                className="group flex gap-4  border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-foreground/20 hover:bg-card hover:shadow-md hover:shadow-foreground/5"
               >
-                <div className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="grid size-11 shrink-0 place-items-center  bg-secondary text-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
                   <item.icon className="size-5" />
                 </div>
                 <div>
@@ -79,7 +79,7 @@ export function AboutSection() {
         <div className="mt-20">
           <Reveal className="mb-6 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="inline-flex h-1.5 w-1.5  bg-primary" />
               <h3 className="kicker">Featured skills</h3>
             </div>
             <Link
@@ -95,7 +95,7 @@ export function AboutSection() {
             {featuredSkills.map((skill) => (
               <span
                 key={skill}
-                className="inline-flex items-center rounded-full border border-border bg-card/50 px-3.5 py-1.5 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
+                className="inline-flex items-center  border border-border bg-card/50 px-3.5 py-1.5 text-sm text-foreground transition-colors hover:border-primary/40 hover:bg-card"
               >
                 {skill}
               </span>

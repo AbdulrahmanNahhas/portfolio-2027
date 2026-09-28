@@ -1,7 +1,7 @@
 import {
   ArrowRightIcon as ArrowRight,
   ArrowUpRightIcon as ArrowUpRight,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -51,7 +51,7 @@ export function LinkButton({
   size = "default",
 }: LinkButtonProps) {
   const classNames = cn(
-    "group inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50",
+    "group inline-flex items-center justify-center gap-2  font-medium tracking-tight transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50",
     variantClassName[variant],
     sizeClassName[size],
     className,

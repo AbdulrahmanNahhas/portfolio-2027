@@ -2,7 +2,7 @@ import {
   ArrowRightIcon as ArrowRight,
   CalendarBlankIcon as Calendar,
   ClockIcon as Clock,
-} from "@phosphor-icons/react";
+} from "@phosphor-icons/react/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaSection } from "@/components/cta-section";
@@ -39,7 +39,7 @@ export default function BlogPage() {
               <Reveal key={post.slug} delay={index * 60}>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5 sm:p-7"
+                  className="group flex h-full flex-col  border border-border bg-card/40 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5 sm:p-7"
                 >
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
@@ -67,7 +67,7 @@ export default function BlogPage() {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="inline-flex items-center rounded-full border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
+                        className="inline-flex items-center  border border-border bg-secondary px-3 py-1 text-xs text-muted-foreground"
                       >
                         {tag}
                       </span>

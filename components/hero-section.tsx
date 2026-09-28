@@ -71,7 +71,7 @@ export function HeroSection() {
         {/* Top meta row */}
         <Reveal className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-2">
-            <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+            <span className="relative inline-flex size-2  bg-primary pulse-dot" />
             <span className="text-foreground">Currently building &amp; learning</span>
           </span>
           <span className="hidden h-3 w-px bg-border sm:block" />
@@ -110,7 +110,7 @@ export function HeroSection() {
               {focusItems.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl border border-border bg-card/40 p-3.5 transition-colors hover:border-foreground/20 hover:bg-card"
+                  className=" border border-border bg-card/40 p-3.5 transition-colors hover:border-foreground/20 hover:bg-card"
                 >
                   <div className="flex items-center gap-2 text-foreground">
                     <item.icon className="size-4 text-primary" />
@@ -151,11 +151,11 @@ export function HeroSection() {
               <Reveal key={project.id} delay={index * 80}>
                 <Link
                   href="/projects"
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
+                  className="group flex h-full flex-col  border border-border bg-card/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:bg-card hover:shadow-lg hover:shadow-foreground/5"
                 >
                   <div className="mb-6 flex items-center justify-between">
                     <span className="kicker tabular-nums">{project.year}</span>
-                    <span className="inline-flex h-6 items-center rounded-full bg-secondary px-2.5 text-[11px] font-medium text-muted-foreground">
+                    <span className="inline-flex h-6 items-center  bg-secondary px-2.5 text-[11px] font-medium text-muted-foreground">
                       {project.category.split(" ")[0]}
                     </span>
                   </div>
@@ -181,11 +181,11 @@ export function HeroSection() {
 
 function SignalPanel({ time, location }: { time: string; location: string }) {
   return (
-    <aside className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+    <aside className="relative overflow-hidden  border border-border bg-card shadow-sm">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-5 py-4">
         <div className="flex items-center gap-2.5">
-          <span className="relative inline-flex size-2 rounded-full bg-primary pulse-dot" />
+          <span className="relative inline-flex size-2  bg-primary pulse-dot" />
           <span className="kicker text-foreground/80">Signal · live</span>
         </div>
         <span className="font-mono text-xs tabular-nums text-muted-foreground">{time}</span>

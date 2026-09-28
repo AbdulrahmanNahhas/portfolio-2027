@@ -38,7 +38,7 @@ export function PageHeader({ kicker, title, description, children }: PageHeaderP
       />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <div className="flex items-center gap-3">
-          <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
+          <span className="inline-flex h-1.5 w-1.5  bg-primary" />
           <p className="kicker text-primary/80">{kicker}</p>
         </div>
 

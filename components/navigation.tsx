@@ -44,7 +44,7 @@ function ThemeToggle({ className }: { className?: string }) {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className={cn(
-        "grid size-9 place-items-center rounded-full border border-border bg-card/50 text-foreground transition-colors hover:border-foreground/30 hover:bg-card",
+        "grid size-9 place-items-center  border border-border bg-card/50 text-foreground transition-colors hover:border-foreground/30 hover:bg-card",
         className,
       )}
       aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} mode` : "Toggle color mode"}
@@ -113,7 +113,7 @@ export function Navigation() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative rounded-full px-3.5 py-2 text-sm tracking-tight transition-colors",
+                    "relative  px-3.5 py-2 text-sm tracking-tight transition-colors",
                     active
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -133,7 +133,7 @@ export function Navigation() {
             <ThemeToggle className="hidden sm:grid" />
             <Link
               href="/contact"
-              className="hidden h-9 items-center rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20 sm:inline-flex"
+              className="hidden h-9 items-center  bg-primary px-4 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:shadow-primary/20 sm:inline-flex"
             >
               Get in touch
             </Link>
@@ -142,7 +142,7 @@ export function Navigation() {
             <button
               type="button"
               onClick={() => setIsOpen((v) => !v)}
-              className="grid size-9 place-items-center rounded-full border border-border bg-card/50 text-foreground transition-colors hover:bg-card lg:hidden"
+              className="grid size-9 place-items-center  border border-border bg-card/50 text-foreground transition-colors hover:bg-card lg:hidden"
               aria-expanded={isOpen}
               aria-label="Toggle menu"
             >
@@ -162,7 +162,7 @@ export function Navigation() {
             className="fixed inset-0 top-16 z-40 bg-background/60 backdrop-blur-sm"
             onClick={() => setIsOpen(false)}
           />
-          <div className="relative z-50 mx-3 mt-2 overflow-hidden rounded-2xl border border-border bg-card shadow-xl shadow-foreground/10">
+          <div className="relative z-50 mx-3 mt-2 overflow-hidden  border border-border bg-card shadow-xl shadow-foreground/10">
             <div className="p-3">
               <div className="grid gap-1">
                 {mainNavItems.map((item) => {
@@ -172,14 +172,14 @@ export function Navigation() {
                       key={item.href}
                       href={item.href}
                       className={cn(
-                        "flex items-center justify-between rounded-xl px-4 py-3 text-sm transition-colors",
+                        "flex items-center justify-between  px-4 py-3 text-sm transition-colors",
                         active
                           ? "bg-secondary text-foreground"
                           : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
                       )}
                     >
                       <span>{item.label}</span>
-                      {active && <span className="size-1.5 rounded-full bg-primary" />}
+                      {active && <span className="size-1.5  bg-primary" />}
                     </Link>
                   );
                 })}
@@ -189,7 +189,7 @@ export function Navigation() {
                 <ThemeToggle />
                 <Link
                   href="/contact"
-                  className="inline-flex h-9 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                  className="inline-flex h-9 flex-1 items-center justify-center gap-2  bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
                   Get in touch
                 </Link>
