@@ -97,7 +97,7 @@ export function ContactForm() {
         <Label>Subject</Label>
         <Select
           value={formState.subject}
-          onValueChange={(value) => setFormState((s) => ({ ...s, subject: value }))}
+          onValueChange={(value) => setFormState((s) => ({ ...s, subject: value ?? "" }))}
         >
           <SelectTrigger className="h-11 w-full ">
             <SelectValue placeholder="Choose a subject" />
