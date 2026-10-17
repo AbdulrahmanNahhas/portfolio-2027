@@ -1,0 +1,46 @@
+{
+  "main": [
+    {
+      "id": "home",
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "href": "/about"
+    },
+    {
+      "id": "projects",
+      "label": "Projects",
+      "href": "/projects"
+    },
+    {
+      "id": "notes",
+      "label": "Notes",
+      "href": "/blog"
+    },
+    {
+      "id": "toolbox",
+      "label": "Toolbox",
+      "href": "/uses"
+    },
+    {
+      "id": "hello",
+      "label": "Say hello",
+      "href": "/contact"
+    }
+  ],
+  "extra": [
+    {
+      "id": "learning",
+      "label": "Learning",
+      "href": "/skills"
+    },
+    {
+      "id": "journey",
+      "label": "Earlier chapters",
+      "href": "/work"
+    }
+  ]
+}

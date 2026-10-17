@@ -1,0 +1,32 @@
+{
+  "name": "Abdulrahman Nahhas",
+  "title": "Student & developer",
+  "url": "https://abdulrahman.dev",
+  "location": "Homs, Syria",
+  "email": "contact@abdulrahman.dev",
+  "tagline": "Learning how things work. Building a few of my own.",
+  "bio": "I’m Abdulrahman Nahhas, a university student from Homs, Syria. I build web applications, explore embedded systems, and spend a growing amount of time with Rust and Nix.",
+  "social": {
+    "gitlab": "https://gitlab.com/AbdulrahmanNahhas",
+    "mastodon": "https://mastodon.social/@nahhas"
+  },
+  "displayName": "Nahhas",
+  "birthDate": "2007-04-17",
+  "status": "University student",
+  "description": "Nahhas’s personal corner of the internet. A university student from Homs, Syria, exploring Rust, Nix, web development, and embedded systems.",
+  "keywords": [
+    "Abdulrahman Nahhas",
+    "Nahhas",
+    "student",
+    "Rust",
+    "Nix",
+    "embedded systems",
+    "open source",
+    "Homs",
+    "Syria"
+  ],
+  "socialLabels": {
+    "gitlab": "AbdulrahmanNahhas on GitLab",
+    "mastodon": "@nahhas@mastodon.social"
+  }
+}

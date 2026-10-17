@@ -1,5 +1,13 @@
-export function formatDisplayDate(date: string, options: Intl.DateTimeFormatOptions) {
-  return new Date(date).toLocaleDateString("en-US", options);
+import settings from "@/content/settings.json";
+
+export function formatDisplayDate(
+  date: string,
+  options: Intl.DateTimeFormatOptions,
+) {
+  return new Date(date).toLocaleDateString(settings.dateLocale, {
+    timeZone: "UTC",
+    ...options,
+  });
 }
 
 export function formatMonthYear(date: string) {
@@ -7,11 +15,19 @@ export function formatMonthYear(date: string) {
 }
 
 export function formatLongDate(date: string) {
-  return formatDisplayDate(date, { day: "numeric", month: "long", year: "numeric" });
+  return formatDisplayDate(date, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 }
 
 export function formatShortDate(date: string) {
-  return formatDisplayDate(date, { day: "numeric", month: "short", year: "numeric" });
+  return formatDisplayDate(date, {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 }
 
 export function calculateDuration(start: string, end?: string) {
@@ -26,5 +42,7 @@ export function calculateDuration(start: string, end?: string) {
   const years = Math.floor(months / 12);
   const remainingMonths = months % 12;
 
-  return remainingMonths === 0 ? `${years} yr` : `${years} yr ${remainingMonths} mo`;
+  return remainingMonths === 0
+    ? `${years} yr`
+    : `${years} yr ${remainingMonths} mo`;
 }

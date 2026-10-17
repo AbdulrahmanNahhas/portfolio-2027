@@ -1,0 +1,41 @@
+[
+  {
+    "id": "personal-website",
+    "title": "This little corner of the internet",
+    "description": "A personal website with a playful desk, room for notes, and content that grows with me.",
+    "longDescription": "My personal website: a place for projects, learning notes, and the tools I use. Built with Next.js, TypeScript, and shadcn/ui, with a shared visual language and editable JSON content.",
+    "category": "Personal website",
+    "group": "personal",
+    "art": 0,
+    "tags": ["Next.js", "TypeScript", "shadcn/ui", "JSON content"],
+    "year": "Ongoing",
+    "status": "in-progress",
+    "featured": true
+  },
+  {
+    "id": "promise-platform",
+    "title": "Tools for justice & truth",
+    "description": "A website and digital tools to support the work of Promise for Justice & Truth.",
+    "longDescription": "As CTO at Promise for Justice & Truth, I developed the organization’s website, family-facing forms, surveys, databases, and a dashboard. The work supported teams documenting cases of detainees and disappeared people in Syria.",
+    "category": "Community & human rights",
+    "group": "community",
+    "art": 2,
+    "tags": ["Web development", "Databases", "Forms", "Dashboards"],
+    "year": "Earlier project",
+    "status": "archived",
+    "featured": true
+  },
+  {
+    "id": "thabat-website",
+    "title": "A home on the web for Thabat",
+    "description": "A clear, simple website and digital presence for a community association in Homs.",
+    "longDescription": "As a volunteer technical and media lead at Thabat Association, I designed and developed the organization’s website and helped maintain its technical systems and online presence. Thabat works in Islamic education, da’wah, and cultural development.",
+    "category": "Community website",
+    "group": "community",
+    "art": 2,
+    "tags": ["Web development", "Design", "Community", "Volunteering"],
+    "year": "Earlier project",
+    "status": "archived",
+    "featured": true
+  }
+]

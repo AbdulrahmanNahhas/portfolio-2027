@@ -1,17 +1,7 @@
-export type NavItem = {
-  label: string;
-  href: string;
-};
-
-export const mainNavItems: NavItem[] = [
-  { label: "Index", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Work", href: "/work" },
-  { label: "Skills", href: "/skills" },
-  { label: "Blog", href: "/blog" },
-  { label: "Uses", href: "/uses" },
-  { label: "Contact", href: "/contact" },
+import navigation from "@/content/en/navigation.json";
+export type NavItem = { id: string; label: string; href: string };
+export const mainNavItems: NavItem[] = navigation.main;
+export const footerNavItems: NavItem[] = [
+  ...navigation.main,
+  ...navigation.extra,
 ];
-
-export const footerNavItems: NavItem[] = mainNavItems;

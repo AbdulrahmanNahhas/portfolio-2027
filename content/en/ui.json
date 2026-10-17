@@ -1,0 +1,253 @@
+{
+  "home": {
+    "decoration": "✳",
+    "takeALookAround": "Take a look around",
+    "aLittleAboutMe": "A little about me",
+    "decoration2": "✧",
+    "currentlyOrbiting": "Currently orbiting",
+    "rustSystems": "Rust & systems",
+    "nixLinux": "Nix & Linux",
+    "openSource": "Open source",
+    "embeddedThings": "Embedded things",
+    "theProjectShelf": "The project shelf",
+    "decoration3": ".",
+    "allProjects": "All projects",
+    "notesFromTheMargins": "Notes from the margins",
+    "thinkingOutLoud": "Thinking out loud.",
+    "readAllNotes": "Read all notes",
+    "decoration4": "·",
+    "read": "read",
+    "behindTheKeyboard": "Behind the keyboard",
+    "stillAStudent": "Still a student.",
+    "alwaysCurious": "Always curious.",
+    "meetThePerson": "Meet the person",
+    "decoration5": "↳",
+    "somethingInCommon": "Something in common?",
+    "letsTalk": "Let’s talk",
+    "eyebrow": "University student · Homs, Syria",
+    "headlineLead": "A curious mind.",
+    "headlinePrefix": "A little",
+    "headlineAccent": "play",
+    "headlineSuffix": "ground.",
+    "greeting": "I’m {name}.",
+    "nickname": "You can call me {name}.",
+    "intro": "I build for the web, tinker with embedded systems, and keep finding my way back to Rust. Learning Nix, too. This is where the different threads meet.",
+    "footnote": "Some finished things. Some open questions. All part of learning.",
+    "projectsTitle": "Things I’ve been making",
+    "aboutBody": "I’m a university student from Homs, Syria. I like understanding the layers beneath a tool, and making something useful with what I find. Rust has become a particular favorite.",
+    "signature": "— {name}",
+    "helloBody": "Send a cool link, compare notes, or just say hello.",
+    "noteMeta": "{date} · {duration} read"
+  },
+  "about": {
+    "aboutMe": "About me",
+    "whatImLearning": "What I’m learning",
+    "decoration": ".",
+    "studentFirstCuriousAlways": "✳ Student first. Curious always.",
+    "decoration2": "↳",
+    "thoseEarlierChapters": "Those earlier chapters",
+    "metaDescription": "Abdulrahman Nahhas: a university student from Homs, Syria, exploring Rust, Nix, web applications, and embedded systems.",
+    "eyebrow": "Behind the keyboard",
+    "title": "Abdulrahman. Nahhas around here.",
+    "description": "A university student from Homs, Syria. Into software, systems, and understanding what makes things work.",
+    "identityLabel": "A small introduction",
+    "journeyTitle": "People are part of the story, too.",
+    "journeyDescription": "A few earlier chapters in community work and building together."
+  },
+  "projects": {
+    "metaDescription": "Personal and community projects by Abdulrahman Nahhas, including this website, Thabat, and Promise for Justice & Truth.",
+    "eyebrow": "The project shelf",
+    "title": "Made out of curiosity.",
+    "description": "A personal website, and a few earlier projects built for people and communities. Different contexts, different lessons. I’m keeping the shelf focused on things I can actually tell you about.",
+    "metaTitle": "Projects"
+  },
+  "notes": {
+    "decoration": "·",
+    "read": "read",
+    "readTheNote": "Read the note",
+    "metaDescription": "Notes on what I’m building, exploring, and learning along the way.",
+    "eyebrow": "Notes from the margins",
+    "title": "Figuring it out, out loud.",
+    "description": "Things I’ve learned, ideas I’m following, and the occasional long explanation of a very small thing.",
+    "metaTitle": "Notes",
+    "noteMeta": "{date} · {duration} read"
+  },
+  "article": {
+    "noteNotFound": "Note not found",
+    "backToNotes": "Back to notes",
+    "a": "a.",
+    "otherNotes": "Other notes",
+    "previousNote": "Previous note",
+    "nextNote": "Next note",
+    "authorLine": "A student learning out loud, from {location}.",
+    "readTime": "{date} · {duration} read"
+  },
+  "toolbox": {
+    "theEverydayCompanions": "The everyday companions.",
+    "keepingAnEyeOnThese": "Keeping an eye on these.",
+    "onTheWorkbench": "On the workbench.",
+    "metaDescription": "The software I use and the open-source projects I keep an eye on.",
+    "eyebrow": "The toolbox",
+    "title": "Good tools. Happy tinkering.",
+    "description": "What’s on my machine, what I enjoy using, and the independent projects I’m rooting for. A lot of open source, a few strong preferences.",
+    "linkLabels": {
+      "website": "Website",
+      "code": "Code",
+      "external": "More"
+    },
+    "metaTitle": "Toolbox"
+  },
+  "learning": {
+    "humanLanguagesToo": "Human languages, too.",
+    "onTheIWantToTryThat": "On the “I want to try that” list.",
+    "decoration": "·",
+    "metaDescription": "An evolving map of the things I’m learning and the things I want to try next.",
+    "eyebrow": "Always in progress",
+    "title": "A little closer to how things work.",
+    "description": "Rust is the language I keep coming back to. Nix has changed the way I think about my setup. Alongside university, I’m still exploring the web, embedded systems, and the layers underneath.",
+    "metaTitle": "Learning",
+    "roadmapItem": "{name} · {status}"
+  },
+  "journey": {
+    "earlierChapters": "Earlier chapters",
+    "metaDescription": "Earlier work with NAVIGATE, Promise for Justice & Truth, Thabat, Joud Volunteers, and New Syria Movement.",
+    "eyebrow": "People, projects & perspective",
+    "title": "The things people taught me.",
+    "description": "A few earlier chapters in building with people. From startup work to volunteering and community organizations, these experiences shaped the way I approach software."
+  },
+  "contact": {
+    "sayHello": "Say hello",
+    "leaveALittleNote": "Leave a little note.",
+    "metaDescription": "Send a cool link, ask a question, compare notes, or just say hello to Nahhas.",
+    "eyebrow": "The internet is better with people",
+    "title": "A good conversation starts with hello.",
+    "description": "A shared interest? Something you made? A question about something I made? I’d love to hear about it.",
+    "formDescription": "Put your thoughts here, then send them from your own email app."
+  },
+  "navigation": {
+    "skipToContent": "Skip to content",
+    "mainNavigation": "Main navigation",
+    "decoration": ".",
+    "toggleLightAndDarkTheme": "Toggle light and dark theme",
+    "gladYoureHere": "Glad you’re here",
+    "decoration2": "✳",
+    "openNavigation": "Open navigation",
+    "aroundHere": "Around here",
+    "pickALittleCornerToExplore": "Pick a little corner to explore.",
+    "learning": "Learning",
+    "journey": "Earlier chapters",
+    "homeLabel": "{name} — home"
+  },
+  "footer": {
+    "seeYouAround": "See you around",
+    "theInternet": "the internet.",
+    "madeWithCuriosityAlwaysAWorkIn": "Made with curiosity. Always a work in progress.",
+    "footerNavigation": "Footer navigation",
+    "gitlab": "GitLab",
+    "mastodon": "Mastodon",
+    "emailMe": "Email me",
+    "decoration": "©",
+    "studentTinkererInternetPerson": "Student. Tinkerer. Internet person.",
+    "backToTheTop": "Back to the top ↑"
+  },
+  "desk": {
+    "anIllustratedDeskWithLinksToMy": "An illustrated desk with links to my interests",
+    "aNoteToMyself": "a note to myself",
+    "stayCurious": "Stay curious.",
+    "makeThings": "Make things.",
+    "repeat": "Repeat.",
+    "openMyProjects": "Open my projects",
+    "helloRs": "hello.rs",
+    "aSmallStepForward": "// a small step forward",
+    "fn": "fn",
+    "main": "main() {",
+    "println": "println!",
+    "helloWorld": "(\"Hello, world!\");",
+    "decoration": "}",
+    "stillLearningStillBuilding": "// still learning. still building.",
+    "madeForFun": "made for fun",
+    "exploreMyToolbox": "Explore my toolbox",
+    "myToolbox": "MY TOOLBOX",
+    "openSourceMostly": "open source, mostly.",
+    "decoration2": "أهلاً!",
+    "helloInternet": "hello, internet",
+    "stillLearning": "still learning",
+    "goOnExploreTheDesk": "Go on, explore the desk.",
+    "shuffleThings": "Shuffle things",
+    "arrangementStatus": "Desk arrangement {number} of {total}"
+  },
+  "projectCard": {
+    "decoration": "أهلاً بالعالم",
+    "arabicWordsIntoPossibilities": "Arabic · words into possibilities",
+    "decoration2": "نص",
+    "decoration3": "→",
+    "data": "{ data }",
+    "esp32": "ESP32",
+    "label24": "24",
+    "c": "°C",
+    "aLittleHardwareMagic": "a little hardware magic",
+    "goodThings": "Good things,",
+    "builtTogether": "built together.",
+    "decoration4": "✳",
+    "code": "Code",
+    "visit": "Visit",
+    "statuses": {
+      "in-progress": "Still making it mine",
+      "completed": "Built & learned",
+      "archived": "An earlier project"
+    },
+    "sourceLabel": "{title} source code",
+    "visitLabel": "Visit {title}"
+  },
+  "contactForm": {
+    "yourName": "Your name",
+    "yourEmail": "Your email",
+    "whatsOnYourMind": "What’s on your mind?",
+    "yourMessage": "Your message",
+    "createAnEmail": "Create an email",
+    "messagePlaceholder": "A question, a cool discovery, or a simple hello…",
+    "emailHandoffHelp": "This opens your email app with a draft. You can review it and send it there.",
+    "namePlaceholder": "What should I call you?",
+    "emailPlaceholder": "you@example.com",
+    "openedStatus": "Your email app should open with your draft. If it doesn’t, email {email} directly."
+  },
+  "contactMethods": {
+    "emailIsAGoodPlaceToStart": "Email is a good place to start",
+    "aroundTheFediverse": "Around the fediverse",
+    "codeExperiments": "Code & experiments",
+    "myCornerOfTheWorld": "My corner of the world",
+    "aLittleHelloGoesALongWay": "A little hello goes a long way.",
+    "imHereToLearnShareAndMeet": "I’m here to learn, share, and meet interesting people. A thoughtful question or a link to something you love is a perfectly good reason to write."
+  },
+  "pageLayout": {
+    "decoration": "✳"
+  },
+  "projectShelf": {
+    "filterProjects": "Filter projects",
+    "filters": [
+      {
+        "value": "all",
+        "label": "Everything"
+      },
+      {
+        "value": "personal",
+        "label": "Personal"
+      },
+      {
+        "value": "community",
+        "label": "Community"
+      }
+    ],
+    "countOne": "{count} thing on this shelf",
+    "countMany": "{count} things on this shelf"
+  },
+  "personalSections": {
+    "theLearningMap": "The learning map",
+    "aFewThingsAboutMe": "A few things about me",
+    "notesToKeepNearby": "Notes to keep nearby",
+    "decoration": "✳",
+    "currentEyebrow": "On my desk right now",
+    "currentTitle": "Following a few good questions.",
+    "principlesTitle": "A few things I come back to."
+  }
+}

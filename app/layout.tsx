@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif, Oxanium } from "next/font/google";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
 import { defaultLocale, textDirectionByLocale } from "@/lib/i18n";
@@ -8,27 +8,14 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toast";
 
-const geistMonoHeading = Geist_Mono({subsets:['latin'],variable:'--font-heading'});
-
-const oxanium = Oxanium({subsets:['latin'],variable:'--font-sans'});
-
-const instrumentSerif = Instrument_Serif({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument",
+  variable: "--font-display-face",
   display: "swap",
 });
-
-const geist = Geist({
+const body = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -40,22 +27,12 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description:
-    "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools. Learning in public.",
+    "Nahhas’s personal corner of the internet. A student from Syria sharing projects, notes, open-source tools, and things learned along the way.",
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
-  keywords: [
-    "Abdulrahman Nahhas",
-    "software developer",
-    "Next.js developer",
-    "TypeScript",
-    "embedded systems",
-    "ESP32",
-    "full-stack development",
-    "Syria developer",
-    "humanitarian tech",
-  ],
-  category: "portfolio",
+  keywords: siteConfig.keywords,
+  category: "personal",
   alternates: {
     canonical: "/",
   },
@@ -65,15 +42,12 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.title}`,
-    description:
-      "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools.",
+    description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.title}`,
-    description:
-      "Student software developer from Syria building web interfaces, embedded systems, and humanitarian tools.",
-    creator: "@abdulrahmandev",
+    description: siteConfig.description,
   },
   robots: {
     index: true,
@@ -84,23 +58,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+  icons: { icon: { url: "/icon.svg", type: "image/svg+xml" } },
 };
 
 export default function RootLayout({
@@ -110,13 +68,19 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      data-scroll-behavior="smooth"
       lang={defaultLocale}
       dir={textDirectionByLocale[defaultLocale]}
-      className={cn("scroll-smooth", instrumentSerif.variable, geist.variable, geistMono.variable, "font-sans", oxanium.variable, geistMonoHeading.variable)}
+      className={cn(display.variable, body.variable)}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
           <Toaster />
         </ThemeProvider>

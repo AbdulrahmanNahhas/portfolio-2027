@@ -1,0 +1,58 @@
+[
+  {
+    "id": "navigate",
+    "company": "NAVIGATE",
+    "position": "Co-founder & CTO",
+    "location": "Remote",
+    "period": "Earlier chapter",
+    "description": "I co-founded a Syrian consulting company helping startups with business strategy, digital tools, and technical development.",
+    "responsibilities": [
+      "Shaped the technical direction for web platforms, infrastructure, and internal systems.",
+      "Worked with the other founders to connect technical decisions with each startup’s goals."
+    ]
+  },
+  {
+    "id": "promise-for-justice",
+    "company": "Promise for Justice & Truth",
+    "position": "CTO",
+    "location": "Homs, Syria",
+    "period": "Earlier chapter",
+    "description": "I helped a human rights organization build digital tools for its work on detainees and disappeared people in Syria.",
+    "responsibilities": [
+      "Developed the website, family-facing forms, surveys, databases, and a dashboard.",
+      "Supported research and legal documentation teams with their technical needs."
+    ]
+  },
+  {
+    "id": "thabat",
+    "company": "Thabat Association",
+    "position": "Technical & media lead · Volunteer",
+    "location": "Homs, Syria",
+    "period": "Earlier chapter",
+    "description": "I volunteered with an association focused on Islamic education, da’wah, and culture.",
+    "responsibilities": [
+      "Designed and developed its website and maintained digital platforms.",
+      "Helped with media production and the association’s online presence."
+    ]
+  },
+  {
+    "id": "joud",
+    "company": "Joud Volunteers Team",
+    "position": "Volunteer",
+    "location": "Remote",
+    "period": "February 2023",
+    "description": "During the Turkey–Syria earthquake response, I helped with logistics and relief coordination for affected families.",
+    "responsibilities": [
+      "Supported the team’s coordination and community relief efforts."
+    ]
+  },
+  {
+    "id": "new-syria-movement",
+    "company": "New Syria Movement",
+    "position": "Member",
+    "location": "Syria",
+    "period": "Earlier chapter",
+    "description": "I took part in discussions, local meetings, and awareness activities with a Syrian political movement focused on justice and reconstruction.",
+    "responsibilities": []
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "email": "contact@abdulrahman.dev",
+  "subjects": [
+    "Just saying hello",
+    "A question about a project",
+    "A cool thing to share",
+    "Rust, Nix & systems",
+    "Comparing notes"
+  ],
+  "salutation": "Hi Abdulrahman,",
+  "defaultSubject": "Hello!"
+}

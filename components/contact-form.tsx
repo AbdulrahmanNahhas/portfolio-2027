@@ -1,144 +1,104 @@
 "use client";
 
-import type { FormEvent } from "react";
-import { useState } from "react";
-import { CheckIcon as Check, PaperPlaneTiltIcon as Send } from "@phosphor-icons/react";
+import { copy, message } from "@/lib/content";
+
+import { useState, type FormEvent } from "react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
 import { contactConfig } from "@/lib/data";
 
-const emptyFormState = {
-  name: "",
-  email: "",
-  subject: contactConfig.subjects[0],
-  message: "",
-};
-
-function Label({ children }: { children: React.ReactNode }) {
-  return <span className="kicker">{children}</span>;
-}
-
 export function ContactForm() {
-  const [formState, setFormState] = useState(emptyFormState);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const [opened, setOpened] = useState(false);
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => window.setTimeout(resolve, 1200));
-    setIsSubmitting(false);
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="flex flex-col items-center  border border-border bg-card/40 p-10 text-center">
-        <span className="grid size-14 place-items-center  bg-primary/10 text-primary">
-          <Check className="size-7" />
-        </span>
-        <h3 className="font-display mt-6 text-2xl tracking-tight text-foreground">
-          Message sent
-        </h3>
-        <p className="mt-3 max-w-sm text-pretty text-sm leading-relaxed text-muted-foreground">
-          Thanks for reaching out — I&apos;ll get back to you as soon as I can.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setSubmitted(false);
-            setFormState(emptyFormState);
-          }}
-          className="mt-7 text-sm font-medium text-primary underline-offset-4 hover:underline"
-        >
-          Send another message
-        </button>
-      </div>
-    );
+    const form = new FormData(event.currentTarget);
+    const subject = String(form.get("subject") ?? contactConfig.defaultSubject);
+    const body = `${contactConfig.salutation}\n\n${form.get("message")}\n\n— ${form.get("name")}\n${form.get("email")}`;
+    window.location.href = `mailto:${contactConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setOpened(true);
   }
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid gap-5 sm:grid-cols-2">
-        <label className="space-y-2.5">
-          <Label>Name</Label>
+    <form onSubmit={handleSubmit} className="mt-6">
+      <FieldGroup>
+        <Field>
+          <FieldLabel htmlFor="contact-name">
+            {copy.contactForm.yourName}
+          </FieldLabel>
           <Input
-            type="text"
+            id="contact-name"
+            name="name"
+            autoComplete="name"
+            placeholder={copy.contactForm.namePlaceholder}
             required
-            value={formState.name}
-            onChange={(e) => setFormState((s) => ({ ...s, name: e.target.value }))}
-            placeholder="Your name"
-            className="h-11 "
+            maxLength={100}
           />
-        </label>
-
-        <label className="space-y-2.5">
-          <Label>Email</Label>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="contact-email">
+            {copy.contactForm.yourEmail}
+          </FieldLabel>
           <Input
+            id="contact-email"
+            name="email"
             type="email"
+            autoComplete="email"
+            placeholder={copy.contactForm.emailPlaceholder}
             required
-            value={formState.email}
-            onChange={(e) => setFormState((s) => ({ ...s, email: e.target.value }))}
-            placeholder="you@email.com"
-            className="h-11 "
+            maxLength={254}
           />
-        </label>
-      </div>
-
-      <div className="space-y-2.5">
-        <Label>Subject</Label>
-        <Select
-          value={formState.subject}
-          onValueChange={(value) => setFormState((s) => ({ ...s, subject: value ?? "" }))}
-        >
-          <SelectTrigger className="h-11 w-full ">
-            <SelectValue placeholder="Choose a subject" />
-          </SelectTrigger>
-          <SelectContent>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="contact-subject">
+            {copy.contactForm.whatsOnYourMind}
+          </FieldLabel>
+          <NativeSelect id="contact-subject" name="subject" className="w-full">
             {contactConfig.subjects.map((subject) => (
-              <SelectItem key={subject} value={subject}>
+              <NativeSelectOption value={subject} key={subject}>
                 {subject}
-              </SelectItem>
+              </NativeSelectOption>
             ))}
-          </SelectContent>
-        </Select>
-      </div>
-
-      <label className="block space-y-2.5">
-        <Label>Message</Label>
-        <Textarea
-          required
-          rows={6}
-          value={formState.message}
-          onChange={(e) => setFormState((s) => ({ ...s, message: e.target.value }))}
-          placeholder="Tell me about your project, idea, or question…"
-          className="min-h-32 "
-        />
-      </label>
-
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        size="lg"
-        className="h-12 w-full  text-sm font-medium"
-      >
-        {isSubmitting ? (
-          <span>Sending…</span>
-        ) : (
-          <>
-            <span>Send message</span>
-            <Send className="size-4" />
-          </>
+          </NativeSelect>
+        </Field>
+        <Field>
+          <FieldLabel htmlFor="contact-message">
+            {copy.contactForm.yourMessage}
+          </FieldLabel>
+          <Textarea
+            id="contact-message"
+            name="message"
+            required
+            rows={5}
+            maxLength={5000}
+            placeholder={copy.contactForm.messagePlaceholder}
+          />
+          <FieldDescription>
+            {copy.contactForm.emailHandoffHelp}
+          </FieldDescription>
+        </Field>
+        <Button type="submit">
+          {copy.contactForm.createAnEmail}
+          <ArrowUpRightIcon data-icon="inline-end" />
+        </Button>
+        {opened && (
+          <p role="status">
+            {message(copy.contactForm.openedStatus, {
+              email: contactConfig.email,
+            })}
+          </p>
         )}
-      </Button>
+      </FieldGroup>
     </form>
   );
 }

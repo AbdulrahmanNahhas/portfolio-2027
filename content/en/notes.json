@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "building-iot-dashboard-nextjs",
+    "title": "Building a Real-Time IoT Dashboard with Next.js and WebSockets",
+    "excerpt": "A deep dive into creating a responsive dashboard for monitoring sensor data in real-time, featuring WebSocket connections and dynamic charts.",
+    "content": "## Introduction\n\nBuilding real-time applications requires careful consideration of data flow, state management, and user experience. In this post, I'll walk through my approach to building an IoT monitoring dashboard.\n\n## The Architecture\n\nThe system consists of three main components:\n- ESP32 sensors publishing data via MQTT\n- A Node.js backend bridging MQTT to WebSocket\n- A Next.js frontend displaying real-time updates\n\n## Key Challenges\n\n1. **Connection Management** - Handling reconnections gracefully\n2. **Data Buffering** - Preventing UI jank during rapid updates\n3. **State Synchronization** - Keeping multiple components in sync\n\n## Code Highlights\n\nThe WebSocket hook manages connection lifecycle and message handling efficiently, using refs to prevent stale closures and implementing exponential backoff for reconnections.\n\n## Conclusion\n\nReal-time dashboards require thoughtful architecture, but modern tools like Next.js and WebSocket APIs make it achievable with clean, maintainable code.\n    ",
+    "date": "2026-04-15",
+    "readTime": "8 min",
+    "tags": ["Next.js", "IoT", "WebSocket", "Real-time"],
+    "featured": true
+  },
+  {
+    "slug": "esp32-mqtt-integration",
+    "title": "ESP32 MQTT Integration: From Sensor to Cloud",
+    "excerpt": "A practical guide to connecting ESP32 microcontrollers to cloud services using MQTT protocol, with code examples and best practices.",
+    "content": "\n## Why MQTT?\n\nMQTT is the de-facto standard for IoT communications. It's lightweight, supports QoS levels, and works great even on unreliable networks.\n\n## Setting Up the ESP32\n\nFirst, we need to configure the WiFi and MQTT client. The PubSubClient library makes this straightforward.\n\n## Message Structure\n\nI use JSON for message payloads, keeping them compact but descriptive. Each message includes sensor ID, timestamp, and readings.\n\n## Security Considerations\n\n- Use TLS for MQTT connections\n- Implement device authentication\n- Validate all incoming data on the server\n\n## Deployment Tips\n\nFor production deployments, consider using a dedicated MQTT broker like Mosquitto or a managed service.\n    ",
+    "date": "2026-03-22",
+    "readTime": "6 min",
+    "tags": ["ESP32", "MQTT", "IoT", "Embedded"],
+    "featured": true
+  },
+  {
+    "slug": "tailwindcss-design-system",
+    "title": "Creating a Consistent Design System with TailwindCSS v4",
+    "excerpt": "How I structure my TailwindCSS projects for maintainability, including custom themes, component patterns, and utility organization.",
+    "content": "\n## The Problem with Ad-hoc Styling\n\nWithout a system, CSS becomes unmaintainable. Tailwind helps, but you still need structure.\n\n## My Approach\n\n1. Define design tokens in CSS variables\n2. Create semantic utility classes\n3. Build component abstractions\n4. Document everything\n\n## Token Organization\n\nI organize tokens by purpose: colors, spacing, typography, and effects. This makes theming straightforward.\n\n## Component Patterns\n\nFor complex components, I use a combination of Tailwind utilities and CSS modules where needed.\n\n## Results\n\nWith this system, I can build consistent UIs faster and onboard new team members easily.\n    ",
+    "date": "2026-02-10",
+    "readTime": "5 min",
+    "tags": ["TailwindCSS", "Design System", "CSS", "Frontend"],
+    "featured": false
+  },
+  {
+    "slug": "syrian-tech-community",
+    "title": "Building Tech Communities in Challenging Environments",
+    "excerpt": "Reflections on growing as a developer in Syria, the challenges faced, and the resilient tech community that continues to thrive.",
+    "content": "\n## Context\n\nBeing a developer in Syria presents unique challenges: infrastructure limitations, economic difficulties, and limited access to resources.\n\n## The Community\n\nDespite challenges, a vibrant tech community exists. Online groups, local meetups, and shared learning have been invaluable.\n\n## Adapting to Constraints\n\n- Working with unreliable internet\n- Finding creative solutions to payment barriers\n- Building skills with limited resources\n\n## Looking Forward\n\nTechnology transcends borders. Through remote work and open source, Syrian developers contribute to the global tech ecosystem.\n    ",
+    "date": "2026-01-05",
+    "readTime": "7 min",
+    "tags": ["Community", "Syria", "Personal", "Career"],
+    "featured": false
+  }
+]

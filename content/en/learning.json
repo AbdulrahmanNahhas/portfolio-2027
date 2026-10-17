@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "id": "rust",
+      "title": "Rust is the rabbit hole I’m staying in.",
+      "icon": "code",
+      "skills": [
+        {
+          "name": "Rust",
+          "note": "Learning & loving it"
+        },
+        {
+          "name": "Ownership & borrowing",
+          "note": "Building understanding"
+        },
+        {
+          "name": "Systems programming",
+          "note": "Exploring"
+        }
+      ]
+    },
+    {
+      "id": "nix",
+      "title": "A system I can understand and rebuild.",
+      "icon": "terminal",
+      "skills": [
+        {
+          "name": "Nix / NixOS",
+          "note": "Learning through use"
+        },
+        {
+          "name": "Declarative configuration",
+          "note": "Putting into practice"
+        },
+        {
+          "name": "Linux",
+          "note": "My everyday environment"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "title": "Things for the browser.",
+      "icon": "globe",
+      "skills": [
+        {
+          "name": "JavaScript / TypeScript",
+          "note": "Building with"
+        },
+        {
+          "name": "React / Next.js",
+          "note": "Building with"
+        },
+        {
+          "name": "HTML / CSS",
+          "note": "Always improving"
+        },
+        {
+          "name": "PostgreSQL",
+          "note": "In my toolbox"
+        }
+      ]
+    },
+    {
+      "id": "embedded",
+      "title": "Code that reaches the physical world.",
+      "icon": "cpu",
+      "skills": [
+        {
+          "name": "ESP32 / Arduino",
+          "note": "Hands-on projects"
+        },
+        {
+          "name": "C / C++",
+          "note": "Practicing"
+        },
+        {
+          "name": "ESP-IDF / MQTT",
+          "note": "Exploring"
+        }
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "name": "Arabic",
+      "level": "Native"
+    },
+    {
+      "name": "English",
+      "level": "Learning & using"
+    }
+  ],
+  "roadmap": [
+    {
+      "name": "More Rust",
+      "status": "In progress"
+    },
+    {
+      "name": "Computer architecture",
+      "status": "Curious about"
+    },
+    {
+      "name": "Embedded Rust",
+      "status": "Want to explore"
+    },
+    {
+      "name": "PCB design",
+      "status": "On the list"
+    }
+  ],
+  "current": [
+    {
+      "id": "rust",
+      "symbol": "{ }",
+      "tag": "The favorite rabbit hole",
+      "title": "Rust, one small program at a time.",
+      "description": "I really love Rust. Right now I’m building my understanding of the language and the way it makes me think about software.",
+      "href": "/skills",
+      "linkLabel": "Follow the learning",
+      "tone": "rose"
+    },
+    {
+      "id": "nix",
+      "symbol": "❄",
+      "tag": "On my own machine",
+      "title": "Making sense of systems with Nix.",
+      "description": "I’ve been learning Nix and working with a declarative setup. I like being able to see how the pieces of my system fit together.",
+      "href": "/uses",
+      "linkLabel": "Open the toolbox",
+      "tone": "mint"
+    },
+    {
+      "id": "student",
+      "symbol": "↗",
+      "tag": "The ongoing part",
+      "title": "Still a student. Still figuring it out.",
+      "description": "University, hands-on projects, and questions that turn into another experiment. There’s plenty left to learn.",
+      "href": "/about",
+      "linkLabel": "A little more about me",
+      "tone": "butter"
+    }
+  ]
+}

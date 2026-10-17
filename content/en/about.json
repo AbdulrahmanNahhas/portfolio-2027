@@ -1,0 +1,61 @@
+{
+  "interests": [
+    "Rust",
+    "Nix & NixOS",
+    "Embedded systems",
+    "Open source",
+    "Web development",
+    "Community"
+  ],
+  "paragraphs": [
+    "I’m Abdulrahman Nahhas, a university student from Homs, Syria. I like understanding how things work, then trying to build something with what I’ve learned.",
+    "I started with web applications and found my way toward embedded systems. These days, Rust has a lot of my attention. I’ve also been learning Nix and getting more comfortable with the systems underneath the software.",
+    "Some of my earlier work was with community and human rights organizations. It taught me to start with the people who need a tool, and to care about making it clear and useful.",
+    "This site is my place to keep the different threads together: what I build, what I use, and what I’m still working out."
+  ],
+  "facts": [
+    {
+      "id": "home",
+      "label": "From",
+      "value": "Homs, Syria",
+      "symbol": "↗"
+    },
+    {
+      "id": "student",
+      "label": "These days",
+      "value": "University student",
+      "symbol": "✎"
+    },
+    {
+      "id": "rust",
+      "label": "Happily learning",
+      "value": "Rust & Nix",
+      "symbol": "{ }"
+    },
+    {
+      "id": "language",
+      "label": "A native hello",
+      "value": "أهلاً وسهلاً",
+      "symbol": "✳",
+      "lang": "ar",
+      "dir": "rtl"
+    }
+  ],
+  "principles": [
+    {
+      "id": "understand",
+      "title": "Understand the moving parts.",
+      "description": "I like tools that let me look underneath, ask questions, and keep learning."
+    },
+    {
+      "id": "useful",
+      "title": "Start with someone’s real problem.",
+      "description": "The work I’ve done with communities keeps bringing me back to the person using the thing."
+    },
+    {
+      "id": "practice",
+      "title": "Leave room to be a beginner.",
+      "description": "A small experiment and a better question are both worthwhile outcomes."
+    }
+  ]
+}
