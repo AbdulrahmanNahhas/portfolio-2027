@@ -11,7 +11,7 @@
     "embeddedThings": "Embedded things",
     "theProjectShelf": "The project shelf",
     "decoration3": ".",
-    "allProjects": "All projects",
+    "allProjects": "The workbench",
     "notesFromTheMargins": "Notes from the margins",
     "thinkingOutLoud": "Thinking out loud.",
     "readAllNotes": "Read all notes",
@@ -33,7 +33,7 @@
     "nickname": "You can call me {name}.",
     "intro": "I build for the web, tinker with embedded systems, and keep finding my way back to Rust. Learning Nix, too. This is where the different threads meet.",
     "footnote": "Some finished things. Some open questions. All part of learning.",
-    "projectsTitle": "Things I’ve been making",
+    "projectsTitle": "A few things are taking shape",
     "aboutBody": "I’m a university student from Homs, Syria. I like understanding the layers beneath a tool, and making something useful with what I find. Rust has become a particular favorite.",
     "signature": "— {name}",
     "helloBody": "Send a cool link, compare notes, or just say hello.",
@@ -55,10 +55,10 @@
     "journeyDescription": "Projects, teams, and community work that shaped how I build."
   },
   "projects": {
-    "metaDescription": "Websites, embedded experiments, and open-source learning projects by Abdulrahman Nahhas.",
-    "eyebrow": "The project shelf",
-    "title": "Made out of curiosity.",
-    "description": "Websites for people, experiments with tiny computers, and things I build just to figure them out. Some finished, some still on the desk.",
+    "metaDescription": "Abdulrahman Nahhas’s project shelf is under construction. Projects and their stories are coming soon.",
+    "eyebrow": "A work in progress",
+    "title": "Projects, in the making.",
+    "description": "This shelf is getting a little attention. I’m putting the projects and their stories together before sharing them here.",
     "metaTitle": "Projects"
   },
   "notes": {
@@ -288,5 +288,14 @@
     "currentEyebrow": "On my desk right now",
     "currentTitle": "Following a few good questions.",
     "principlesTitle": "A few things I come back to."
+  },
+  "projectsUpcoming": {
+    "status": "Under construction",
+    "title": "Still on the workbench.",
+    "description": "A few websites, small experiments, and things built out of curiosity. I’m giving each one a proper introduction. Come back for a look when the shelf is ready.",
+    "peek": "Peek at the workbench",
+    "about": "Meet the person behind it",
+    "window": "projects / work in progress",
+    "sticker": "a little tinkering ✳"
   }
 }

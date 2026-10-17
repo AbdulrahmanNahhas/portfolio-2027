@@ -7,16 +7,8 @@ import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
-import {
-  NativeSelect,
-  NativeSelectOption,
-} from "@/components/ui/native-select";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
+import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { contactConfig } from "@/lib/data";
 
 export function ContactForm() {
@@ -33,9 +25,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} className="mt-6">
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="contact-name">
-            {copy.contactForm.yourName}
-          </FieldLabel>
+          <FieldLabel htmlFor="contact-name">{copy.contactForm.yourName}</FieldLabel>
           <Input
             id="contact-name"
             name="name"
@@ -46,9 +36,7 @@ export function ContactForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="contact-email">
-            {copy.contactForm.yourEmail}
-          </FieldLabel>
+          <FieldLabel htmlFor="contact-email">{copy.contactForm.yourEmail}</FieldLabel>
           <Input
             id="contact-email"
             name="email"
@@ -60,9 +48,7 @@ export function ContactForm() {
           />
         </Field>
         <Field>
-          <FieldLabel htmlFor="contact-subject">
-            {copy.contactForm.whatsOnYourMind}
-          </FieldLabel>
+          <FieldLabel htmlFor="contact-subject">{copy.contactForm.whatsOnYourMind}</FieldLabel>
           <NativeSelect id="contact-subject" name="subject" className="w-full">
             {contactConfig.subjects.map((subject) => (
               <NativeSelectOption value={subject} key={subject}>
@@ -72,9 +58,7 @@ export function ContactForm() {
           </NativeSelect>
         </Field>
         <Field>
-          <FieldLabel htmlFor="contact-message">
-            {copy.contactForm.yourMessage}
-          </FieldLabel>
+          <FieldLabel htmlFor="contact-message">{copy.contactForm.yourMessage}</FieldLabel>
           <Textarea
             id="contact-message"
             name="message"
@@ -83,11 +67,9 @@ export function ContactForm() {
             maxLength={5000}
             placeholder={copy.contactForm.messagePlaceholder}
           />
-          <FieldDescription>
-            {copy.contactForm.emailHandoffHelp}
-          </FieldDescription>
+          <FieldDescription>{copy.contactForm.emailHandoffHelp}</FieldDescription>
         </Field>
-        <Button type="submit">
+        <Button type="submit" disabled size={"lg"}>
           {copy.contactForm.createAnEmail}
           <ArrowUpRightIcon data-icon="inline-end" />
         </Button>

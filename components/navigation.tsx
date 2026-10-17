@@ -1,7 +1,6 @@
 "use client";
 
 import { copy, message } from "@/lib/content";
-
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,38 +23,47 @@ import {
 import { siteConfig } from "@/lib/data";
 import { mainNavItems, footerNavItems } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
-
 export function Navigation() {
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   return (
-    <header className="site-header">
-      <a className="skip-link" href="#main-content">
+    <header className="relative z-20">
+      <a
+        className="absolute left-[30px] top-[-80px] rounded-[10px] bg-card px-5 py-3 focus:top-3"
+        href="#main-content"
+      >
         {copy.navigation.skipToContent}
       </a>
-      <nav className="site-nav" aria-label={copy.navigation.mainNavigation}>
+      <nav
+        className="mx-auto flex min-h-28 w-[min(1376px,calc(100%-96px))] items-center justify-between gap-7 border-b border-border max-[1150px]:w-[calc(100%-64px)] max-[900px]:min-h-[88px] max-[600px]:min-h-[78px] max-[600px]:w-[calc(100%-40px)]"
+        aria-label={copy.navigation.mainNavigation}
+      >
         <Link
-          className="wordmark"
+          className="inline-flex items-center font-heading text-[31px] font-extrabold tracking-[-1.8px] max-[900px]:text-[28px]"
           href="/"
           aria-label={message(copy.navigation.homeLabel, {
             name: siteConfig.displayName,
           })}
         >
-          <AsteriskIcon weight="bold" aria-hidden="true" />
+          <AsteriskIcon
+            className="mr-[9px] size-[29px] text-primary max-[600px]:size-6"
+            weight="bold"
+            aria-hidden="true"
+          />
           {siteConfig.displayName}
-          <span className="wordmark-dot">{copy.navigation.decoration}</span>
+          <span className="text-primary">{copy.navigation.decoration}</span>
         </Link>
-        <div className="desktop-nav">
+        <div className="flex items-center gap-[7px] max-[900px]:hidden">
           {mainNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "nav-link",
+                "rounded-[30px] px-[15px] py-[9px] text-[13px] font-medium transition-colors hover:bg-card max-[1150px]:px-[11px]",
                 (pathname === item.href ||
                   (item.href !== "/" && pathname.startsWith(item.href))) &&
-                  "active",
+                  "bg-card",
               )}
               aria-current={pathname === item.href ? "page" : undefined}
             >
@@ -63,7 +71,7 @@ export function Navigation() {
             </Link>
           ))}
         </div>
-        <div className="nav-actions">
+        <div className="flex items-center gap-[18px] max-[600px]:gap-[7px]">
           <Button
             variant="ghost"
             size="icon"
@@ -72,12 +80,14 @@ export function Navigation() {
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
           >
-            <SunIcon className="theme-sun" />
-            <MoonIcon className="theme-moon" />
+            <SunIcon className="dark:hidden" />
+            <MoonIcon className="hidden dark:block" />
           </Button>
-          <span className="nav-greeting">
+          <span className="text-[12px] max-[1150px]:hidden max-[900px]:inline max-[600px]:hidden">
             {copy.navigation.gladYoureHere}
-            <span aria-hidden="true">{copy.navigation.decoration2}</span>
+            <span className="ml-[7px] text-primary" aria-hidden="true">
+              {copy.navigation.decoration2}
+            </span>
           </span>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
@@ -85,7 +95,7 @@ export function Navigation() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="mobile-menu"
+                  className="hidden max-[900px]:inline-flex"
                   aria-label={copy.navigation.openNavigation}
                 />
               }
@@ -99,7 +109,7 @@ export function Navigation() {
                   {copy.navigation.pickALittleCornerToExplore}
                 </SheetDescription>
               </SheetHeader>
-              <div className="mobile-links">
+              <div className="flex flex-col gap-6 p-6 text-xl">
                 {footerNavItems.map((item) => (
                   <Link
                     key={item.id}

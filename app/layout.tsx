@@ -4,10 +4,9 @@ import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/data";
 import { defaultLocale, textDirectionByLocale } from "@/lib/i18n";
-import "./globals.css";
+import "./tailwind.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toast";
-
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display-face",
@@ -18,7 +17,6 @@ const body = DM_Sans({
   variable: "--font-body",
   display: "swap",
 });
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
@@ -27,7 +25,12 @@ export const metadata: Metadata = {
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  authors: [
+    {
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  ],
   creator: siteConfig.name,
   publisher: siteConfig.name,
   keywords: siteConfig.keywords,
@@ -57,9 +60,13 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  icons: { icon: { url: "/icon.svg", type: "image/svg+xml" } },
+  icons: {
+    icon: {
+      url: "/icon.svg",
+      type: "image/svg+xml",
+    },
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -70,7 +77,11 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       lang={defaultLocale}
       dir={textDirectionByLocale[defaultLocale]}
-      className={cn(display.variable, body.variable)}
+      className={cn(
+        display.variable,
+        body.variable,
+        "scroll-smooth scroll-pt-10",
+      )}
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-background text-foreground">

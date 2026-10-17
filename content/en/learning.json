@@ -24,37 +24,25 @@
       ]
     },
     {
-      "id": "web-mobile",
-      "title": "Web & Mobile Interfaces",
-      "icon": "globe",
+      "id": "hardware",
+      "title": "Hardware & Tools",
+      "icon": "wrench",
       "skills": [
         {
-          "name": "JavaScript / TypeScript",
-          "level": "advanced"
-        },
-        {
-          "name": "React / Next.js 16",
-          "level": "advanced"
-        },
-        {
-          "name": "React Native (Expo)",
-          "level": "proficient"
-        },
-        {
-          "name": "Tailwind CSS v4",
-          "level": "advanced"
-        },
-        {
-          "name": "shadcn/ui",
-          "level": "advanced"
-        },
-        {
-          "name": "Figma (Handoff)",
+          "name": "Reading Datasheets",
           "level": "working-knowledge"
         },
         {
-          "name": "TanStack Query",
-          "level": "proficient"
+          "name": "Circuit Troubleshooting",
+          "level": "beginner"
+        },
+        {
+          "name": "CMake / Build Systems",
+          "level": "working-knowledge"
+        },
+        {
+          "name": "Linux / Bash",
+          "level": "advanced"
         }
       ]
     },
@@ -140,25 +128,37 @@
       ]
     },
     {
-      "id": "hardware",
-      "title": "Hardware & Tools",
-      "icon": "wrench",
+      "id": "web-mobile",
+      "title": "Web & Mobile Interfaces",
+      "icon": "globe",
       "skills": [
         {
-          "name": "Reading Datasheets",
-          "level": "working-knowledge"
-        },
-        {
-          "name": "Circuit Troubleshooting",
-          "level": "beginner"
-        },
-        {
-          "name": "CMake / Build Systems",
-          "level": "working-knowledge"
-        },
-        {
-          "name": "Linux / Bash",
+          "name": "JavaScript / TypeScript",
           "level": "advanced"
+        },
+        {
+          "name": "React / Next.js 16",
+          "level": "advanced"
+        },
+        {
+          "name": "React Native (Expo)",
+          "level": "proficient"
+        },
+        {
+          "name": "Tailwind CSS v4",
+          "level": "advanced"
+        },
+        {
+          "name": "shadcn/ui",
+          "level": "advanced"
+        },
+        {
+          "name": "Figma (Handoff)",
+          "level": "working-knowledge"
+        },
+        {
+          "name": "TanStack Query",
+          "level": "proficient"
         }
       ]
     }
