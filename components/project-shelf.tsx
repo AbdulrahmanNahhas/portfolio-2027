@@ -1,35 +1,40 @@
-"use client";
-
+import Link from "next/link";
 import { copy, message } from "@/lib/content";
-
-import { useState } from "react";
 import { ProjectCard } from "@/components/project-card";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { projects } from "@/lib/data";
 
-export function ProjectShelf() {
-  const [filter, setFilter] = useState<string[]>(["all"]);
-  const selected = filter[0] ?? "all";
+export function ProjectShelf({ selected = "all" }: { selected?: string }) {
+  const filter = copy.projectShelf.filters.some(
+    (item) => item.value === selected,
+  )
+    ? selected
+    : "all";
   const visible = projects.filter(
-    (project) => selected === "all" || project.group === selected,
+    (project) => filter === "all" || project.group === filter,
   );
   return (
     <>
       <div className="project-filter">
-        <ToggleGroup
-          value={filter}
-          onValueChange={(value) => {
-            if (value.length) setFilter(value);
-          }}
-          variant="outline"
+        <nav
+          className="project-filter-links"
           aria-label={copy.projectShelf.filterProjects}
         >
           {copy.projectShelf.filters.map((item) => (
-            <ToggleGroupItem key={item.value} value={item.value}>
+            <Link
+              key={item.value}
+              href={
+                item.value === "all"
+                  ? "/projects"
+                  : `/projects?filter=${encodeURIComponent(item.value)}`
+              }
+              scroll={false}
+              className="project-filter-link"
+              aria-current={filter === item.value ? "page" : undefined}
+            >
               {item.label}
-            </ToggleGroupItem>
+            </Link>
           ))}
-        </ToggleGroup>
+        </nav>
         <p role="status">
           {message(
             visible.length === 1

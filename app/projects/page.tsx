@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   title: copy.projects.metaTitle,
   description: copy.projects.metaDescription,
 };
-export default function ProjectsPage() {
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ filter?: string | string[] }>;
+}) {
+  const { filter } = await searchParams;
+  const selected = Array.isArray(filter) ? filter[0] : filter;
   return (
     <PageLayout>
       <PageHeader
@@ -15,7 +21,7 @@ export default function ProjectsPage() {
         description={copy.projects.description}
       />
       <section className="inner-section content-width">
-        <ProjectShelf />
+        <ProjectShelf selected={selected} />
       </section>
     </PageLayout>
   );
