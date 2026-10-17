@@ -8,6 +8,7 @@
     npm.enable = false;
     pnpm = {
       enable = true;
+      package = pkgs.pnpm_11;
       install.enable = true;
     };
   };
