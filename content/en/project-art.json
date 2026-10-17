@@ -1,0 +1,118 @@
+{
+  "insanps": {
+    "window": "insanps",
+    "heading": "A little more human.",
+    "labels": ["People", "Stories", "Community"],
+    "caption": "a home for good things",
+    "sticker": "Soon"
+  },
+  "fatih": {
+    "window": "fatih 115",
+    "heading": "Every story matters.",
+    "labels": ["Document", "Preserve", "Remember"],
+    "caption": "care, in every detail",
+    "sticker": "Records"
+  },
+  "car": {
+    "window": "esp-car / 2.0",
+    "heading": "A little hardware magic.",
+    "labels": ["ESP32", "Wi-Fi", "Control"],
+    "caption": "small wheels, big curiosity",
+    "sticker": "ESP32"
+  },
+  "promise": {
+    "window": "promise for justice & truth",
+    "heading": "Good things,\nbuilt together.",
+    "labels": ["Families", "Records", "Truth"],
+    "caption": "technology with a purpose",
+    "sticker": "With care"
+  },
+  "thabat": {
+    "window": "thabat",
+    "heading": "ثبات",
+    "labels": ["Learn", "Grow", "Share"],
+    "caption": "a little knowledge goes a long way",
+    "sticker": "Homs"
+  },
+  "mun": {
+    "window": "ihsan mun",
+    "heading": "Ideas. Voices. Tomorrow.",
+    "labels": ["Debate", "Connect", "Discover"],
+    "caption": "a place for bigger conversations",
+    "sticker": "MUN"
+  },
+  "drone": {
+    "window": "flight lab",
+    "heading": "A different point of view.",
+    "labels": ["ESP32", "Sensors", "Telemetry"],
+    "caption": "learning to find a little balance",
+    "sticker": "Flight lab"
+  },
+  "supermarket": {
+    "window": "little shop",
+    "heading": "Small shop. Smart tools.",
+    "labels": ["Inventory", "Checkout", "Receipts"],
+    "caption": "from a tiny computer to a real counter",
+    "sticker": "Raspberry Pi"
+  },
+  "education": {
+    "window": "syrian platform",
+    "heading": "Room for every question.",
+    "labels": ["Lessons", "Resources", "Possibilities"],
+    "caption": "a place to keep learning",
+    "sticker": "Learn"
+  },
+  "media": {
+    "window": "nahhasio",
+    "heading": "A little movie night.",
+    "labels": ["Library", "Discover", "Play"],
+    "caption": "family time, one experiment at a time",
+    "sticker": "GTK + Rust"
+  },
+  "nix": {
+    "window": "configuration.nix",
+    "heading": "My machine, written down.",
+    "labels": ["Nix", "Linux", "Rebuild"],
+    "caption": "a home for my everyday system",
+    "sticker": "NixOS",
+    "code": [
+      "{ config, pkgs, ... }:",
+      "{",
+      "  home.packages = [",
+      "    pkgs.rustc  pkgs.git",
+      "  ];",
+      "}"
+    ],
+    "command": "nixos-rebuild"
+  },
+  "rust": {
+    "window": "rustlings.rs",
+    "heading": "One more little exercise.",
+    "labels": ["Read", "Try", "Understand"],
+    "caption": "making friends with the compiler",
+    "sticker": "Rust",
+    "code": [
+      "fn main() {",
+      "  let curiosity = true;",
+      "  println!(\"Hello, Rust!\");",
+      "  // one step at a time",
+      "}",
+      "✓"
+    ],
+    "command": "cargo check"
+  },
+  "portfolio": {
+    "window": "nahhas / personal space",
+    "heading": "Hello, curious person.",
+    "labels": ["Projects", "Notes", "Small discoveries"],
+    "caption": "an ever-growing corner of the internet",
+    "sticker": "Hello!"
+  },
+  "lms": {
+    "window": "nahhas lms",
+    "heading": "A good day to learn.",
+    "labels": ["Courses", "Chapters", "Progress"],
+    "caption": "a snapshot of learning, circa 2024",
+    "sticker": "2024"
+  }
+}

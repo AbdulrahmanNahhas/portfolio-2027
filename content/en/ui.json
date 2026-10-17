@@ -55,10 +55,10 @@
     "journeyDescription": "Projects, teams, and community work that shaped how I build."
   },
   "projects": {
-    "metaDescription": "Personal and community projects by Abdulrahman Nahhas, including this website, Thabat, and Promise for Justice & Truth.",
+    "metaDescription": "Websites, embedded experiments, and open-source learning projects by Abdulrahman Nahhas.",
     "eyebrow": "The project shelf",
     "title": "Made out of curiosity.",
-    "description": "A personal website, and a few earlier projects built for people and communities. Different contexts, different lessons. I’m keeping the shelf focused on things I can actually tell you about.",
+    "description": "Websites for people, experiments with tiny computers, and things I build just to figure them out. Some finished, some still on the desk.",
     "metaTitle": "Projects"
   },
   "notes": {
@@ -193,12 +193,25 @@
     "code": "Code",
     "visit": "Visit",
     "statuses": {
-      "in-progress": "Still making it mine",
-      "completed": "Built & learned",
-      "archived": "An earlier project"
+      "in-progress": "In progress",
+      "completed": "Completed",
+      "archived": "Archived",
+      "planning": "On the drawing board",
+      "production": "In production",
+      "launching": "Launching soon",
+      "cancelled": "Cancelled"
     },
-    "sourceLabel": "{title} source code",
-    "visitLabel": "Visit {title}"
+    "sourceLabel": "Open {title} on GitHub",
+    "visitLabel": "Visit {title}",
+    "notes": "Project notes",
+    "role": "My part",
+    "stack": "Built with / exploring",
+    "repository": "View repository",
+    "organization": "About the organization",
+    "organizationLabel": "About {title}",
+    "noPublicLink": "No public link yet",
+    "unpublished": "In progress · Not published",
+    "offline": "Website offline"
   },
   "contactForm": {
     "yourName": "Your name",
@@ -231,16 +244,34 @@
         "label": "Everything"
       },
       {
-        "value": "personal",
-        "label": "Personal"
+        "value": "web",
+        "label": "Web"
+      },
+      {
+        "value": "embedded",
+        "label": "Hardware"
       },
       {
         "value": "community",
         "label": "Community"
+      },
+      {
+        "value": "personal",
+        "label": "Learning & open source"
+      },
+      {
+        "value": "archived",
+        "label": "Archived"
       }
     ],
     "countOne": "{count} thing on this shelf",
-    "countMany": "{count} things on this shelf"
+    "countMany": "{count} things on this shelf",
+    "workTitle": "Websites, circuits & curious ideas.",
+    "workDescription": "Projects for organizations, communities, and a few experiments that escaped the notebook.",
+    "learningTitle": "Learning in the open.",
+    "learningDescription": "Personal projects, frontend experiments, and things I build to learn. Public repositories link straight to GitHub.",
+    "sectionCount": "{count} projects",
+    "sectionCountOne": "{count} project"
   },
   "personalSections": {
     "theLearningMap": "The learning map",

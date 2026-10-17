@@ -1,0 +1,26 @@
+[
+  {
+    "id": "raspberry-pi-supermarket",
+    "title": "Raspberry Pi Supermarket",
+    "description": "A small-shop system imagined around a Raspberry Pi, a barcode scanner, and a little receipt printer.",
+    "longDescription": "A planned supermarket management system combining point of sale, barcode scanning, inventory, and a web dashboard. The idea is a modular setup for small shops using Raspberry Pi hardware.",
+    "category": "Hardware meets software",
+    "group": "embedded",
+    "art": "supermarket",
+    "tags": [
+      "Raspberry Pi 5",
+      "Next.js 15",
+      "Tauri",
+      "TypeScript",
+      "SQLite",
+      "Barcode scanner",
+      "Thermal printer",
+      "WebSocket"
+    ],
+    "year": "2025 →",
+    "status": "planning",
+    "role": "Full-stack development & system design",
+    "kind": "project",
+    "featured": false
+  }
+]

@@ -1,5 +1,4 @@
 import profile from "@/content/en/profile.json";
-import projectData from "@/content/en/projects.json";
 import journeyData from "@/content/en/journey.json";
 import learning from "@/content/en/learning.json";
 import about from "@/content/en/about.json";
@@ -9,12 +8,7 @@ import contact from "@/content/en/contact.json";
 
 // Content stays in JSON. This module only exposes typed views for components.
 export const siteConfig = profile;
-export const projects = projectData;
-export type Project = (typeof projectData)[number] & {
-  link?: string;
-  github?: string;
-  image?: string;
-};
+export { projects, type Project } from "@/lib/projects";
 export const experiences = journeyData;
 export const skillCategories = learning.categories;
 export const languages = learning.languages;

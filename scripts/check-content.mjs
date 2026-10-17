@@ -33,13 +33,52 @@ const schemas = {
       longDescription: text,
       category: text,
       group: z.enum(["personal", "community", "web", "embedded", "other"]),
-      art: z.number().int().min(0).max(3),
+      art: z.enum([
+        "insanps",
+        "fatih",
+        "car",
+        "promise",
+        "thabat",
+        "mun",
+        "drone",
+        "supermarket",
+        "education",
+        "media",
+        "nix",
+        "rust",
+        "portfolio",
+        "lms",
+      ]),
+      kind: z.enum(["project", "repository", "learning"]),
+      role: text,
       tags: list(text),
       year: text,
-      status: z.enum(["in-progress", "completed", "archived"]),
+      status: z.enum([
+        "in-progress",
+        "completed",
+        "archived",
+        "planning",
+        "production",
+        "launching",
+        "cancelled",
+      ]),
       featured: z.boolean(),
+      published: z.boolean().optional(),
       link: z.url().optional(),
       github: z.url().optional(),
+      organization: z.url().optional(),
+    }),
+  ),
+  "project-art": z.record(
+    id,
+    z.object({
+      window: text,
+      heading: text,
+      labels: list(text).length(3),
+      caption: text,
+      sticker: text,
+      code: list(text).optional(),
+      command: text.optional(),
     }),
   ),
   journey: list(
@@ -155,6 +194,7 @@ function checkUnique(items, key, label) {
     throw new Error(`Duplicate ${key} in ${label}`);
 }
 for (const name of ["projects", "journey"]) checkUnique(data[name], "id", name);
+checkUnique(data.projects, "art", "project illustrations");
 checkUnique(data.notes, "slug", "notes");
 checkUnique(
   [...data.navigation.main, ...data.navigation.extra],
@@ -218,9 +258,31 @@ for (const project of data.projects)
 for (const filter of ui.projectShelf.filters)
   if (
     filter.value !== "all" &&
-    !data.projects.some((project) => project.group === filter.value)
+    !data.projects.some((project) =>
+      filter.value === "archived"
+        ? ["archived", "cancelled"].includes(project.status)
+        : filter.value === "personal"
+          ? project.kind !== "project"
+          : project.group === filter.value,
+    )
   )
     throw new Error(`Empty configured project filter: ${filter.value}`);
+for (const project of data.projects) {
+  if (!data["project-art"][project.art])
+    throw new Error(`Missing artwork copy for ${project.art}`);
+  if (
+    project.kind === "repository" &&
+    !project.github?.startsWith("https://github.com/")
+  )
+    throw new Error(`Repository card ${project.id} needs a direct GitHub URL`);
+  for (const value of [
+    project.link,
+    project.github,
+    project.organization,
+  ].filter(Boolean))
+    if (/example\.com|yourname|\.demo(?:\/|$)/.test(value))
+      throw new Error(`Placeholder project URL: ${value}`);
+}
 if (JSON.stringify({ profile: data.profile, ui }).match(/\baqua\b/i))
   throw new Error("Old Aqua identity remains in active copy");
 
@@ -234,5 +296,5 @@ for (const category of data.learning.categories) {
 }
 
 console.log(
-  `Content OK: 10 JSON sources, ${data.projects.length} projects, ${data.journey.length} earlier chapters, ${data.notes.length} notes. Links, IDs, dates, UI keys, and display values checked.`,
+  `Content OK: 11 JSON sources, ${data.projects.length} projects, ${data.journey.length} earlier chapters, ${data.notes.length} notes. Links, IDs, dates, UI keys, and display values checked.`,
 );
