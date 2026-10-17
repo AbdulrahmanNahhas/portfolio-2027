@@ -149,7 +149,9 @@
     "emailMe": "Email me",
     "decoration": "©",
     "studentTinkererInternetPerson": "Student. Tinkerer. Internet person.",
-    "backToTheTop": "Back to the top ↑"
+    "backToTheTop": "Back to the top ↑",
+    "explore": "Explore",
+    "elsewhere": "Elsewhere"
   },
   "desk": {
     "anIllustratedDeskWithLinksToMy": "An illustrated desk with links to my interests",
@@ -203,7 +205,7 @@
     },
     "sourceLabel": "Open {title} on GitHub",
     "visitLabel": "Visit {title}",
-    "notes": "Project notes",
+    "notes": "Project details",
     "role": "My part",
     "stack": "Built with / exploring",
     "repository": "View repository",
@@ -211,7 +213,12 @@
     "organizationLabel": "About {title}",
     "noPublicLink": "No public link yet",
     "unpublished": "In progress · Not published",
-    "offline": "Website offline"
+    "offline": "Website offline",
+    "notesClose": "Close details",
+    "notesHint": "The story, my part & technologies",
+    "explore": "Explore project",
+    "completedOffline": "Completed · Website offline",
+    "closedOn": "Website closed"
   },
   "contactForm": {
     "yourName": "Your name",

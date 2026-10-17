@@ -5,6 +5,7 @@ export type Project = (typeof projectData)[number] & {
   github?: string;
   organization?: string;
   published?: boolean;
+  closedOn?: string;
 };
 
 export const projects: readonly Project[] = projectData;

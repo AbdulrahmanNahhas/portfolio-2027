@@ -26,8 +26,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.name} — ${siteConfig.title}`,
     template: `%s — ${siteConfig.name}`,
   },
-  description:
-    "Nahhas’s personal corner of the internet. A student from Syria sharing projects, notes, open-source tools, and things learned along the way.",
+  description: siteConfig.description,
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,

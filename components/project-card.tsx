@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { formatDisplayDate } from "@/lib/date";
 import { copy, message } from "@/lib/content";
 import {
   ArrowUpRightIcon,
@@ -16,11 +18,13 @@ function ProjectStatus({ project }: { project: Project }) {
       className={`project-status status-${project.status}`}
     >
       <i aria-hidden="true" />
-      {project.published === false && project.status === "in-progress"
-        ? copy.projectCard.unpublished
-        : copy.projectCard.statuses[
-            project.status as keyof typeof copy.projectCard.statuses
-          ]}
+      {project.closedOn && project.status === "completed"
+        ? copy.projectCard.completedOffline
+        : project.published === false && project.status === "in-progress"
+          ? copy.projectCard.unpublished
+          : copy.projectCard.statuses[
+              project.status as keyof typeof copy.projectCard.statuses
+            ]}
     </Badge>
   );
 }
@@ -61,12 +65,36 @@ export function ProjectCard({
         {!compact && (
           <details className="project-notes">
             <summary>
-              {copy.projectCard.notes}
-              <CaretDownIcon aria-hidden="true" />
+              <span className="project-notes-label">
+                <span className="notes-closed-label">
+                  {copy.projectCard.notes}
+                </span>
+                <span className="notes-open-label">
+                  {copy.projectCard.notesClose}
+                </span>
+                <small>{copy.projectCard.notesHint}</small>
+              </span>
+              <span className="project-notes-chevron">
+                <CaretDownIcon aria-hidden="true" />
+              </span>
             </summary>
             <div>
               <p>{project.longDescription}</p>
               <dl>
+                {project.closedOn && (
+                  <div>
+                    <dt>{copy.projectCard.closedOn}</dt>
+                    <dd>
+                      <time dateTime={project.closedOn}>
+                        {formatDisplayDate(project.closedOn, {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
+                      </time>
+                    </dd>
+                  </div>
+                )}
                 <div>
                   <dt>{copy.projectCard.role}</dt>
                   <dd>{project.role}</dd>
@@ -79,57 +107,63 @@ export function ProjectCard({
             </div>
           </details>
         )}
-        <div className="project-bottom">
-          <div className="project-actions">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={message(copy.projectCard.sourceLabel, {
-                  title: project.title,
-                })}
-              >
-                <GithubLogoIcon aria-hidden="true" />
-                <span>{copy.projectCard.code}</span>
-              </a>
-            )}
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={message(copy.projectCard.visitLabel, {
-                  title: project.title,
-                })}
-              >
-                <span>{copy.projectCard.visit}</span>
-                <ArrowUpRightIcon aria-hidden="true" />
-              </a>
-            )}
-            {project.organization && (
-              <a
-                href={project.organization}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={message(copy.projectCard.organizationLabel, {
-                  title: project.title,
-                })}
-              >
-                <span>{copy.projectCard.organization}</span>
-                <ArrowUpRightIcon aria-hidden="true" />
-              </a>
-            )}
-            {!project.link &&
-              !project.github &&
-              !project.organization &&
-              !compact && (
-                <span className="project-unlinked">
-                  {copy.projectCard.noPublicLink}
-                </span>
-              )}
+        {compact ? (
+          <div className="project-bottom">
+            <Link
+              className="compact-project-link"
+              href={`/projects#project-${project.id}`}
+            >
+              {copy.projectCard.explore}
+              <ArrowUpRightIcon aria-hidden="true" />
+            </Link>
           </div>
-        </div>
+        ) : (
+          (project.github || project.link || project.organization) && (
+            <div className="project-bottom">
+              <div className="project-actions">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={message(copy.projectCard.sourceLabel, {
+                      title: project.title,
+                    })}
+                  >
+                    <GithubLogoIcon aria-hidden="true" />
+                    <span>{copy.projectCard.code}</span>
+                  </a>
+                )}
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={message(copy.projectCard.visitLabel, {
+                      title: project.title,
+                    })}
+                  >
+                    <span>{copy.projectCard.visit}</span>
+                    <ArrowUpRightIcon aria-hidden="true" />
+                  </a>
+                )}
+                {project.organization && (
+                  <a
+                    href={project.organization}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={message(copy.projectCard.organizationLabel, {
+                      title: project.title,
+                    })}
+                  >
+                    <span>{copy.projectCard.organization}</span>
+                    <ArrowUpRightIcon aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        )}
       </div>
     </article>
   );

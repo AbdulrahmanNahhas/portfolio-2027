@@ -22,34 +22,40 @@ export function Footer() {
           <p>{copy.footer.madeWithCuriosityAlwaysAWorkIn}</p>
         </div>
         <div className="footer-links">
-          <nav aria-label={copy.footer.footerNavigation}>
-            {footerNavItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div>
-            <a
-              href={siteConfig.social.gitlab}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {copy.footer.gitlab}
-              <ArrowUpRightIcon />
-            </a>
-            <a
-              href={siteConfig.social.mastodon}
-              target="_blank"
-              rel="me noopener noreferrer"
-            >
-              {copy.footer.mastodon}
-              <ArrowUpRightIcon />
-            </a>
-            <a href={`mailto:${siteConfig.email}`}>
-              {copy.footer.emailMe}
-              <ArrowUpRightIcon />
-            </a>
+          <div className="footer-navigation-group">
+            <h3>{copy.footer.explore}</h3>
+            <nav aria-label={copy.footer.footerNavigation}>
+              {footerNavItems.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div className="footer-social-group">
+            <h3>{copy.footer.elsewhere}</h3>
+            <div className="footer-social-links">
+              <a
+                href={siteConfig.social.gitlab}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {copy.footer.gitlab}
+                <ArrowUpRightIcon />
+              </a>
+              <a
+                href={siteConfig.social.mastodon}
+                target="_blank"
+                rel="me noopener noreferrer"
+              >
+                {copy.footer.mastodon}
+                <ArrowUpRightIcon />
+              </a>
+              <a href={`mailto:${siteConfig.email}`}>
+                {copy.footer.emailMe}
+                <ArrowUpRightIcon />
+              </a>
+            </div>
           </div>
         </div>
       </div>

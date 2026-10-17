@@ -4111,3 +4111,400 @@
     left: 53%;
   }
 }
+
+/* Clear controls and natural card heights; never reserve a footer without an action. */
+.all-projects {
+  align-items: start;
+}
+.project-bottom {
+  margin-top: 16px;
+  padding-top: 0;
+  border-top: 0;
+}
+.full-project .project-bottom {
+  margin-top: 16px;
+}
+.full-project .project-tags {
+  margin-bottom: 16px;
+}
+.project-notes {
+  margin-bottom: 0;
+  border: 0;
+}
+.project-notes summary {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--secondary);
+  color: var(--foreground);
+  gap: 16px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.project-notes-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 13px;
+  font-weight: 650;
+}
+.project-notes-label small {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.notes-open-label {
+  display: none;
+}
+.project-notes[open] .notes-closed-label {
+  display: none;
+}
+.project-notes[open] .notes-open-label {
+  display: inline;
+}
+.project-notes-chevron {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--card);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+}
+.project-notes summary:hover {
+  background: var(--accent);
+  border-color: var(--primary);
+}
+.project-notes > div {
+  padding: 17px 2px 0;
+}
+.compact-project .project-art {
+  height: 245px;
+}
+.compact-project .illustrated-browser {
+  width: 83%;
+  max-width: 280px;
+  scale: 0.88;
+}
+.compact-project .illustrated-object {
+  width: 72%;
+  max-width: 270px;
+  left: 56%;
+}
+.compact-project .art-sticker {
+  top: 18px;
+  right: 18px;
+  font-size: 8px;
+  padding: 6px 8px;
+}
+.compact-project .art-caption {
+  bottom: 18px;
+  font-size: 8px;
+  padding-inline: 20px;
+}
+.compact-project .hardware-module {
+  width: 54px;
+  height: 62px;
+  left: 10%;
+}
+.compact-project .hardware-module > svg {
+  width: 25px;
+  height: 25px;
+}
+.compact-project .hardware-pins {
+  width: 40px;
+  height: 42px;
+}
+.compact-project .hardware-module::before,
+.compact-project .hardware-module::after {
+  width: 38px;
+  left: 7px;
+}
+.compact-project .project-bottom {
+  margin-top: auto;
+}
+.compact-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+.compact-project-link svg {
+  width: 16px;
+  height: 16px;
+  transition: translate 0.2s;
+}
+.shelf-project[id],
+.repository-project[id] {
+  scroll-margin-top: 28px;
+}
+
+/* Columns keep subject cards at their own height, with no empty grid cells. */
+.skills-grid {
+  display: block;
+  column-count: 2;
+  column-gap: 25px;
+}
+.skill-subject {
+  break-inside: avoid;
+  margin-bottom: 25px;
+  transition:
+    translate 0.25s,
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+.skill-subject-icon {
+  transition:
+    rotate 0.3s,
+    scale 0.3s;
+}
+
+/* A compact index and a row of social links replace the long footer stack. */
+.footer-links {
+  display: grid;
+  width: min(440px, 100%);
+  gap: 25px;
+  padding: 8px 0 0;
+}
+.footer-links > div {
+  gap: 12px;
+}
+.footer-links h3 {
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+}
+.footer-links nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px 32px;
+}
+.footer-links nav a {
+  min-height: 31px;
+  width: fit-content;
+  font-size: 13px;
+  transition:
+    color 0.2s,
+    translate 0.2s;
+}
+.footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.footer-social-links a {
+  padding: 8px 10px;
+  min-height: 35px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 11px;
+  background: var(--background);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.footer-social-links a:hover {
+  border-color: var(--primary);
+  background: var(--accent);
+}
+
+/* Independent transforms preserve each object's original angle and the shuffle poses. */
+.desk-object {
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.25s,
+    translate 0.3s,
+    rotate 0.3s,
+    scale 0.3s;
+}
+.current-card {
+  transition:
+    translate 0.3s,
+    rotate 0.3s,
+    box-shadow 0.3s;
+}
+.current-symbol,
+.current-tape {
+  transition:
+    rotate 0.3s,
+    scale 0.3s;
+}
+.current-card::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 23px;
+  height: 23px;
+  background: #fff8;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  border-bottom-right-radius: 22px;
+  opacity: 0;
+  translate: 3px 3px;
+  transition:
+    opacity 0.25s,
+    translate 0.25s;
+  pointer-events: none;
+}
+.illustrated-browser,
+.illustrated-object,
+.illustrated-community,
+.hardware-module,
+.art-book-note,
+.art-sticker,
+.art-spark {
+  transition:
+    translate 0.35s,
+    rotate 0.35s,
+    scale 0.35s;
+}
+.note-card {
+  transition:
+    translate 0.25s,
+    rotate 0.25s,
+    scale 0.16s,
+    box-shadow 0.25s;
+}
+.note-card:hover {
+  transform: none;
+}
+.note-card:active {
+  scale: 0.98;
+}
+.note-row {
+  transition:
+    background 0.2s,
+    translate 0.2s,
+    scale 0.15s;
+}
+.note-row:active {
+  scale: 0.985;
+}
+@media (hover: hover) and (pointer: fine) {
+  .desk-object:is(:hover, :focus-visible) {
+    translate: 0 -4px;
+    rotate: 2deg;
+    scale: 1.035;
+  }
+  .desk-object.flower:hover {
+    rotate: -14deg;
+    scale: 1.08;
+  }
+  .desk-object.small-sticker:hover {
+    rotate: -3deg;
+  }
+  .current-card:is(:hover, :focus-within) {
+    translate: 0 -4px;
+    rotate: -0.6deg;
+    box-shadow: 5px 9px 0 #2336590c;
+  }
+  .current-card:is(:hover, :focus-within) .current-symbol {
+    rotate: -8deg;
+    scale: 1.08;
+  }
+  .current-card:is(:hover, :focus-within) .current-tape {
+    rotate: 3deg;
+  }
+  .current-card:is(:hover, :focus-within)::after {
+    opacity: 0.7;
+    translate: 0 0;
+  }
+  .skill-subject:hover {
+    translate: 0 -3px;
+    border-color: color-mix(in srgb, var(--primary) 45%, var(--border));
+    box-shadow: 0 10px 24px #2336590b;
+  }
+  .skill-subject:hover .skill-subject-icon {
+    rotate: 5deg;
+    scale: 1.04;
+  }
+  :is(.shelf-project, .repository-project):is(:hover, :focus-within)
+    :is(.illustrated-browser, .illustrated-object, .illustrated-community) {
+    translate: 0 -3px;
+    rotate: 1.5deg;
+  }
+  :is(.shelf-project, .repository-project):is(:hover, :focus-within)
+    .art-sticker {
+    translate: 1px -2px;
+    rotate: -4deg;
+  }
+  :is(.shelf-project, .repository-project):is(:hover, :focus-within)
+    :is(.hardware-module, .art-book-note) {
+    translate: -2px 1px;
+    rotate: -3deg;
+  }
+  :is(.shelf-project, .repository-project):is(:hover, :focus-within)
+    .art-spark {
+    rotate: 12deg;
+  }
+  .note-card:is(:hover, :focus-visible) {
+    translate: 0 -4px;
+    rotate: var(--note-tilt, 0deg);
+    box-shadow: 0 12px 28px #23365912;
+  }
+  .note-row:hover,
+  .footer-links nav a:hover {
+    translate: 3px 0;
+  }
+  .compact-project-link:hover svg {
+    translate: 2px -2px;
+  }
+}
+@media (max-width: 600px) {
+  .skills-grid {
+    column-count: 1;
+  }
+  .skill-subject {
+    margin-bottom: 23px;
+  }
+  .footer-links {
+    width: 100%;
+  }
+  .footer-links nav {
+    gap: 4px 24px;
+  }
+  .project-notes summary {
+    padding: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk-object,
+  .current-card,
+  .current-symbol,
+  .current-tape,
+  .current-card::after,
+  .skill-subject,
+  .skill-subject-icon,
+  .illustrated-browser,
+  .illustrated-object,
+  .illustrated-community,
+  .hardware-module,
+  .art-book-note,
+  .art-sticker,
+  .art-spark,
+  .note-card,
+  .note-row,
+  .footer-links nav a,
+  .compact-project-link svg {
+    translate: none !important;
+    rotate: none !important;
+    scale: none !important;
+  }
+  .note-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-project:hover {
+    transform: none;
+  }
+}

@@ -70,3 +70,7 @@ The English directory forms one complete content edition. A future Arabic editio
 `archive/previous-content.json` preserves the earlier dataset before this revision. It is never imported by the live site. It contains superseded role descriptions and generic showcase claims; it is a reference, not a source of current facts. The active journey uses the background supplied for this revision, without inferring which old roles remain current or inventing their dates. Older tool recommendations have not been added as current tools automatically.
 
 `archive/raspberry-pi-supermarket.json` preserves the removed Raspberry Pi project as editable JSON. It is excluded from the site and project API.
+
+## Finished websites that have closed
+
+Keep `status` as `completed`, set `published` to `false`, and add `closedOn` as `YYYY-MM-DD`. Omit the closed website’s `link`. The card shows “Completed · Website offline” and the closure date inside Project details. `featured` controls homepage selection independently.

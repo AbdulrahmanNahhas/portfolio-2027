@@ -64,6 +64,7 @@ const schemas = {
       ]),
       featured: z.boolean(),
       published: z.boolean().optional(),
+      closedOn: z.iso.date().optional(),
       link: z.url().optional(),
       github: z.url().optional(),
       organization: z.url().optional(),
@@ -275,6 +276,10 @@ for (const project of data.projects) {
     !project.github?.startsWith("https://github.com/")
   )
     throw new Error(`Repository card ${project.id} needs a direct GitHub URL`);
+  if (project.closedOn && (project.published !== false || project.link))
+    throw new Error(
+      `Closed website ${project.id} must be unpublished and omit its live link`,
+    );
   for (const value of [
     project.link,
     project.github,

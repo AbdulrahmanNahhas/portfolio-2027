@@ -1,6 +1,6 @@
 import { copy, message } from "@/lib/content";
 import type { Metadata } from "next";
-import Link from "next/link";
+import { NoteLink } from "@/components/note-link";
 import { ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import { PageHeader, PageLayout } from "@/components/page-layout";
 import { blogPosts } from "@/lib/data";
@@ -19,11 +19,7 @@ export default function BlogPage() {
       />
       <section className="inner-section content-width notes-grid">
         {blogPosts.map((post) => (
-          <Link
-            href={`/blog/${post.slug}`}
-            key={post.slug}
-            className="note-card"
-          >
+          <NoteLink href={`/blog/${post.slug}`} key={post.slug}>
             <small>
               {message(copy.notes.noteMeta, {
                 date: formatDisplayDate(post.date, {
@@ -40,7 +36,7 @@ export default function BlogPage() {
               {copy.notes.readTheNote}
               <ArrowUpRightIcon />
             </span>
-          </Link>
+          </NoteLink>
         ))}
       </section>
     </PageLayout>

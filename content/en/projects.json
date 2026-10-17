@@ -18,8 +18,8 @@
   {
     "id": "fatih-115",
     "title": "Fatih 115",
-    "description": "A human rights documentation platform, bringing records, media, and advocacy into one place.",
-    "longDescription": "A platform for human rights documentation, with content management, multimedia records, and advocacy tools. Built with Next.js, TypeScript, and Convex.",
+    "description": "A completed human rights documentation platform. The website closed on January 1, 2026.",
+    "longDescription": "A completed platform for human rights documentation, with content management, multimedia records, and advocacy tools. Built with Next.js, TypeScript, and Convex. The website was closed on January 1, 2026 and is no longer available.",
     "category": "Documentation platform",
     "group": "web",
     "art": "fatih",
@@ -34,11 +34,12 @@
       "Cloudflare"
     ],
     "year": "2025",
-    "status": "production",
+    "status": "completed",
     "role": "Full-stack development & product design",
     "kind": "project",
     "featured": true,
-    "link": "https://fatih115.org"
+    "published": false,
+    "closedOn": "2026-01-01"
   },
   {
     "id": "esp-car-2",
