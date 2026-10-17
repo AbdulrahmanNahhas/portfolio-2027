@@ -31,6 +31,14 @@ Copy an entry in `en/projects.json` and give it a unique, stable `id`. Set `feat
 - Add `link` or `github` only when you have a real destination. Omit unavailable links.
 - Keep IDs and note slugs stable when changing titles. They identify records, rather than carrying translated text.
 
+## Edit skill levels
+
+`en/learning.json` has a `levels` dictionary and a `categories` list. Each skill has a `name` and a stable `level` ID, such as `proficient` or `working-knowledge`. Edit the dictionary to change labels and explanations in one place. The content check rejects unknown levels and duplicate skill names within a category. Languages and current R&D have their own lists in the same file.
+
+## Project filters
+
+Filters are ordinary links such as `/projects?filter=community`. The server renders the selected records, so filtering also works without JavaScript and survives refresh and browser back/forward navigation. Unknown values fall back to Everything.
+
 ## Edit a note
 
 Articles support paragraphs, `## headings`, `- bullet lists`, numbered lists, and `**bold text**`. JSON represents line breaks as `\n`. Use `YYYY-MM-DD` for publication dates. The existing four notes were retained from the preceding website; review their copy, dates, and reading times as you update them.

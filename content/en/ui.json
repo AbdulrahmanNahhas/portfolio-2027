@@ -45,14 +45,14 @@
     "decoration": ".",
     "studentFirstCuriousAlways": "✳ Student first. Curious always.",
     "decoration2": "↳",
-    "thoseEarlierChapters": "Those earlier chapters",
+    "thoseEarlierChapters": "Work & volunteering",
     "metaDescription": "Abdulrahman Nahhas: a university student from Homs, Syria, exploring Rust, Nix, web applications, and embedded systems.",
     "eyebrow": "Behind the keyboard",
     "title": "Abdulrahman. Nahhas around here.",
     "description": "A university student from Homs, Syria. Into software, systems, and understanding what makes things work.",
     "identityLabel": "A small introduction",
-    "journeyTitle": "People are part of the story, too.",
-    "journeyDescription": "A few earlier chapters in community work and building together."
+    "journeyTitle": "Work is part of the story, too.",
+    "journeyDescription": "Projects, teams, and community work that shaped how I build."
   },
   "projects": {
     "metaDescription": "Personal and community projects by Abdulrahman Nahhas, including this website, Thabat, and Promise for Justice & Truth.",
@@ -98,22 +98,25 @@
     "metaTitle": "Toolbox"
   },
   "learning": {
-    "humanLanguagesToo": "Human languages, too.",
-    "onTheIWantToTryThat": "On the “I want to try that” list.",
-    "decoration": "·",
-    "metaDescription": "An evolving map of the things I’m learning and the things I want to try next.",
-    "eyebrow": "Always in progress",
-    "title": "A little closer to how things work.",
-    "description": "Rust is the language I keep coming back to. Nix has changed the way I think about my setup. Alongside university, I’m still exploring the web, embedded systems, and the layers underneath.",
-    "metaTitle": "Learning",
-    "roadmapItem": "{name} · {status}"
+    "metaDescription": "Abdulrahman Nahhas’s skills and levels across web development, firmware, systems, DevOps, computer science, hardware, Rust, and Nix.",
+    "eyebrow": "My learning notebook",
+    "title": "A working map of my skills.",
+    "description": "From web interfaces to firmware and the tools underneath. Here’s what I’m comfortable with, what I’m practicing, and what I’m learning next. Rust and Nix are the current rabbit holes.",
+    "metaTitle": "Skills",
+    "languagesTitle": "Human languages, too.",
+    "languagesDescription": "Different ways to connect, read, and keep learning.",
+    "researchTitle": "Current R&D",
+    "researchDescription": "A few directions I want to explore next.",
+    "levelLegendTitle": "What the levels mean",
+    "skillCount": "{count} skills",
+    "currentFocus": "Currently exploring"
   },
   "journey": {
-    "earlierChapters": "Earlier chapters",
     "metaDescription": "Earlier work with NAVIGATE, Promise for Justice & Truth, Thabat, Joud Volunteers, and New Syria Movement.",
-    "eyebrow": "People, projects & perspective",
-    "title": "The things people taught me.",
-    "description": "A few earlier chapters in building with people. From startup work to volunteering and community organizations, these experiences shaped the way I approach software."
+    "eyebrow": "Work & volunteering",
+    "title": "Work, people & things learned.",
+    "description": "A few earlier chapters in building with people. From startup work to volunteering and community organizations, these experiences shaped the way I approach software.",
+    "metaTitle": "Work"
   },
   "contact": {
     "sayHello": "Say hello",
@@ -134,8 +137,6 @@
     "openNavigation": "Open navigation",
     "aroundHere": "Around here",
     "pickALittleCornerToExplore": "Pick a little corner to explore.",
-    "learning": "Learning",
-    "journey": "Earlier chapters",
     "homeLabel": "{name} — home"
   },
   "footer": {

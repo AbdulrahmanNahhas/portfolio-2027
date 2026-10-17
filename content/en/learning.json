@@ -1,82 +1,164 @@
 {
   "categories": [
     {
-      "id": "rust",
-      "title": "Rust is the rabbit hole I’m staying in.",
+      "id": "rust-nix",
+      "title": "Rust & Nix",
       "icon": "code",
       "skills": [
         {
           "name": "Rust",
-          "note": "Learning & loving it"
+          "level": "learning"
         },
         {
-          "name": "Ownership & borrowing",
-          "note": "Building understanding"
+          "name": "Ownership & Borrowing",
+          "level": "learning"
         },
-        {
-          "name": "Systems programming",
-          "note": "Exploring"
-        }
-      ]
-    },
-    {
-      "id": "nix",
-      "title": "A system I can understand and rebuild.",
-      "icon": "terminal",
-      "skills": [
         {
           "name": "Nix / NixOS",
-          "note": "Learning through use"
+          "level": "learning"
         },
         {
-          "name": "Declarative configuration",
-          "note": "Putting into practice"
-        },
-        {
-          "name": "Linux",
-          "note": "My everyday environment"
+          "name": "Declarative Configuration",
+          "level": "learning"
         }
       ]
     },
     {
-      "id": "web",
-      "title": "Things for the browser.",
+      "id": "web-mobile",
+      "title": "Web & Mobile Interfaces",
       "icon": "globe",
       "skills": [
         {
           "name": "JavaScript / TypeScript",
-          "note": "Building with"
+          "level": "advanced"
         },
         {
-          "name": "React / Next.js",
-          "note": "Building with"
+          "name": "React / Next.js 16",
+          "level": "advanced"
         },
         {
-          "name": "HTML / CSS",
-          "note": "Always improving"
+          "name": "React Native (Expo)",
+          "level": "proficient"
         },
         {
-          "name": "PostgreSQL",
-          "note": "In my toolbox"
+          "name": "Tailwind CSS v4",
+          "level": "advanced"
+        },
+        {
+          "name": "shadcn/ui",
+          "level": "advanced"
+        },
+        {
+          "name": "Figma (Handoff)",
+          "level": "working-knowledge"
+        },
+        {
+          "name": "TanStack Query",
+          "level": "proficient"
         }
       ]
     },
     {
-      "id": "embedded",
-      "title": "Code that reaches the physical world.",
+      "id": "firmware",
+      "title": "Firmware & Systems",
       "icon": "cpu",
       "skills": [
         {
-          "name": "ESP32 / Arduino",
-          "note": "Hands-on projects"
+          "name": "C/C++",
+          "level": "intermediate"
         },
         {
-          "name": "C / C++",
-          "note": "Practicing"
+          "name": "Arduino Framework",
+          "level": "proficient"
         },
         {
-          "name": "ESP-IDF / MQTT",
-          "note": "Exploring"
+          "name": "ESP-IDF (C++)",
+          "level": "learning"
+        },
+        {
+          "name": "FreeRTOS",
+          "level": "beginner"
+        },
+        {
+          "name": "I²C / SPI / UART",
+          "level": "proficient"
+        },
+        {
+          "name": "MCU Peripherals",
+          "level": "proficient"
+        },
+        {
+          "name": "Memory Management",
+          "level": "working-knowledge"
+        }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DevOps & Cloud",
+      "icon": "terminal",
+      "skills": [
+        {
+          "name": "Git & GitLab flow",
+          "level": "proficient"
+        },
+        {
+          "name": "GitLab CI/CD",
+          "level": "proficient"
+        },
+        {
+          "name": "Docker",
+          "level": "learning"
+        },
+        {
+          "name": "PostgreSQL / Supabase",
+          "level": "proficient"
+        },
+        {
+          "name": "MQTT & WebSockets",
+          "level": "proficient"
+        }
+      ]
+    },
+    {
+      "id": "computer-science",
+      "title": "Computer Science",
+      "icon": "book",
+      "skills": [
+        {
+          "name": "OOP Patterns",
+          "level": "learning"
+        },
+        {
+          "name": "Data Structures & Algorithms",
+          "level": "beginner"
+        },
+        {
+          "name": "JSON & Serialization",
+          "level": "proficient"
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "title": "Hardware & Tools",
+      "icon": "wrench",
+      "skills": [
+        {
+          "name": "Reading Datasheets",
+          "level": "working-knowledge"
+        },
+        {
+          "name": "Circuit Troubleshooting",
+          "level": "beginner"
+        },
+        {
+          "name": "CMake / Build Systems",
+          "level": "working-knowledge"
+        },
+        {
+          "name": "Linux / Bash",
+          "level": "advanced"
         }
       ]
     }
@@ -84,29 +166,32 @@
   "languages": [
     {
       "name": "Arabic",
-      "level": "Native"
+      "level": "Native",
+      "code": "ar"
     },
     {
       "name": "English",
-      "level": "Learning & using"
+      "level": "C1 Professional",
+      "code": "en"
+    },
+    {
+      "name": "Spanish",
+      "level": "A1 Beginner",
+      "code": "es"
     }
   ],
   "roadmap": [
     {
-      "name": "More Rust",
-      "status": "In progress"
+      "name": "Computer Architecture",
+      "status": "Planned"
     },
     {
-      "name": "Computer architecture",
-      "status": "Curious about"
+      "name": "PCB Design (KiCad)",
+      "status": "Planned"
     },
     {
-      "name": "Embedded Rust",
-      "status": "Want to explore"
-    },
-    {
-      "name": "PCB design",
-      "status": "On the list"
+      "name": "Rust for Embedded",
+      "status": "Planned"
     }
   ],
   "current": [
@@ -139,6 +224,38 @@
       "href": "/about",
       "linkLabel": "A little more about me",
       "tone": "butter"
+    }
+  ],
+  "levels": [
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "description": "Comfortable making decisions, troubleshooting, and working independently."
+    },
+    {
+      "id": "proficient",
+      "label": "Proficient",
+      "description": "Able to build with it and solve familiar problems with confidence."
+    },
+    {
+      "id": "intermediate",
+      "label": "Intermediate",
+      "description": "Practical experience, with more complex work still taking research and practice."
+    },
+    {
+      "id": "working-knowledge",
+      "label": "Working Knowledge",
+      "description": "Understand the fundamentals and can use them with reference material."
+    },
+    {
+      "id": "learning",
+      "label": "Learning",
+      "description": "Actively studying and trying it out in small experiments."
+    },
+    {
+      "id": "beginner",
+      "label": "Beginner",
+      "description": "Early experience; building a foundation."
     }
   ]
 }

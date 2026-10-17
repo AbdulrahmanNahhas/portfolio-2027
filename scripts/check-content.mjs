@@ -54,11 +54,12 @@ const schemas = {
     }),
   ),
   learning: z.object({
+    levels: list(z.object({ id, label: text, description: text })),
     categories: list(
       z.object({
         id,
         title: text,
-        skills: list(z.object({ name: text, note: text })),
+        skills: list(z.object({ name: text, level: id })),
       }),
     ),
     languages: list(z.object({ name: text, level: text })),
@@ -222,6 +223,16 @@ for (const filter of ui.projectShelf.filters)
     throw new Error(`Empty configured project filter: ${filter.value}`);
 if (JSON.stringify({ profile: data.profile, ui }).match(/\baqua\b/i))
   throw new Error("Old Aqua identity remains in active copy");
+
+checkUnique(data.learning.levels, "id", "learning.levels");
+const levelIds = new Set(data.learning.levels.map((level) => level.id));
+for (const category of data.learning.categories) {
+  checkUnique(category.skills, "name", `learning.categories.${category.id}`);
+  for (const skill of category.skills)
+    if (!levelIds.has(skill.level))
+      throw new Error(`Unknown level ${skill.level} for ${skill.name}`);
+}
+
 console.log(
   `Content OK: 10 JSON sources, ${data.projects.length} projects, ${data.journey.length} earlier chapters, ${data.notes.length} notes. Links, IDs, dates, UI keys, and display values checked.`,
 );

@@ -21,9 +21,9 @@
       "href": "/blog"
     },
     {
-      "id": "toolbox",
-      "label": "Toolbox",
-      "href": "/uses"
+      "id": "skills",
+      "label": "Skills",
+      "href": "/skills"
     },
     {
       "id": "hello",
@@ -33,13 +33,13 @@
   ],
   "extra": [
     {
-      "id": "learning",
-      "label": "Learning",
-      "href": "/skills"
+      "id": "toolbox",
+      "label": "Toolbox",
+      "href": "/uses"
     },
     {
-      "id": "journey",
-      "label": "Earlier chapters",
+      "id": "work",
+      "label": "Work",
       "href": "/work"
     }
   ]

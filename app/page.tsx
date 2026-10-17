@@ -9,10 +9,7 @@ import {
 import { Desk } from "@/components/desk";
 import { PageLayout } from "@/components/page-layout";
 import { ProjectCard } from "@/components/project-card";
-import {
-  CurrentInterests,
-  PersonalFacts,
-} from "@/components/personal-sections";
+import { CurrentInterests, PersonalFacts } from "@/components/personal-sections";
 import { siteConfig, blogPosts, projects } from "@/lib/data";
 import { formatDisplayDate } from "@/lib/date";
 
@@ -46,7 +43,7 @@ export default function Home() {
             {copy.home.intro}
           </p>
           <div className="hero-links">
-            <a href="#projects" className="text-link">
+            <a href="#interests" className="text-link">
               {copy.home.takeALookAround}
               <ArrowDownIcon />
             </a>
@@ -107,21 +104,13 @@ export default function Home() {
               <span className="eyebrow">{copy.home.notesFromTheMargins}</span>
               <h2>{copy.home.thinkingOutLoud}</h2>
             </div>
-            <Link
-              href="/blog"
-              className="circle-link"
-              aria-label={copy.home.readAllNotes}
-            >
+            <Link href="/blog" className="circle-link" aria-label={copy.home.readAllNotes}>
               <ArrowUpRightIcon />
             </Link>
           </div>
           <div>
             {blogPosts.slice(0, 3).map((post) => (
-              <Link
-                className="note-row"
-                href={`/blog/${post.slug}`}
-                key={post.slug}
-              >
+              <Link className="note-row" href={`/blog/${post.slug}`} key={post.slug}>
                 <span>
                   <small>
                     {message(copy.home.noteMeta, {

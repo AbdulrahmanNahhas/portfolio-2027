@@ -23,13 +23,11 @@ export function Footer() {
         </div>
         <div className="footer-links">
           <nav aria-label={copy.footer.footerNavigation}>
-            {footerNavItems
-              .filter((item) => item.href !== "/")
-              .map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
+            {footerNavItems.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
           </nav>
           <div>
             <a

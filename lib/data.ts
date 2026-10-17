@@ -18,6 +18,7 @@ export type Project = (typeof projectData)[number] & {
 export const experiences = journeyData;
 export const skillCategories = learning.categories;
 export const languages = learning.languages;
+export const skillLevels = learning.levels;
 export const roadmap = learning.roadmap;
 export const currentInterests = learning.current;
 export const aboutData = about;

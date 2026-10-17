@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PageHeader, PageLayout } from "@/components/page-layout";
 import { experiences } from "@/lib/data";
 export const metadata: Metadata = {
-  title: copy.journey.earlierChapters,
+  title: copy.journey.metaTitle,
   description: copy.journey.metaDescription,
 };
 export default function WorkPage() {

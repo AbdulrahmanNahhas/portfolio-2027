@@ -5,12 +5,10 @@ import { aboutData, currentInterests } from "@/lib/data";
 
 export function CurrentInterests() {
   return (
-    <section className="current-section content-width">
+    <section id="interests" className="current-section content-width">
       <div className="section-heading">
         <div>
-          <span className="eyebrow">
-            {copy.personalSections.currentEyebrow}
-          </span>
+          <span className="eyebrow">{copy.personalSections.currentEyebrow}</span>
           <h2>{copy.personalSections.currentTitle}</h2>
         </div>
         <Link href="/skills" className="text-link">
@@ -20,10 +18,7 @@ export function CurrentInterests() {
       </div>
       <div className="current-grid">
         {currentInterests.map((item) => (
-          <article
-            key={item.id}
-            className={`current-card current-${item.tone}`}
-          >
+          <article key={item.id} className={`current-card current-${item.tone}`}>
             <span className="current-tape" aria-hidden="true" />
             <div className="current-card-top">
               <span className="eyebrow">{item.tag}</span>
@@ -70,9 +65,7 @@ export function Principles() {
     <section className="principles-section content-width">
       <div className="section-heading">
         <div>
-          <span className="eyebrow">
-            {copy.personalSections.notesToKeepNearby}
-          </span>
+          <span className="eyebrow">{copy.personalSections.notesToKeepNearby}</span>
           <h2>{copy.personalSections.principlesTitle}</h2>
         </div>
       </div>

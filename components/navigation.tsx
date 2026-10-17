@@ -22,7 +22,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { siteConfig } from "@/lib/data";
-import { mainNavItems } from "@/lib/navigation";
+import { mainNavItems, footerNavItems } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 export function Navigation() {
@@ -100,21 +100,16 @@ export function Navigation() {
                 </SheetDescription>
               </SheetHeader>
               <div className="mobile-links">
-                {mainNavItems.map((item) => (
+                {footerNavItems.map((item) => (
                   <Link
-                    key={item.href}
+                    key={item.id}
                     href={item.href}
                     onClick={() => setOpen(false)}
+                    aria-current={pathname === item.href ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
                 ))}
-                <Link href="/skills" onClick={() => setOpen(false)}>
-                  {copy.navigation.learning}
-                </Link>
-                <Link href="/work" onClick={() => setOpen(false)}>
-                  {copy.navigation.journey}
-                </Link>
               </div>
             </SheetContent>
           </Sheet>
